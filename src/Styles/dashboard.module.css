@@ -5,6 +5,7 @@
 .homeContainer {
     flex: 6;
 }
+
 .total{
     display: flex;
    margin-top: 70px;
@@ -175,6 +176,7 @@ font-family: 'JosefinSans-Regular' !important;
     height: 500px !important;
     margin-bottom: 20px;
     font-family: 'JosefinSans-Regular' !important;
+    width: 100% !important;
 }
 .edit__btn{
     background-color: #FF8201;
@@ -293,7 +295,7 @@ background-color: #0090D0;
 .add{
     text-decoration: none;
     padding: 5px 30px !important;
-    border: 1px solid #FF8201;
+    border: 1px solid #FF8201 !important;
     color: #fff !important;
     border-radius: 8px !important;
     -webkit-border-radius: 8px !important;
@@ -303,10 +305,12 @@ background-color: #0090D0;
 }
 .createticket{
     color: #FF8201 !important;
+    background-color: #fff !important;
 }
 .add{
     color: #fff !important;
-    background-color: #FF8201;
+    background-color: #FF8201 !important;
+    margin-left: 20px;
 }
 .loads__map{
         box-shadow: 0 0 10px rgba(70, 69, 69, 0.2) !important;
@@ -409,4 +413,124 @@ background-color: #0090D0;
 .statusOfOrder p{
     margin-bottom: 30px !important;
     font-size: 20px;
+}
+@media (max-width:767px) {
+    .home {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .total {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .load__details {
+        margin: auto;
+        text-align: center;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+.chart__status{
+    display: none;
+}
+.booking,
+.payment,
+.currentpay{
+    width: 100% !important;
+}
+.loadbook {
+    display: flex;
+    gap: 5%;
+    padding-left: 10px;
+    justify-content: center;
+
+}
+
+.loads__body {
+    background-color: #F3F3F3;
+    padding: 20px;
+    text-align: center !important;
+}
+
+.order__date,
+.order__price{
+    font-size: 10px;
+}
+
+.select{
+    width: 45% !important;
+}
+.createticket,
+.add{
+padding: 5px 15px !important;
+margin: auto !important;
+}
+.add{
+    margin-left: 20px !important;
+}
+.allloard{
+    height: 100px !important;
+}
+.loadprog__para,
+.loaddash__para,
+.totalexpenses__para{
+    width: 150px !important;
+    margin: auto !important;
+    margin-bottom: 100px !important;
+}
+.loadprog__para{
+    margin-bottom: 10px !important;
+}
+.loadprog__desc{
+    margin-bottom: 70px !important;
+}
+.price{
+    padding-right: 20px;
+}
+
+}
+@media (min-width:768px) and (max-width:991px) {
+    .dash,
+    .left{
+        display: flex !important;
+        flex-direction: column !important;  
+    }
+.homeContainer{
+    width: 75%;
+}
+  .loadbook {
+      display: flex;
+      gap: 5%;
+      padding-left: 10px;
+      justify-content: center;
+  }
+                  .booking,
+                  .payment,
+                  .currentpay {
+                      width: 100% !important;
+                  }
+  .add{
+    margin-left: 20px;
+  }
+.create div{
+    margin: auto !important;
+}
+.createticket,
+.add {
+    padding: 10px 30px !important;
+}
+.view__btn{
+    padding: 10px;
+}
+.loadprog__desc{
+    font-size: 12px !important;
+    margin-bottom: 30px !important;
+}
+.allloard{
+    margin-bottom: 90px !important;
+}
+.allloard__para{
+    font-size: 12px;
+}
 }

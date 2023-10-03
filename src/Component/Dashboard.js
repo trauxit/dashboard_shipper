@@ -8,8 +8,8 @@ import { Col, Row } from 'react-bootstrap';
 import TableOfDash from './Table';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Form from 'react-bootstrap/Form';
-import AddIcon from '@mui/icons-material/Add';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import ModalLoad from './ModalLoad';
 const Dashboard = () => {
     const [state, setState] = useState({
 
@@ -74,7 +74,7 @@ const Dashboard = () => {
                                                 <h2 className={`${styles.loadprog__title}`}>110</h2>
                                                 <p className={`${styles.loadprog__para}`}>loads in progress</p>
                                             </div>
-                                            <p className={`${styles.loadprog__desc}`}>All online incoming loads through app</p>
+                                            <p className={`${styles.loadprog__desc}`}>All online incoming loads</p>
                                             <Link to='' className={`${styles.view__btn}`}>View all</Link>
                                         </div>
                                         <div className={`${styles.load__details}`}>
@@ -173,32 +173,32 @@ const Dashboard = () => {
                                         <div>
                                             <div className={`${styles.order}`}>
                                                 <p className={`${styles.order__id}`}>#224512</p>
-                                                <p className={`${styles.order__date}`}>Get 24 Sep 2023</p>
-                                                <p className={`${styles.order__price}`}>$ 100</p>
+                                                <p className={`${styles.order__date}`}>24Sep 2023</p>
+                                                <p className={`${styles.order__price}`}>$100</p>
                                                 <p className={`${styles.order__status} ${styles.pending}`}>Pending</p>
                                             </div>
                                             <div className={`${styles.order}`}>
                                                 <p className={`${styles.order__id}`}>#224512</p>
-                                                <p className={`${styles.order__date}`}>Get 24 Sep 2023</p>
-                                                <p className={`${styles.order__price}`}>$ 100</p>
+                                                <p className={`${styles.order__date}`}>24Sep 2023</p>
+                                                <p className={`${styles.order__price}`}>$100</p>
                                                 <p className={`${styles.order__status} ${styles.paid}`}>Paid</p>
                                             </div>
                                             <div className={`${styles.order}`}>
                                                 <p className={`${styles.order__id}`}>#224512</p>
-                                                <p className={`${styles.order__date}`}>Get 24 Sep 2023</p>
-                                                <p className={`${styles.order__price}`}>$ 100</p>
+                                                <p className={`${styles.order__date}`}>24Sep 2023</p>
+                                                <p className={`${styles.order__price}`}>$100</p>
                                                 <p className={`${styles.order__status} ${styles.pending}`}>Pending</p>
                                             </div>
                                             <div className={`${styles.order}`}>
                                                 <p className={`${styles.order__id}`}>#224512</p>
-                                                <p className={`${styles.order__date}`}>Get 24 Sep 2023</p>
-                                                <p className={`${styles.order__price}`}>$ 100</p>
+                                                <p className={`${styles.order__date}`}>24Sep 2023</p>
+                                                <p className={`${styles.order__price}`}>$100</p>
                                                 <p className={`${styles.order__status} ${styles.waiting}`}>waiting</p>
                                             </div>
                                             <div className={`${styles.order}`}>
                                                 <p className={`${styles.order__id}`}>#224512</p>
-                                                <p className={`${styles.order__date}`}>Get 24 Sep 2023</p>
-                                                <p className={`${styles.order__price}`}>$ 100</p>
+                                                <p className={`${styles.order__date}`}>24Sep 2023</p>
+                                                <p className={`${styles.order__price}`}>$100</p>
                                                 <p className={`${styles.order__status} ${styles.pending}`}>Pending</p>
                                             </div>
                                         </div>
@@ -209,8 +209,9 @@ const Dashboard = () => {
                         </Col>
                         <Col lg='3' className={`${styles.map}`}>
                             <div className={`${styles.create}`}>
-                                <Link className={`${styles.createticket}`}>Create Ticket</Link>
-                                <Link className={`${styles.add}`}><AddIcon /> Add Load</Link>
+                                <div>
+                                    <ModalLoad />
+                                </div>
                             </div>
                             <div className={`${styles.loads__map}`}>
                                 <h2 className={`${styles.payment__title}`}>current loads</h2>

@@ -37,48 +37,41 @@ const Sidebar = () => {
                 <hr />
 
                 <div className={`${styles.center}`}>
-                    <ul>
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                            <li>
-                                <DashboardIcon className={`${styles.icon}`} />
-                                <span>Dashboard</span>
-                            </li>
-                        </Link>
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                            <li>
-                                <GridViewIcon className={`${styles.icon}`} />
-                                <span>Overview</span>
-                            </li>
-                        </Link>
+                    <div>
+                        <ul>
+                            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <DashboardIcon className={`${styles.icon}`} />
+                                    <span>Dashboard</span>
+                                </li>
+                            </Link>
+                            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <GridViewIcon className={`${styles.icon}`} />
+                                    <span>Overview</span>
+                                </li>
+                            </Link>
 
-                        <Link to="/all-loads" style={{ textDecoration: "none" }}>
-                            <li>
-                                <StoreIcon className={`${styles.icon}`} />
-                                <span>All loads </span>
-                            </li>
-                        </Link>
-                        <Link to="/reports" style={{ textDecoration: "none" }}>
-                            <li>
-                                <AddchartIcon className={`${styles.icon}`} />
-                                <span>Reports</span>
-                            </li>
-                        </Link>
-                        <Link to="/expenses" style={{ textDecoration: "none" }}>
-                            <li>
-                                <PriceChangeIcon className={`${styles.icon}`} />
-                                <span>Expenses</span>
-                            </li>
-                        </Link>
-                        <Link to="/profile" style={{ textDecoration: "none" }}>
-                            <li>
-                                <PersonOutlineIcon className={`${styles.icon}`} />
-                                <span>Profile</span>
-                            </li>
-                        </Link>
-
-
-
-                    </ul>
+                            <Link to="/all-loads" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <StoreIcon className={`${styles.icon}`} />
+                                    <span> loads </span>
+                                </li>
+                            </Link>
+                            <Link to="/expenses" style={{ textDecoration: "none" }}>
+                                <li>
+                                    <PriceChangeIcon className={`${styles.icon}`} />
+                                    <span>Expenses</span>
+                                </li>
+                            </Link>
+                            <Link to="/profile" style={{ textDecoration: "none" }} className={`${styles.profile}`}>
+                                <li>
+                                    <PersonOutlineIcon className={`${styles.icon}`} />
+                                    <span>Profile</span>
+                                </li>
+                            </Link>
+                        </ul>
+                    </div>
                 </div>
                 <div className={`${styles.bottom}`}>
                     <ul>
