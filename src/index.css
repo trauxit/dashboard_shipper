@@ -1,13 +1,24 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Josefin Sans', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+@font-face {
+  font-family: 'JosefinSans-Regular';
+  src: url(/src/assets/font/Josefin_Sans/static/JosefinSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'JosefinSans-Light';
+  src: url(/src/assets/font/Josefin_Sans/static/JosefinSans-Light.ttf);
+}
+
+@font-face {
+  font-family: 'JosefinSans-Medium';
+  src: url(/src/assets/font/Josefin_Sans/static/JosefinSans-Medium.ttf);
 }

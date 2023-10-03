@@ -1,0 +1,73 @@
+.home {
+    display: flex;
+    border-radius: 20px;
+}
+
+.homeContainer {
+    flex: 6;
+}
+.profile {
+    margin: 50px !important;
+    font-family: 'JosefinSans-Regular';
+}
+.user{
+    margin-top: 20px;
+    margin-bottom: 30px !important;
+}
+.user__name {
+    color: rgb(5, 92, 92);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.stars {
+    margin-left: 30px;
+}
+
+.star {
+    color: orange;
+}
+.img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #EF8451;
+    background-color: #EF8451;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.edit{
+        background-color: #EF8451;
+            color: #fff;
+            padding: 5px 30px;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            border: none;
+            margin-top: 30px !important;
+            text-decoration: none !important;
+            margin-left: 30px !important;
+}
+.user__info {
+    display: flex;
+    align-items: center !important;
+    column-gap: 15%;
+    margin-bottom: 10px;
+}
+.user__para{
+    font-size: 20px;
+    
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+.user__title{
+    color: #777;
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    margin-bottom: 25px;
+}

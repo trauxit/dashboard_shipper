@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+:root{
+  --primary-color:#333
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.react-tel-input{
+width: 600px !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.react-tel-input .form-control{
+        width: 600px !important;
+        display: block !important;
+        
+        font-size: 1rem !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+        appearance: none !important;
+        background-color: #fff !important;
+        background-clip: padding-box !important;
+        border: 1px solid #dee2e6 !important;
+        border-radius: 0.375rem !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        -webkit-border-radius: 0.375rem !important;
+        -moz-border-radius: 0.375rem !important;
+        -ms-border-radius: 0.375rem !important;
+        -o-border-radius: 0.375rem !important;
+        outline: none !important;
+        margin-bottom: 50px;
+        -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        -ms-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-control:focus{
+        background-color: #f5f0f0cb !important;
+        border: 0px solid #EF8451 !important;
+        transform: scale(1.00) !important;
+        box-shadow: 0 0 0 0.25rem rgba(235, 137, 91, 0.61) !important;
+        -webkit-transform: scale(1.00) !important;
+        -moz-transform: scale(1.00) !important;
+        -ms-transform: scale(1.00) !important;
+        -o-transform: scale(1.00) !important;
 }
-
-.App-link {
-  color: #61dafb;
+.progress-bar{
+ 
+  height: 5px !important;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.prog {
+  margin-top: 0px !important;
+  height: 5px !important;
+}
+.cellWithStatus{
+  width: 80% !important;
+}
+.proccesing .progress-bar{
+  background-color: red;
+}
+.on .progress-bar{
+  background-color: #FF8201;
+}
+.completed .progress-bar{
+  background-color: green;
 }
