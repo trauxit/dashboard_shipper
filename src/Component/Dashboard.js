@@ -107,7 +107,7 @@ const Dashboard = () => {
                                 </Col>
                                 <Col lg='2'  >
                                     <div className={`${styles.booking}`} >
-                                        <h2 className={`${styles.booking__title}`}>loads booking</h2>
+                                        <h4 className={`${styles.booking__title}`}>loads booking</h4>
                                         <div className={`${styles.loadbook}`}>
                                             <div className={`${styles.loads}`}>
                                                 <div className={`${styles.loads__body}`}>
@@ -214,7 +214,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div className={`${styles.loads__map}`}>
-                                <h2 className={`${styles.payment__title}`}>current loads</h2>
+                                <h4 className={`${styles.payment__title}`}>current loads</h4>
 
                                 <div className={`${styles.googlemap}`}>
                                     <iframe

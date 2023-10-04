@@ -18,7 +18,7 @@ font-family: 'JosefinSans-Regular' !important;
 
 }
 .load__details{
-    background-color: #fff;
+    background-color: var(--secondary-background-color);
     padding: 15px;
     box-shadow: 0 0 10px rgba(70, 69, 69, 0.2);
     width: 190px;
@@ -52,7 +52,7 @@ font-family: 'JosefinSans-Regular' !important;
 .view__btn{
       color: #FF8201;
       text-decoration: none;
-      background-color: #F3F3F3;
+      background-color: var(--background-content);
       padding: 10px 30px;
       border-radius: 8px;
       -webkit-border-radius: 8px;
@@ -109,6 +109,7 @@ font-family: 'JosefinSans-Regular' !important;
     -ms-border-radius: 12px !important ;
     -o-border-radius: 12px !important ;
     font-family: 'JosefinSans-Regular' !important;
+    background-color: var(--secondary-background-color);
 }
 .left{
     column-gap: 20px;
@@ -127,7 +128,7 @@ font-family: 'JosefinSans-Regular' !important;
 
 }
 .loads__body{
-    background-color: #F3F3F3;
+    background-color: var(--background-content);
     padding: 40px;
     text-align: center !important;
 }
@@ -149,6 +150,7 @@ font-family: 'JosefinSans-Regular' !important;
     -moz-border-radius:12px ;
     -ms-border-radius:12px ;
     -o-border-radius:12px ;
+    background-color: var(--secondary-background-color);
 }
 .chart__body{
     display: flex;
@@ -177,6 +179,8 @@ font-family: 'JosefinSans-Regular' !important;
     margin-bottom: 20px;
     font-family: 'JosefinSans-Regular' !important;
     width: 100% !important;
+    background-color: var(--secondary-background-color);
+    color: #029F04;
 }
 .edit__btn{
     background-color: #FF8201;
@@ -200,6 +204,7 @@ font-family: 'JosefinSans-Regular' !important;
     -o-border-radius: 12px !important;
     font-family: 'JosefinSans-Regular' !important;
     padding: 15px;
+    background-color: var(--secondary-background-color);
 }
 .currentpay{
     margin-top: 50px !important;
@@ -208,7 +213,7 @@ font-family: 'JosefinSans-Regular' !important;
     display: flex;
 }
 .select{
-    width: 30%;
+    width: 30% !important;
     height: 30px;
     padding-top: 2px !important;
     border: none !important;
@@ -241,8 +246,8 @@ font-family: 'JosefinSans-Regular' !important;
     text-decoration: none;
 }
 .price{
-    background-color: #FFF6ED;
-    color: #FF8201;
+    background-color: var(--background-price);
+    color: var(--color-price);
     padding: 10px 35px;
 }
 .order{
@@ -322,10 +327,11 @@ background-color: #0090D0;
             -o-border-radius: 12px !important;
             font-family: 'JosefinSans-Regular' !important;
             padding: 15px;
+            background-color: var(--secondary-background-color);
 
 }
 .googlemap{
-    background-color: #F3F3F3;
+    background-color: var(--background-content);
     box-shadow: 0 0 10px rgba(110, 109, 109, 0.2) !important;
     margin-bottom: 20px;
     border-radius: 8px !important;

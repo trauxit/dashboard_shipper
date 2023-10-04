@@ -1,20 +1,12 @@
 import React, { useContext } from 'react'
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import BsCalendarEvent from "@mui/icons-material/CalendarTodayOutlined"
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import AiFillBankIcon from '@mui/icons-material/Home'
-import { AiOutlineGold } from 'react-icons/ai'
 import { Link } from "react-router-dom";
 import styles from "../Styles/sidebar.module.css"
-import GavelIcon from '@mui/icons-material/Gavel';
-import { BiDonateHeart } from 'react-icons/bi'
 import logo from '../assets/images/TRAUXIT-2.png'
 import SettingsIcon from '@mui/icons-material/Settings';
-import AddchartIcon from '@mui/icons-material/Addchart';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { AuthContext } from '../Component/AuthContext'
@@ -25,9 +17,30 @@ const Sidebar = () => {
         localStorage.removeItem('email');
         authContext.setAuth({});
     }
+    const setDarkMode = () => {
+        document.querySelector("body").setAttribute("data-theme", "dark-mode");
+        localStorage.setItem("selectedTheme", "dark-mode");
+    }
+    const setLightMode = () => {
+        document.querySelector("body").setAttribute("data-theme", "light-mode");
+        localStorage.setItem("selectedTheme", "light-mode");
+    }
+    const toggleTheme = (e) => {
+        if (e.target.checked) {
+            setDarkMode();
+        }
+        else {
+            setLightMode();
+        }
+    }
+    const selectedTheme = localStorage.getItem("selectedTheme");
+    if (selectedTheme === "dark-mode") {
+        setDarkMode();
+    }
     return (
         <>
             <div className={`${styles.sidebar}`}>
+
                 <div className={`${styles.top}`}>
                     <Link to="/" style={{ textDecoration: "none" }}>
                         <img src={logo} alt='' className={styles["side-bar__logo"]} />
@@ -35,6 +48,7 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <hr />
+
 
                 <div className={`${styles.center}`}>
                     <div>
@@ -74,7 +88,14 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className={`${styles.bottom}`}>
+
+
                     <ul>
+                        <label className='switch' >
+                            <input type='checkbox' onChange={toggleTheme} defaultChecked={selectedTheme === "dark-mode"} />
+                            <span className='slider'></span>
+                        </label>
+
                         <Link to="/setting" style={{ textDecoration: "none" }}>
                             <li>
                                 <SettingsIcon className={`${styles.icon}`} />
@@ -89,6 +110,7 @@ const Sidebar = () => {
                 </div>
 
             </div>
+
         </>
     )
 }

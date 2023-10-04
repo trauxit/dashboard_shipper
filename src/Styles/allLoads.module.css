@@ -1,0 +1,213 @@
+.home {
+    display: flex;
+    border-radius: 20px;
+}
+
+.homeContainer {
+    flex: 6;
+}
+.shipment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px !important;
+    font-family: 'JosefinSans-Regular';
+}
+.shipment__body,
+.shipment__select{
+    display: flex;
+    column-gap: 20px !important;
+    align-items: center;
+}
+.style__link{
+    background-color: #FF8201;
+    border: 1px solid #FF8201;
+    padding: 2px 30px !important;
+    color: #fff;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    cursor: pointer;
+}
+.view__link{
+    background-color: #fff;
+    color: #FF8201;
+    padding: 2px 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    cursor: pointer;
+}
+.AllLoads{
+    width: 99%;
+    gap: 1%;
+    font-family: 'JosefinSans-Regular';
+    margin-bottom: 30px !important;
+
+}
+.load{
+    border: 1px solid var(--background-content);
+    padding: 5px 10px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-left: 30px !important;
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 0 10px var(--box-shadow);
+}
+.route__para{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.route,
+.arriver,
+.waiting{
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+   
+}
+.route{
+background-color: #FF8201 !important;
+}
+.arriver{
+    background-color: green;
+}
+.waiting{
+    background-color:#84b1ce ;
+}
+.load__body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.load__desc{
+    display: flex;
+    align-items: center !important;
+    column-gap: 5px;
+}
+.load__title{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.load__para{
+    color: #777;
+
+}
+.shipment__number{
+    align-items: center !important;
+}
+.load__img{
+    position: relative !important;
+}
+.load__progress{
+    position: absolute;
+    top:20px;
+    right: 65px !important;
+    width: 56%;
+    border-radius: none !important;
+    -webkit-border-radius: none !important;
+    -moz-border-radius: none !important;
+    -ms-border-radius: none !important;
+    -o-border-radius: none !important;
+    height: 40% !important;
+}
+.ship__para{
+    color: #777;
+    margin-bottom: 0 !important;
+}
+.ship__code{
+    font-weight: bold;
+    font-size: 20px;
+}
+.star {
+    color: #FF8201;
+}
+.truck__body{
+    margin-bottom: 20px !important;
+}
+.truck__para,
+.truck__distance{
+    color: #777;
+    margin-bottom: 0 !important;
+    text-transform: capitalize;
+}
+.truck__title{
+    font-weight: bold;
+    margin-bottom: 0 !important;
+}
+.load__location{
+    display: flex;
+    column-gap: 20px;
+    margin-top: 30px;
+}
+.outer{
+    width: 40px;
+    height: 40px;
+    background-color: #E8F9EE;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    position: relative;
+}
+.outer::after{
+content: '';
+position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #0EBC93;
+        border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            top: 12px;
+            left: 12px;
+}
+.location__icon{
+        font-size: 40px !important;
+        padding: 5px !important;
+        background-color: #FFF4E8 !important;
+        border-radius: 50% !important ;
+        -webkit-border-radius: 50% !important ;
+        -moz-border-radius: 50% !important ;
+        -ms-border-radius: 50% !important ;
+        -o-border-radius: 50% !important ;
+        color: #FF8201 !important;
+        margin-top: 15px !important;
+}
+.loc{
+    position: relative;
+}
+.loc::after{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left:20px;
+    width: 1px;
+    height: 30px;
+    
+    border: 1px dashed #eee;
+}
+.location__title{
+    font-weight: bold;
+    margin-bottom: 0 !important;
+}
+.location__para{
+    color: #777;
+    font-family: 'JosefinSans-Light';
+}

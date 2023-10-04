@@ -1,26 +1,54 @@
 .login-container{
-margin-top: 250px;
+background-image: url('../assets/images/photo-1446694292248-2c2a7e575b1b.webp');
 font-family: 'JosefinSans-Regular' !important;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+position: relative;
+height: 965px;
+}
+
+.login-container::after {
+    top: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-repeat: no-repeat-y;
+    background-position: center;
+    background-color: rgb(0 0 0 /.3) !important;
+
 }
 .login {
-    margin: auto !important;
+    width: 589px;
+    height: 600px;
+margin-top: 200px;
     border: 1px solid #eee;
     box-shadow: 0 0 4px 0 #363636ef;
-    padding-bottom: 30px;
     border-radius: 15px;
-    background-color: #ffffffe0 !important;
-    width: 40% !important;
-    padding: 0px 30px 30px 30px !important;
+    background-color: #fff !important;
+    padding: 0px 30px 0px 30px !important;
     text-align: center !important;
-    height: 400px;
+    z-index: 100;
+    position: relative;
+}
 
+.userName{
+    padding: 30px 15px !important;
 }
 
 .userName h4 {
-    margin: 30px 0 !important;
-    color: var(--primary-color) !important;
-    font-weight: 800 !important;
+    color: #000 !important;
+    font-weight: bold !important;
     font-family: 'JosefinSans-Medium' !important;
+}
+.userName p {
+    color:#777 ;
 }
 
 .userName input {
@@ -40,10 +68,6 @@ font-family: 'JosefinSans-Regular' !important;
     box-shadow: 0 .5rem 1rem rgba(124, 124, 124, 0.11) !important;
     margin-bottom: 50px;
     margin-top: 50px;
-    -webkit-border-radius:12px !important;
-    -moz-border-radius:12px !important;
-    -ms-border-radius:12px !important;
-    -o-border-radius:12px !important;
 }
 
 .inputLogin:focus {
@@ -60,7 +84,7 @@ font-family: 'JosefinSans-Regular' !important;
 
 }
 .log__btn {
-    --color: #333;
+    --color: #fff;
     font-family: inherit;
     display: inline-block;
     height: 2.6em;
@@ -75,14 +99,15 @@ font-family: 'JosefinSans-Regular' !important;
     border-radius: 6px;
     font-weight: 500;
     color: #fff;
-    background-color: var(--primary-color) !important;
+    background-color: #FF8201 !important;
     border-radius: 12px !important;
     margin-top: 20px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     -webkit-border-radius: 12px !important;
     -moz-border-radius: 12px !important;
     -ms-border-radius: 12px !important;
     -o-border-radius: 12px !important;
+    text-decoration: none !important;
 }
 .log__btn:before {
     content: "";
@@ -166,6 +191,9 @@ font-family: 'JosefinSans-Regular' !important;
 
 
 }
+.logo{
+    width: 150px;
+}
 
 .login__header-display {
     display: block !important;
@@ -180,4 +208,125 @@ font-family: 'JosefinSans-Regular' !important;
         width: 100%;
 
     }
+}
+.pass{
+    display: flex;
+    justify-content: space-between;
+}
+.remember{
+    display: flex;
+    column-gap: 10px;
+}
+.remember p{
+    text-transform: capitalize;
+}
+.forget,
+.signup{
+    color: #FF8201;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.account{
+    margin-top: 5px;
+}
+.desc{
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+.desc h1{
+    margin:auto !important;
+    color: #fff;
+}
+.desc h1{
+    margin-top: 300px !important;
+    font-weight: bold;
+    font-family: 'JosefinSans-Medium';
+    font-size: 50px;
+}
+.desc p{
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: #fff;
+    line-height: 1.7;
+    letter-spacing:1px;
+    font-size: 50px;
+    font-family: 'JosefinSans-Light';
+}
+.forgetpass {
+   width: 500px;
+}
+.forgetpass__body{
+padding-top: 120px !important;
+}
+.otp input {
+    
+outline: none;
+    border-radius: 12px !important;
+    width: 50px !important;
+    background-color: #ffffff !important;
+    transition: 300ms ease-in-out;
+    font-size: 17px;
+    color: #202020 !important;
+    margin-top: 30px;
+    height: 50px;
+    margin: auto;
+    direction: ltr !important;
+    border-color: transparent !important;
+    box-shadow: 0 .5rem 1rem rgba(124, 124, 124, 0.11) !important;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border: 1px solid #eee !important;
+    margin-left: 5px;
+}
+@media (max-width:767px) {
+    .login-container {
+        background-image: none !important;
+        font-family: 'JosefinSans-Regular' !important;
+        position: relative;
+        height: 100%;
+    }
+
+    .login {
+        width: 100% !important;
+        height: 100% !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px;
+    }
+
+    .rev {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .desc h1 {
+        margin-top: 10px !important;
+        font-weight: bold;
+        font-family: 'JosefinSans-Medium';
+        font-size: 30px;
+    }
+
+    .desc p {
+        font-weight: bold;
+        text-align: center !important;
+        margin: 10px auto !important;
+        color: #fff;
+        line-height: 1.7;
+        letter-spacing: 1px;
+        font-size: 20px !important;
+        font-family: 'JosefinSans-Light';
+    }
+
+    .remember p,
+    .forget {
+        font-size: 12px;
+    }
+        .otp input{
+            width: 40px !important;
+            margin-left: 5px !important;
+        }
+
 }

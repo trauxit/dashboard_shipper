@@ -8,6 +8,7 @@ const NavBar = (props) => {
                 <div className={`${styles.wrapper}`}>
                     <div className={`${styles.search}`}>
                         <h4 className={styles.title}>{props.title}</h4>
+                        <p className={`${styles.display}`}>khnjn</p>
                     </div>
                     <div className={`${styles.items}`}>
                         <div className={`${styles.item}`}>

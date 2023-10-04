@@ -3,7 +3,6 @@
 .sidebar {
     flex: 0;
     border-right: 0.5px solid rgb(230, 227, 227);
-    
     background-color: var(--primary-color);
     transition: all .5s ease-in-out;
     border-top-right-radius: 20px;
