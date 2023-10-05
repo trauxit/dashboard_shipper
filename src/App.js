@@ -12,6 +12,8 @@ import OtpPage from './Pages/OtpPage';
 import ResetPage from './Pages/ResetPage';
 import SignUp from './Component/Signup/SignUp';
 import AllLoads from './Component/AllLoads';
+import Overview from './Component/Overview/Overview';
+import Expenses from './Component/Expenses/Expenses';
 function App() {
   const authContext = useContext(AuthContext)
   return (
@@ -22,9 +24,11 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route element={<Protectpages />}>
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/overview" element={<Overview />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/all-loads" element={<AllLoads />} />
+              <Route path="/expenses" element={<Expenses />} />
             </Route>
             <Route path="/forget" element={<ForgetPage />} />
             <Route path="/otp" element={<OtpPage />} />

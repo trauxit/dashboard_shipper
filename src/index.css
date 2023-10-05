@@ -6,7 +6,7 @@
   --background-content:#F3F3F3;
   --background-price: #FFF6ED;
   --color-price: #FF8201;
-  --color-boxshadow:#000
+  --color-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
 
 }
@@ -18,7 +18,7 @@
   --background-content: #454545;
   --background-price:#454545;
   --color-price:#fff;
-  --box-shadow:rgba(202, 199, 199, 0.2)
+  --color-shadow: 0 4px 8px 0 rgba(187, 184, 184, 0.2), 0 6px 20px 0 rgba(187, 184, 184, 0.2);
 }
 
 body {

@@ -59,7 +59,7 @@ const Sidebar = () => {
                                     <span>Dashboard</span>
                                 </li>
                             </Link>
-                            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                            <Link to="/overview" style={{ textDecoration: "none" }}>
                                 <li>
                                     <GridViewIcon className={`${styles.icon}`} />
                                     <span>Overview</span>
@@ -88,8 +88,6 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className={`${styles.bottom}`}>
-
-
                     <ul>
                         <label className='switch' >
                             <input type='checkbox' onChange={toggleTheme} defaultChecked={selectedTheme === "dark-mode"} />

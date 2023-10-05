@@ -60,7 +60,7 @@
     -o-border-radius: 8px;
     margin-left: 30px !important;
     background-color: var(--secondary-background-color);
-    box-shadow: 0 0 10px var(--box-shadow);
+box-shadow:var(--color-shadow);
 }
 .route__para{
     display: flex;
@@ -115,7 +115,7 @@ background-color: #FF8201 !important;
 .load__progress{
     position: absolute;
     top:20px;
-    right: 65px !important;
+    right: 58px !important;
     width: 56%;
     border-radius: none !important;
     -webkit-border-radius: none !important;

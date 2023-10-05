@@ -128,3 +128,7 @@ input:checked+.slider:before {
 .stepper div div div div{
   background-color: #FF8201 !important;
 }
+.overview_p__3DStZ .progress-bar{
+  height: 10px !important;
+  background-color: #FF8201;
+}
