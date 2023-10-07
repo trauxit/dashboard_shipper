@@ -12,7 +12,7 @@ import ForgetPage from './Pages/ForgetPage';
 import OtpPage from './Pages/OtpPage';
 import ResetPage from './Pages/ResetPage';
 import SignUp from './Component/Signup/SignUp';
-import AllLoads from './Component/AllLoads';
+import AllLoads from './Pages/Loads';
 import Protectpages from './Component/ProtectPages';
 
 function App() {

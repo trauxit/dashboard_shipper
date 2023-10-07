@@ -50,6 +50,8 @@
     gap: 1%;
     font-family: 'JosefinSans-Regular';
     margin-bottom: 30px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2,auto) !important;
 
 }
 .load{
@@ -63,6 +65,7 @@
     margin-left: 30px !important;
     background-color: var(--secondary-background-color);
 box-shadow:var(--color-shadow);
+width: 98% !important;
 }
 .route__para{
     display: flex;
@@ -250,7 +253,13 @@ position: absolute;
         }
         .load{
             margin-bottom: 15px;
+            width: 100% !important;
+            margin-left: 14px !important;
         }
+                .AllLoads{
+                    display: flex !important;
+                    flex-direction: column !important;
+                }
 }
 @media (min-width:600px) and (max-width:900px) {
     .shipment{
@@ -264,6 +273,10 @@ position: absolute;
         .view__link{
             font-size: 12px !important;
         }
+                .AllLoads {
+                    display: flex !important;
+                    flex-direction: column !important;
+                }
 }
 @media (min-width:900px) and (max-width:1200px) {
     .load__progress{
