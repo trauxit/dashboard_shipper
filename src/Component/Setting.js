@@ -36,6 +36,7 @@ const Setting = () => {
         img: '',
         phone: ''
     })
+    console.log(formData.phone, "phone")
     const addFile = useRef(null)
     const addFileInput = useRef(null)
     const imageContentRef = useRef(null);
@@ -87,7 +88,7 @@ const Setting = () => {
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <Row className={`${styles.profile}`}>
 
-                            <Col lg='4'>
+                            <Col lg='4' className={`${styles.col__img}`}>
                                 <p className={`${styles.edit}`}>Edit Profile</p>
                                 <div className={`${styles.im}`} onClick={() => fetchData()}>
                                     <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
@@ -130,30 +131,22 @@ const Setting = () => {
                                 />
                             </Col>
                             <Col lg='8'>
-                                <p className={`${styles.edit}`}>personal</p>
-                                <div className={`${styles.name}`}>
-                                    <Form.Group className="mb-3" controlId="fname">
-                                        <div>
-                                            <Form.Control name="fname" type='text' autoComplete="off" placeholder="First Name " className={`${styles.fullname}`} ref={fname} onClick={() => fetchData()} />
-                                        </div>
+                                <p className={`${styles.edit} mt-5`}>personal</p>
+                                <div className={`${styles.name} formgroup`}>
+                                    <Form.Group className="mb-3 " controlId="fname">
+                                        <Form.Control name="fname" type='text' autoComplete="off" placeholder="First Name " className={`${styles.fullname}`} ref={fname} onClick={() => fetchData()} />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="lname">
-                                        <div>
-                                            <Form.Control name="lname" type='text' autoComplete="off" placeholder="Last Name " className={`${styles.fullname}`} ref={lname} onClick={() => fetchData()} />
-                                        </div>
+                                        <Form.Control name="lname" type='text' autoComplete="off" placeholder="Last Name " className={`${styles.fullname}`} ref={lname} onClick={() => fetchData()} />
                                     </Form.Group>
                                 </div>
-                                <Form.Group className="mb-3" controlId="nid">
-                                    <div>
-                                        <Form.Control name="nid" type='text' autoComplete="off" placeholder="National Id " className={`${styles.input}`} ref={nid} onClick={() => fetchData()} />
-                                    </div>
+                                <Form.Group className="mb-3 formgroup" controlId="nid">
+                                    <Form.Control name="nid" type='text' autoComplete="off" placeholder="National Id " className={`${styles.input}`} ref={nid} onClick={() => fetchData()} />
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="date">
-                                    <div>
-                                        <Form.Control name="date" type='date' autoComplete="off" placeholder="Date of Birth " className={`${styles.input}`} ref={date} onClick={() => fetchData()} />
-                                    </div>
+                                <Form.Group className="mb-3 formgroup" controlId="date">
+                                    <Form.Control name="date" type='date' autoComplete="off" placeholder="Date of Birth " className={`${styles.input}`} ref={date} onClick={() => fetchData()} />
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="edu">
+                                <Form.Group className="mb-3 formgroup" controlId="edu">
                                     <select
                                         className={`${styles.input} ${styles.select}`}
                                         name="edu"
@@ -169,14 +162,14 @@ const Setting = () => {
                                     </select>
                                 </Form.Group>
 
-                                <p className={`${styles.edit}`}>Contact</p>
-                                <Form.Group className="mb-3" controlId="email">
-                                    <div>
-                                        <Form.Control name="email" type='email' autoComplete="off" placeholder="Email" className={`${styles.input}`} ref={email} onClick={() => fetchData()} />
-                                    </div>
+                                <p className={`${styles.edit} `}>Contact</p>
+                                <Form.Group className="mb-3 formgroup" controlId="email">
+
+                                    <Form.Control name="email" type='email' autoComplete="off" placeholder="Email" className={`${styles.input}`} ref={email} onClick={() => fetchData()} />
+
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="phone">
-                                    <div class={styles.inputGroupp}>
+                                <Form.Group className="mb-3 " controlId="phone">
+                                    <div className='formgroup'>
                                         <PhoneInput
                                             country={'eg'}
                                             value={formData.phone}
@@ -187,20 +180,20 @@ const Setting = () => {
                                     </div>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="country">
-                                    <div>
-                                        <Form.Control name="country" type='text' autoComplete="off" placeholder="Country " className={`${styles.input}`} ref={country} onClick={() => fetchData()} />
-                                    </div>
+                                <Form.Group className="mb-3 formgroup" controlId="country">
+
+                                    <Form.Control name="country" type='text' autoComplete="off" placeholder="Country " className={`${styles.input}`} ref={country} onClick={() => fetchData()} />
+
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="city">
-                                    <div>
-                                        <Form.Control name="city" type='text' autoComplete="off" placeholder="City " className={`${styles.input}`} ref={city} onClick={() => fetchData()} />
-                                    </div>
+                                <Form.Group className="mb-3 formgroup" controlId="city">
+
+                                    <Form.Control name="city" type='text' autoComplete="off" placeholder="City " className={`${styles.input}`} ref={city} onClick={() => fetchData()} />
+
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="companyname">
-                                    <div>
-                                        <Form.Control name="companyname" type='text' autoComplete="off" placeholder="Company Name " className={`${styles.input}`} ref={companyname} onClick={() => fetchData()} />
-                                    </div>
+                                <Form.Group className="mb-3 formgroup" controlId="companyname">
+
+                                    <Form.Control name="companyname" type='text' autoComplete="off" placeholder="Company Name " className={`${styles.input}`} ref={companyname} onClick={() => fetchData()} />
+
                                 </Form.Group>
                                 <button type='submit' className={`${styles.submit__btn}`}> Save</button>
                             </Col>

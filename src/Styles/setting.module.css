@@ -70,7 +70,11 @@ margin-bottom: 30px !important;
 .star{
     color: orange;
 }
-
+.input,
+.fullname{
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color);
+}
 .input:focus,
 .fullname:focus {
     background-color: #f5f0f0cb;
@@ -107,12 +111,11 @@ margin-bottom: 30px !important;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     border: none;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .PhoneInputInput input {
     border:none !important;
     outline: none !important;
-    background-color: #fff !important;
     border-radius: 0px !important;
 
 }
@@ -124,10 +127,48 @@ margin-bottom: 30px !important;
 .prog{
     margin-top: 0px !important;
     width: 50% !important;
-height: 10px !important;
+height: 5px !important;
 }
 .precent{
     margin-top: 50px;
     display: flex;
     gap: 10%;
+}
+@media (min-width:0px) and (max-width:600px) {
+        .home {
+                display: flex !important;
+                flex-direction: column-reverse !important;
+            }
+                        .col__img{
+                            margin: auto !important;
+                            text-align: center;
+                        }
+                        .profile{
+                            margin-top: 0 !important;
+                            padding-bottom: 20px !important;
+                           
+                        }
+                        .name{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .input,
+                        .fullname{
+                            width: 100% !important;
+                        }
+                        .prog{
+                            width: 100% !important;
+                            height: 5px !important;
+                        }
+                        .select{
+                            margin-bottom: 10px;
+                        }
+}
+@media (min-width:600px) and (max-width:900px) {
+.input{
+        width: 500px!important;
+    }
+    .fullname{
+        width: 250px !important;
+    }
 }

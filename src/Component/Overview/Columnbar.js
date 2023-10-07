@@ -17,13 +17,13 @@ const Columnbar = () => {
                 type: 'bar',
                 height: 350,
             },
-            /*             plotOptions: {
-                            bar: {
-                                horizontal: false,
-                                columnWidth: '40%',
-                                endingShape: 'rounded'
-                            },
-                        }, */
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '30%',
+                    endingShape: 'rounded'
+                },
+            },
             dataLabels: {
                 enabled: false
             },

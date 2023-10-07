@@ -17,7 +17,7 @@ const Profile = () => {
 
                     <Row className={`${styles.profile}`}>
 
-                        <Col lg='4'>
+                        <Col lg='4' className={`${styles.profile__edit}`}>
                             <img alt="" src={imgNull} className={`${styles.img}`} />
                             <div className={`${styles.user}`} >
                                 <h4 className={`${styles.user__name}`}>basmala ayman</h4>
@@ -33,17 +33,17 @@ const Profile = () => {
 
                         </Col>
                         <Col lg='8'>
-                            <div className={`${styles.user__info}`}>
+                            <div className={`${styles.user__info} mt-5`}>
                                 <div >
-                                    <h2 className={`${styles.user__title}`}>First Name :</h2>
-                                    <h2 className={`${styles.user__title}`}>Last Name :</h2>
-                                    <h2 className={`${styles.user__title}`}>email address :</h2>
-                                    <h2 className={`${styles.user__title}`}>company name :</h2>
-                                    <h2 className={`${styles.user__title}`}>national id :</h2>
-                                    <h2 className={`${styles.user__title}`}>date of birth :</h2>
-                                    <h2 className={`${styles.user__title}`}>phone number :</h2>
-                                    <h2 className={`${styles.user__title}`}>country :</h2>
-                                    <h2 className={`${styles.user__title}`}>city :</h2>
+                                    <h2 className={`${styles.user__title}`}>FirstName:</h2>
+                                    <h2 className={`${styles.user__title}`}>LastName:</h2>
+                                    <h2 className={`${styles.user__title}`}>emailAddress:</h2>
+                                    <h2 className={`${styles.user__title}`}>companyName:</h2>
+                                    <h2 className={`${styles.user__title}`}>nationalId:</h2>
+                                    <h2 className={`${styles.user__title}`}>dateOfBirth:</h2>
+                                    <h2 className={`${styles.user__title}`}>phoneNumber:</h2>
+                                    <h2 className={`${styles.user__title}`}>country:</h2>
+                                    <h2 className={`${styles.user__title}`}>city:</h2>
                                 </div>
                                 <div >
                                     <p className={`${styles.user__para}`}>basmala </p>

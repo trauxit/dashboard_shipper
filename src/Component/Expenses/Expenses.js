@@ -5,19 +5,21 @@ import styles from '../../Styles/expenses.module.css'
 import { Col, Row } from 'react-bootstrap'
 import Columnprice from './Columnprice'
 import Form from 'react-bootstrap/Form';
+import TableExpenses from './TableExpenses'
 
 const Expenses = () => {
     const data = [
-        { name: "Anom", age: 19, gender: "Male" },
-        { name: "Megha", age: 19, gender: "Female" },
-        { name: "Subham", age: 25, gender: "Male" },
+        { id: "Anom", date: 19, loadtype: "Male", addressa: "blabla", addressb: "blabla", weight: "20kg", distance: "100km" },
+        { id: "Anom", date: 19, loadtype: "Male", addressa: "blabla", addressb: "blabla", weight: "20kg", distance: "100km" },
+        { id: "Anom", date: 19, loadtype: "Male", addressa: "blabla", addressb: "blabla", weight: "20kg", distance: "100km" },
+        { id: "Anom", date: 19, loadtype: "Male", addressa: "blabla", addressb: "blabla", weight: "20kg", distance: "100km" },
     ]
     return (
         <>
             <div className={`${styles.home}`}>
                 <Sidebar />
                 <div className={`${styles.homeContainer}`}>
-                    <NavBar title='Overview' />
+                    <NavBar title='Expenses' />
                     <Row className={`${styles.expenses}`}>
                         <Col>
                             <div className={`${styles.expenses__body}`}>
@@ -51,7 +53,7 @@ const Expenses = () => {
                         </Col>
                         <Col>
                             <div className={`${styles.expenses__body}`}>
-                                <h2 className={`${styles.expenses__title}`}>pending payment</h2>
+                                <h2 className={`${styles.expenses__title} ${styles.pen}`}>pending payment</h2>
                                 <h1 className={`${styles.expenses__price}`}>$90.000</h1>
                                 <div className={`${styles.oldexpenses}`}>
                                     <p className={`${styles.oldexpenses__plus}`}>+22%</p>
@@ -74,22 +76,7 @@ const Expenses = () => {
                                     <option value="20">Sep 2020</option>
                                 </Form.Select>
                             </div>
-                            <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                </tr>
-                                {data.map((val, key) => {
-                                    return (
-                                        <tr key={key}>
-                                            <td>{val.name}</td>
-                                            <td>{val.age}</td>
-                                            <td>{val.gender}</td>
-                                        </tr>
-                                    )
-                                })}
-                            </table>
+                            <TableExpenses />
 
                         </div>
                     </div>

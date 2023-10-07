@@ -33,7 +33,7 @@
 .expenses__price{
     font-weight: bold;
     color: #FF8201;
-    font-size: 50px;
+    font-size: 45px;
 }
 .oldexpenses{
     display: flex;
@@ -76,9 +76,54 @@
     text-transform: capitalize;
     font-weight: bold;
 }
-@media (max-width:767px) {
+.t{
+    display: flex;
+    justify-content: space-between !important;
+}
+.table{
+    font-family: 'JosefinSans-Regular';
+}
+@media (min-width:0px) and (max-width:600px) {
     .home {
             display: flex;
             flex-direction: column-reverse;
         }
+        .expenses,
+        .expenses__chart,
+        .payment{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+                .expenses__body{
+                    margin-bottom: 10px !important;
+                }
+                .payment{
+                    margin-top: 30px !important;
+                }
+                
+}
+@media (min-width:600px) and (max-width:900px) {
+    .expenses{
+        display: grid !important;
+        grid-template-columns: repeat(2,auto) !important;
+        width: 600px !important;
+    }
+        .expenses__chart,
+        .payment {
+            width: 600px !important;
+        }
+        .pen{
+            font-size: 20px !important;
+        }
+}
+@media (min-width:900px) and (max-width:1200px) {
+    .expenses {
+            display: grid !important;
+            grid-template-columns: repeat(3, auto) !important;
+            width: 970px !important;
+        }
+                .expenses__chart,
+                .payment {
+                    width: 970px !important;
+                }
 }

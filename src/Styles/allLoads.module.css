@@ -30,9 +30,10 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     cursor: pointer;
+    margin-left: 5px;
 }
 .view__link{
-    background-color: #fff;
+    background-color: var(--secondary-background-color);
     color: #FF8201;
     padding: 2px 30px;
     border: 1px solid #eee;
@@ -42,6 +43,7 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     cursor: pointer;
+    margin-left: 5px;
 }
 .AllLoads{
     width: 99%;
@@ -210,4 +212,50 @@ position: absolute;
 .location__para{
     color: #777;
     font-family: 'JosefinSans-Light';
+}
+.ship__link{
+    display: flex;
+}
+@media (min-width:0px) and (max-width:600px) {
+    .home {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    .shipment,
+    .shipment__body,
+        .load__body{
+        display: flex;
+        flex-direction: column;
+    }
+        .ship__link{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+        }
+        .load__body{
+            align-items: start;
+        }
+        .load__desc{
+            gap: 20px;
+        }
+        .load{
+            margin-bottom: 15px;
+        }
+}
+@media (min-width:600px) and (max-width:900px) {
+    .shipment{
+        display: flex;
+        flex-direction: column;
+    }
+        .load {
+            margin-bottom: 15px;
+        }
+        .style__link,
+        .view__link{
+            font-size: 12px !important;
+        }
+}
+@media (min-width:900px) and (max-width:1200px) {
+    .load__progress{
+        right: 85px !important;
+    }
 }

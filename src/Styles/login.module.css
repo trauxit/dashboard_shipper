@@ -25,7 +25,7 @@ height: 965px;
 
 }
 .login {
-    width: 589px;
+    width: 489px;
     height: 600px;
 margin-top: 200px;
     border: 1px solid #eee;
@@ -108,6 +108,7 @@ margin-top: 200px;
     -ms-border-radius: 12px !important;
     -o-border-radius: 12px !important;
     text-decoration: none !important;
+    margin-bottom: 15px !important;
 }
 .log__btn:before {
     content: "";
@@ -198,7 +199,7 @@ margin-top: 200px;
 .login__header-display {
     display: block !important;
 }
-@media (max-width:768px) {
+/* @media (max-width:768px) {
     .userLog__link {
 
         width: 100%;
@@ -208,7 +209,7 @@ margin-top: 200px;
         width: 100%;
 
     }
-}
+} */
 .pass{
     display: flex;
     justify-content: space-between;
@@ -282,7 +283,7 @@ outline: none;
     border: 1px solid #eee !important;
     margin-left: 5px;
 }
-@media (max-width:767px) {
+@media (min-width:0px) and (max-width:600px) {
     .login-container {
         background-image: none !important;
         font-family: 'JosefinSans-Regular' !important;
@@ -329,4 +330,47 @@ outline: none;
             margin-left: 5px !important;
         }
 
+}
+@media (min-width:600px) and (max-width:900px) {
+    .rev {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+                        .desc h1 {
+                            margin-top: 10px !important;
+                            font-weight: bold;
+                            font-family: 'JosefinSans-Medium';
+                            font-size: 40px;
+                        }
+            
+                        .desc p {
+                            font-weight: bold;
+                            text-align: center !important;
+                            margin: 10px auto !important;
+                            color: #fff;
+                            line-height: 1.7;
+                            letter-spacing: 1px;
+                            font-size: 27px !important;
+                            font-family: 'JosefinSans-Light';
+                        }
+        .login{
+            margin:25px  auto !important;
+        }
+                .login-container {
+height: 1100px;
+                }
+}
+@media (min-width:900px) and (max-width:1200px) {
+
+.desc p {
+        font-weight: bold;
+        text-align: left;
+        margin-top: 10px;
+        margin-left: 0px !important;
+        color: #fff;
+        line-height: 1.7;
+        letter-spacing: 1px;
+        font-size: 50px;
+        font-family: 'JosefinSans-Light';
+    }
 }

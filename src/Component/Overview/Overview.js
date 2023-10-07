@@ -228,20 +228,40 @@ const Overview = () => {
                 <Sidebar />
                 <div className={`${styles.homeContainer}`}>
                     <NavBar title='Overview' />
-                    <div className={`${styles.top}`}>
-                        <Spark />
-                        <Stackedbar />
-                    </div>
-                    <div className={`${styles.center}`}>
-                        <Columnbar />
-                        <img alt='' src={chart} className={`${styles.chart__img}`} />
-                    </div>
+                    <Row className={`${styles.top}`}>
+                        <Col  >
+                            <Spark />
+                        </Col>
+                        <Col xxl='4'  >
+                            <Stackedbar />
+                        </Col>
+                    </Row>
+                    <Row className={`${styles.center}`}>
+                        <Col >
+                            <Columnbar />
+                        </Col>
+                        <Col >
+                            <div className={`${styles.googlemap}`}>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.33217942648!2d-122.01155228782753!3d37.33464377198324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e0!3m2!1sen!2seg!4v1696309150198!5m2!1sen!2seg"
+                                    className={`${styles.iframe}`}
+                                    height="250"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="This is a unique title">
+                                </iframe>
+                            </div>
+                        </Col>
+                    </Row>
+
                     <Historybar />
+
                     <Row className={`${styles.last}`}>
-                        <Col lg='8'>
+                        <Col xxl='8'>
                             <Row className={`${styles.space}`}>
-                                <Col lg='4'>
-                                    <div id="chart-6" className={`${styles.lastbar}`}>
+                                <Col>
+                                    <div id="chart-6" className={`${styles.lastbar} mt-3`}>
                                         <ReactApexChart options={state.options6} series={state.series6} type="bar" height={150} />
                                     </div>
                                     <div id="chart-6" className={`${styles.lastbar}`}>
@@ -251,7 +271,7 @@ const Overview = () => {
                                         <ReactApexChart options={state.options6} series={state.series6} type="bar" height={150} />
                                     </div>
                                 </Col>
-                                <Col lg='4'>
+                                <Col className={`${styles.pies}`}>
                                     <div id="card" className={`${styles.pie}`}>
                                         <div id="chart">
                                             <ReactApexChart options={piechart.options} series={piechart.series} type="radialBar" height={280} />
@@ -266,7 +286,7 @@ const Overview = () => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col lg='4'>
+                        <Col xxl='4'>
                             <div className={`${styles.map}`}>
                                 <div className={`${styles.img}`}>
                                     <img alt='' src={map} className={`${styles.map__img}`} />

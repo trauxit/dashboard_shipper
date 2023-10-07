@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../../Styles/overview.module.css'
 import ReactApexChart from "react-apexcharts";
+import { Row, Col } from 'react-bootstrap';
 const Historybar = () => {
     const [history, setHistory] = useState({
 
@@ -19,13 +20,13 @@ const Historybar = () => {
                 type: 'bar',
                 height: 350,
             },
-            /*             plotOptions: {
-                            bar: {
-                                horizontal: false,
-                                columnWidth: '40%',
-                                endingShape: 'rounded'
-                            },
-                        }, */
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '25%',
+                    endingShape: 'rounded'
+                },
+            },
             dataLabels: {
                 enabled: false
             },
@@ -46,9 +47,13 @@ const Historybar = () => {
     })
     return (
         <>
-            <div id="chart" className={`${styles.history}`}>
-                <ReactApexChart options={history.options} series={history.series} type="bar" height={350} />{/* <p>1400</p> */}
-            </div>
+            <Row id="chart" className={`${styles.history__chart}`}>
+                <Col>
+                    <div className={`${styles.history}`}>
+                        <ReactApexChart options={history.options} series={history.series} type="bar" height={350} />{/* <p>1400</p> */}
+                    </div>
+                </Col>
+            </Row>
         </>
     )
 }

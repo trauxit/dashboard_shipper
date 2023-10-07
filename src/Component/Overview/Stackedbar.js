@@ -17,12 +17,12 @@ const Stackedbar = () => {
                 height: 350,
                 stacked: true,
             },
-            /*             plotOptions: {
-                            bar: {
-                                columnWidth: '40%',
-                                endingShape: 'rounded'
-                            },
-                        }, */
+            plotOptions: {
+                bar: {
+                    columnWidth: '25%',
+                    endingShape: 'rounded'
+                },
+            },
             dataLabels: {
                 enabled: false
             },
@@ -50,7 +50,7 @@ const Stackedbar = () => {
     return (
         <>
             <div id="chart" className={`${styles.bar}`}>
-                <ReactApexChart options={bar.options} series={bar.series} type="bar" height={300} classNam={`${styles.stbar}`} /* width={600}  */ />
+                <ReactApexChart options={bar.options} series={bar.series} type="bar" height={280} classNam={`${styles.stbar}`} /* width={600}  */ />
             </div>
         </>
     )

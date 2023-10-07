@@ -10,32 +10,13 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { AuthContext } from '../Component/AuthContext'
+import Modes from '../Component/Modes';
 const Sidebar = () => {
     const authContext = useContext(AuthContext);
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
         authContext.setAuth({});
-    }
-    const setDarkMode = () => {
-        document.querySelector("body").setAttribute("data-theme", "dark-mode");
-        localStorage.setItem("selectedTheme", "dark-mode");
-    }
-    const setLightMode = () => {
-        document.querySelector("body").setAttribute("data-theme", "light-mode");
-        localStorage.setItem("selectedTheme", "light-mode");
-    }
-    const toggleTheme = (e) => {
-        if (e.target.checked) {
-            setDarkMode();
-        }
-        else {
-            setLightMode();
-        }
-    }
-    const selectedTheme = localStorage.getItem("selectedTheme");
-    if (selectedTheme === "dark-mode") {
-        setDarkMode();
     }
     return (
         <>
@@ -89,11 +70,7 @@ const Sidebar = () => {
                 </div>
                 <div className={`${styles.bottom}`}>
                     <ul>
-                        <label className='switch' >
-                            <input type='checkbox' onChange={toggleTheme} defaultChecked={selectedTheme === "dark-mode"} />
-                            <span className='slider'></span>
-                        </label>
-
+                        <Modes />
                         <Link to="/setting" style={{ textDecoration: "none" }}>
                             <li>
                                 <SettingsIcon className={`${styles.icon}`} />

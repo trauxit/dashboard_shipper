@@ -60,7 +60,6 @@
 }
 .user__para{
     font-size: 20px;
-    
     text-transform: capitalize;
     margin-bottom: 20px;
 }
@@ -68,6 +67,21 @@
     color: #777;
     font-size: 20px;
     text-transform: capitalize;
-    margin-bottom: 20px;
     margin-bottom: 25px;
+}
+@media (min-width:0px) and (max-width:600px) {
+    .home{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .user__info{
+       display: flex;
+       justify-content: space-between;
+       padding-bottom: 30px !important;
+       column-gap: 2%;
+}
+.profile{
+    margin: 0 !important;
+}
+
 }

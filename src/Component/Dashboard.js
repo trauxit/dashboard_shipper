@@ -6,7 +6,7 @@ import ReactApexChart from "react-apexcharts";
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import TableOfDash from './Table';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 import Form from 'react-bootstrap/Form';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ModalLoad from './ModalLoad';
@@ -50,17 +50,16 @@ const Dashboard = () => {
         },
     })
 
-    console.log(state.series.map(item => item.name))
     return (
         <>
             <div className={`${styles.home}`}>
                 <Sidebar />
                 <div className={`${styles.homeContainer}`}>
-                    <NavBar title='Overview' />
+                    <NavBar title='Dashboard' />
                     <Row className={`${styles.dash}`}>
-                        <Col lg='9'>
+                        <Col xxl='9'>
                             <Row className={`${styles.left}`}>
-                                <Col lg='7'>
+                                <Col xxl='7' >
                                     <div className={`${styles.total}`}>
                                         <div className={`${styles.load__details}`}>
                                             <div className={`${styles.allloard}`}>
@@ -105,7 +104,7 @@ const Dashboard = () => {
                                     </div>
                                     <TableOfDash />
                                 </Col>
-                                <Col lg='2'  >
+                                <Col xxl='2'  >
                                     <div className={`${styles.booking}`} >
                                         <h4 className={`${styles.booking__title}`}>loads booking</h4>
                                         <div className={`${styles.loadbook}`}>
@@ -132,7 +131,7 @@ const Dashboard = () => {
                                     <div className={`${styles.payment}`}>
                                         <h4 className={`${styles.payment__title}`}>all payments details</h4>
                                         <div className={`${styles.payment__date}`}>
-                                            <p className={`${styles.payment__para}`}>Change date <CalendarTodayIcon className={`${styles.payment__icon}`} /></p>
+                                            <p className={`${styles.payment__para}`}>Change date <EventNoteIcon className={`${styles.payment__icon}`} /></p>
                                             <Form.Select aria-label="Default select example" className={`${styles.select}`}>
                                                 <option>Sep 2023</option>
                                                 <option value="22">Sep 2022</option>
@@ -162,7 +161,7 @@ const Dashboard = () => {
                                     <div className={`${styles.currentpay}`}>
                                         <h4 className={`${styles.payment__title}`}>today's payment</h4>
                                         <div className={`${styles.payment__date}`}>
-                                            <p className={`${styles.payment__para}`}>Change date <CalendarTodayIcon className={`${styles.payment__icon}`} /></p>
+                                            <p className={`${styles.payment__para}`}>Change date <EventNoteIcon className={`${styles.payment__icon}`} /></p>
                                             <Form.Select aria-label="Default select example" className={`${styles.select}`}>
                                                 <option>Sep 2023</option>
                                                 <option value="22">Sep 2022</option>
@@ -207,7 +206,7 @@ const Dashboard = () => {
                             </Row>
 
                         </Col>
-                        <Col lg='3' className={`${styles.map}`}>
+                        <Col xxl='3' className={`${styles.map}`}>
                             <div className={`${styles.create}`}>
                                 <div>
                                     <ModalLoad />

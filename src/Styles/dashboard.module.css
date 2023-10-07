@@ -308,9 +308,14 @@ background-color: #0090D0;
     -ms-border-radius: 8px !important;
     -o-border-radius: 8px !important;
 }
-.createticket{
+.createticket,
+.add:hover{
     color: #FF8201 !important;
-    background-color: #fff !important;
+    background-color: var(--secondary-background-color) !important;
+}
+.createticket:hover{
+    background-color: #FF8201 !important;
+    color: #fff !important;
 }
 .add{
     color: #fff !important;
@@ -420,7 +425,7 @@ background-color: #0090D0;
     margin-bottom: 30px !important;
     font-size: 20px;
 }
-@media (max-width:767px) {
+@media (min-width:0px) and (max-width:600px) {
     .home {
         display: flex;
         flex-direction: column-reverse;
@@ -496,7 +501,7 @@ margin: auto !important;
 }
 
 }
-@media (min-width:768px) and (max-width:991px) {
+@media (min-width:600px) and (max-width:900px) {
     .dash,
     .left{
         display: flex !important;
@@ -539,4 +544,63 @@ margin: auto !important;
 .allloard__para{
     font-size: 12px;
 }
+}
+@media (min-width:900px) and (max-width:1400px) {
+.createticket,
+    .add {
+        padding: 10px 30px !important;
+    }
+        .create div,
+                .loads {
+            margin: auto !important;
+        }
+                .booking,
+                .payment,
+                .currentpay {
+                    width: 100% !important;
+                }
+}
+@media (min-width:1400px) and (max-width:1600px) {
+/*         .left {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+                background-color: #FF8201;
+                padding-right: 0px !important;
+        }
+                .total{
+                    display: grid;
+                    grid-template-columns: repeat(4,auto);
+                }
+                .chart,
+                .booking,
+                .payment,
+                .currentpay,
+                .table{
+                    width: 800px !important;
+                }
+                .map{
+                    width: 250px !important;
+                    padding-left: 0 !important;
+                } */
+                .dash{
+                    display: flex;
+                    flex-direction: column;
+                }
+               .left{
+                column-gap: 25% !important;
+               }
+               .total,
+               .chart,
+               .table{
+                width: 700px  !important;
+               }
+               .booking,
+               .payment,
+               .currentpay{
+                width: 450px !important;
+               }
+               .map{
+                width: 100% !important;
+               }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../../Styles/overview.module.css'
 import ReactApexChart from "react-apexcharts";
+import { Col, Row } from 'react-bootstrap';
 var randomizeArray = function (arg) {
     var array = arg.slice();
     var currentIndex = array.length,
@@ -150,14 +151,14 @@ const Spark = () => {
     return (
         <>
             <div className={`${styles.spark}`}>
-                <div className={`${styles.spark__body}`}>
-                    <ReactApexChart options={state.optionsSpark} series={state.seriesSpark} type="area" height={300} width={230} />
+                <div className={`${styles.spark__body}`} >
+                    <ReactApexChart options={state.optionsSpark} series={state.seriesSpark} type="area" height={300} />
                 </div>
                 <div className={`${styles.spark__body}`}>
-                    <ReactApexChart options={state.optionsSpark2} series={state.seriesSpark2} type="area" height={300} width={230} />
+                    <ReactApexChart options={state.optionsSpark2} series={state.seriesSpark2} type="area" height={300} />
                 </div>
-                <div className={`${styles.spark__body}`}>
-                    <ReactApexChart options={state.optionsSpark3} series={state.seriesSpark3} type="area" height={300} width={230} />
+                <div className={`${styles.spark__body}`} >
+                    <ReactApexChart options={state.optionsSpark3} series={state.seriesSpark3} type="area" height={300} />
                 </div>
             </div>
         </>

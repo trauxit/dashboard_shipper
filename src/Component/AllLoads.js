@@ -19,11 +19,15 @@ const AllLoads = () => {
                     <NavBar title='Loads' />
                     <div className={`${styles.shipment}`}>
                         <div className={`${styles.shipment__body}`}>
-                            <p>Shipments</p>
-                            <p className={`${active === "all" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("all") }}>All(20)</p>
-                            <p className={`${active === "arrival" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("arrival") }}>arrival</p>
-                            <p className={`${active === "route" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("route") }}>on route</p>
-                            <p className={`${active === "waiting" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("waiting") }}>waiting</p>
+                            <div>
+                                <p>Shipments</p>
+                            </div>
+                            <div className={`${styles.ship__link}`}>
+                                <p className={`${active === "all" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("all") }}>All(20)</p>
+                                <p className={`${active === "arrival" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("arrival") }}>arrival</p>
+                                <p className={`${active === "route" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("route") }}>on route</p>
+                                <p className={`${active === "waiting" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("waiting") }}>waiting</p>
+                            </div>
                         </div>
                         <div className={`${styles.shipment__select}`}>
                             <Form.Select aria-label="Default select example" className={`${styles.select}`}>
