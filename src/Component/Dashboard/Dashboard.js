@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Sidebar from '../Layout/Sidebar'
-import NavBar from '../Layout/NavBar'
-import styles from '../Styles/dashboard.module.css'
+import Sidebar from '../../Layout/Sidebar'
+import NavBar from '../../Layout/NavBar'
+import styles from '../../Styles/dashboard.module.css'
 import ReactApexChart from "react-apexcharts";
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';

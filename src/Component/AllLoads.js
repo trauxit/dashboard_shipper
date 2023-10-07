@@ -66,6 +66,16 @@ const AllLoads = () => {
                                     <img alt='' src={load} />
                                     <img alt='' src={ellipse} />
                                     <ProgressBar now={50} className={`${styles.load__progress}`} label={`${50}%`} />;
+                                    <div className={`${styles.type}`}>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Load Type</p>
+                                            <h5 className={`${styles.type__title}`}>Lveco 80E18</h5>
+                                        </div>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Wieght</p>
+                                            <h5 className={`${styles.type__title}`}>2.81 Kg</h5>
+                                        </div>
+                                    </div>
                                 </Col>
                             </Row>
                             <div className={`${styles.truck__body}`}>
@@ -124,6 +134,16 @@ const AllLoads = () => {
                                     <img alt='' src={load} />
                                     <img alt='' src={ellipse} />
                                     <ProgressBar now={50} className={`${styles.load__progress}`} label={`${50}%`} />;
+                                    <div className={`${styles.type}`}>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Load Type</p>
+                                            <h5 className={`${styles.type__title}`}>Lveco 80E18</h5>
+                                        </div>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Wieght</p>
+                                            <h5 className={`${styles.type__title}`}>2.81 Kg</h5>
+                                        </div>
+                                    </div>
                                 </Col>
                             </Row>
                             <div className={`${styles.truck__body}`}>
@@ -184,6 +204,16 @@ const AllLoads = () => {
                                     <img alt='' src={load} />
                                     <img alt='' src={ellipse} />
                                     <ProgressBar now={30} className={`${styles.load__progress} waiting__progress`} label={`${30}%`} />;
+                                    <div className={`${styles.type}`}>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Load Type</p>
+                                            <h5 className={`${styles.type__title}`}>Lveco 80E18</h5>
+                                        </div>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Wieght</p>
+                                            <h5 className={`${styles.type__title}`}>2.81 Kg</h5>
+                                        </div>
+                                    </div>
                                 </Col>
                             </Row>
                             <div className={`${styles.truck__body}`}>
@@ -242,6 +272,16 @@ const AllLoads = () => {
                                     <img alt='' src={load} />
                                     <img alt='' src={ellipse} />
                                     <ProgressBar now={100} className={`${styles.load__progress} arriver__progress`} label={`${100}%`} />;
+                                    <div className={`${styles.type}`}>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Load Type</p>
+                                            <h5 className={`${styles.type__title}`}>Lveco 80E18</h5>
+                                        </div>
+                                        <div>
+                                            <p className={`${styles.type__para}`}>Wieght</p>
+                                            <h5 className={`${styles.type__title}`}>2.81 Kg</h5>
+                                        </div>
+                                    </div>
                                 </Col>
                             </Row>
                             <div className={`${styles.truck__body}`}>

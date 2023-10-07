@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import styles from '../Styles/dashboard.module.css'
+import styles from '../../Styles/dashboard.module.css'
 import AddIcon from '@mui/icons-material/Add';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import style from '../Styles/modalLoad.module.css'
+import style from '../../Styles/modalLoad.module.css'
 import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';

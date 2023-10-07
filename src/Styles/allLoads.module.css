@@ -124,7 +124,7 @@ background-color: #FF8201 !important;
     -moz-border-radius: none !important;
     -ms-border-radius: none !important;
     -o-border-radius: none !important;
-    height: 40% !important;
+    height: 25% !important;
 }
 .ship__para{
     color: #777;
@@ -215,6 +215,17 @@ position: absolute;
 }
 .ship__link{
     display: flex;
+}
+.type{
+    display: flex;
+    column-gap: 80px;
+    font-family: 'JosefinSans-Regular';
+}
+.type__para{
+    color: #777;
+}
+.type__title{
+    font-weight: bold;
 }
 @media (min-width:0px) and (max-width:600px) {
     .home {

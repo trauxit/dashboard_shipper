@@ -2,18 +2,19 @@ import { useContext } from 'react';
 import './App.css';
 import { AuthContext, AuthProvider } from './Component/AuthContext';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Dashboard from './Pages/Dashboard';
+import Overview from './Pages/Overview';
+import Expenses from './Pages/Expenses';
 import Setting from './Component/Setting'
-import LoginPage from './Pages/Login'
-import Protectpages from './Component/ProtectPages';
-import Dashboard from './Component/Dashboard';
 import Profile from './Component/Profile';
+import LoginPage from './Pages/Login'
 import ForgetPage from './Pages/ForgetPage';
 import OtpPage from './Pages/OtpPage';
 import ResetPage from './Pages/ResetPage';
 import SignUp from './Component/Signup/SignUp';
 import AllLoads from './Component/AllLoads';
-import Overview from './Component/Overview/Overview';
-import Expenses from './Component/Expenses/Expenses';
+import Protectpages from './Component/ProtectPages';
+
 function App() {
   const authContext = useContext(AuthContext)
   return (

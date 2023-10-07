@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { AuthContext } from '../Component/AuthContext'
 import Modes from '../Component/Modes';
+import Form from 'react-bootstrap/Form';
 const NavBar = (props) => {
     const [active, setactive] = useState(true)
     const navigate = useNavigate('/all-loads')
@@ -19,14 +20,33 @@ const NavBar = (props) => {
             <div className={`${styles.navbar}`}>
                 <div className={`${styles.wrapper}`}>
                     <div className={`${styles.search}`}>
-                        <h4 className={styles.title}>{props.title}</h4>
-                        {window.location.pathname === '/all-loads' ?
-                            <p>khnjn</p>
-                            :
-                            <p className={`${styles.display}`}>khnjn</p>
-                        }
+                        <div>
+                            {window.location.pathname === '/all-loads' || window.location.pathname === '/expenses' || window.location.pathname === '/dashboard' || window.location.pathname === '/overview' ?
+                                <p className={styles.para}>Hi,Basmala</p> : ""
+                            }
+
+                            <h4 className={styles.title}>{props.title}</h4>
+                        </div>
+                        <div>
+                            {window.location.pathname === '/all-loads' || window.location.pathname === '/expenses' ?
+                                <input className={`${styles.input}`} name="text" placeholder="Search..." type="search" />
+                                :
+                                ""
+                            }
+                            {window.location.pathname === '/dashboard' || window.location.pathname === '/overview' ?
+                                <Form.Select aria-label="Default select example" className={`${styles.select}`}>
+                                    <option>Sep 2023</option>
+                                    <option value="22">Sep 2022</option>
+                                    <option value="21">Sep 2021</option>
+                                    <option value="20">Sep 2020</option>
+                                </Form.Select>
+                                : ''}
+                        </div>
                     </div>
                     <div className={`${styles.items}`}>
+                        <div className={`${styles.none}`}>
+                            <Modes />
+                        </div>
                         <div className={`${styles.item}`}>
                             <NotificationsNoneOutlinedIcon className={`${styles.icon}`} />
                             <div className={`${styles.counter}`}>1</div>
@@ -51,6 +71,7 @@ const NavBar = (props) => {
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </>

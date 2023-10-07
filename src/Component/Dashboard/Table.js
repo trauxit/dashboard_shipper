@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { DataGrid } from "@mui/x-data-grid";
-import styles from '../Styles/dashboard.module.css'
-import { userColumns, rows } from '../TableSource';
+import styles from '../../Styles/dashboard.module.css'
+import { userColumns, rows } from '../../TableSource';
 import { Link } from "react-router-dom";
 import EditNoteIcon from '@mui/icons-material/EditNote';
 const TableOfDash = () => {
