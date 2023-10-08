@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../AuthContext';
 import style from '../../Styles/login.module.css'
@@ -9,17 +9,21 @@ import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { Col, Row, Container } from 'react-bootstrap';
 import logo from '../../assets/images/TRAUXIT-2.png'
+import axios from 'axios';
 const Login = () => {
     const authContext = useContext(AuthContext);
     const navigate = useNavigate()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const email = useRef(null)
+    const password = useRef(null)
+
+
+
     function login(e) {
         e.preventDefault();
-        if (password === '123') {
+        if (password.current.value === '123') {
             const token = 'abc';
             localStorage.setItem('token', token);
-            localStorage.setItem('email', email);
+            localStorage.setItem('email', email.current.value);
             authContext.setAuth({ token, email });
             navigate('/dashboard')
         } else {
@@ -39,8 +43,7 @@ const Login = () => {
                                     <p>Welcome to Trauxit</p>
                                     <Form.Group className="mb-3" controlId="email">
                                         <div className={style['login-icon__container']}>
-                                            <Form.Control name="email" type='email' autoComplete="off" className={`${style.inputLogin} `} placeholder="Email Address " value={email}
-                                                onChange={e => setEmail(e.target.value)} />
+                                            <Form.Control name="email" type='email' autoComplete="off" className={`${style.inputLogin} `} placeholder="Email Address " ref={email} />
                                             <div className={style['login-icon__content']}>
                                                 <BiUser />
                                             </div>
@@ -48,8 +51,7 @@ const Login = () => {
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="password">
                                         <div className={style['login-icon__container']}>
-                                            <Form.Control name="password" type="password" autoComplete="off" className={style.inputLogin} placeholder="Password" value={password}
-                                                onChange={e => setPassword(e.target.value)} />
+                                            <Form.Control name="password" type="password" autoComplete="off" className={style.inputLogin} placeholder="Password" ref={password} />
                                             <div className={style['login-icon__content']}>
                                                 <RiLockPasswordLine />
                                             </div>

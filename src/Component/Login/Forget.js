@@ -13,7 +13,6 @@ import logo from '../../assets/images/TRAUXIT-2.png'
 import OtpInput from 'react-otp-input';
 const Forget = () => {
     const email = useRef(null);
-    const [otp, setOtp] = useState('');
     return (
         <>
             <section className={style['login-container']}>
