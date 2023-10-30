@@ -231,3 +231,21 @@ font-family: 'JosefinSans-Regular' !important;
     font-weight: 800 !important;
     line-height: normal !important;
 }
+@media (min-width:0) and (max-width:600px) {
+        .home {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+    .overviewOrFacilities,
+    .overview__charts{
+        display: flex;
+        flex-direction: column;
+    }
+    .overviewbar,
+    .linear,
+    .overview__line{
+        width: 100%;
+        padding: 0;
+    }
+
+}
