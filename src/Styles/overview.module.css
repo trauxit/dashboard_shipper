@@ -237,15 +237,20 @@ font-family: 'JosefinSans-Regular' !important;
                 flex-direction: column-reverse;
             }
     .overviewOrFacilities,
-    .overview__charts{
+    .overview__charts,
+    .row{
         display: flex;
         flex-direction: column;
     }
     .overviewbar,
     .linear,
-    .overview__line{
+    .overview__line,
+    .tab{
         width: 100%;
         padding: 0;
+    }
+    .tab{
+        margin-left: 6px !important;
     }
 
 }
