@@ -35,7 +35,7 @@ const Booking = () => {
         <>
             <Row className={`${styles.bookrow}`}>
                 <Col xxl='9'>
-                    <TableContainer component={Paper} className={`${styles.tab}`}>
+                    <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
                                 <TableRow className={`${styles.head}`}>

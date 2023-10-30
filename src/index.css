@@ -158,3 +158,10 @@ input::placeholder {
 .button:active {
   filter: brightness(.8);
 }
+@media (min-width:0) and (max-width:600px) {
+ 
+      .inputBox_container{
+        width: 100% !important;
+      }
+  
+}

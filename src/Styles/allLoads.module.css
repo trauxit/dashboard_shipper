@@ -182,3 +182,46 @@ column-gap: 50px;
     background-color: rgba(217, 217, 217, 0.40) !important;
     cursor: pointer;
 }
+@media (min-width:0) and (max-width:600px) {
+        .home {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+    .find__search,
+    .search,
+    .find__filter{
+        display: flex;
+        flex-direction: column;
+    }
+    .today{
+        margin-bottom: 15px;
+    }
+    .find__search div{
+        margin-bottom: 10px;
+    }
+    .tabline{
+        column-gap: 25px;
+    }
+    .tabline__lanes h2{
+        font-size: 20px;
+    }
+    .tab{
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+    .find__body{
+        width: 100% !important;
+        margin:20px 0 !important;
+    }
+    .findOrBooked__body{
+        text-align: center !important;
+        margin: auto !important;
+    }
+    .booktab,
+    .map{
+        margin-left: 10px !important;
+    }
+    .map{
+        margin-left: 15px !important;
+    }
+}

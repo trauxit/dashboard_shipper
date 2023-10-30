@@ -214,13 +214,7 @@ background-color: rgba(134, 134, 134, 0.18)!important;
 color: #fff !important;
 padding: 5px !important;
 }
-@media (min-width:0) and (max-width:600px) {
-  .MuiTablePagination-root {
-      position: relative !important;
-      top: 0 !important;
-      left: 0%;
-    }
-}
+
 .form-select{
   background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e") !important;
 }
@@ -329,4 +323,15 @@ left: 10px;
 }
 .passwordd{
   margin-top: 0 !important;
+}
+@media (min-width:0) and (max-width:600px) {
+  .MuiTablePagination-root {
+    position: relative !important;
+    top: 0 !important;
+    left: 0%;
+  }
+
+  .inputBox {
+    width: 100% !important;
+  }
 }
