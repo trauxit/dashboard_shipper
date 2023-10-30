@@ -9,15 +9,20 @@
 }
 .wrapper {
     width: 100%;
-    padding: 5px 5px 0px 5px !important;
+    padding: 5px 5px 0px 0px !important;
     display: flex;
-    align-items: center;
+    align-items: center !important;
     justify-content: space-between;
 }
-.title{
+.logo__body{
+    padding-top: 15px;
     padding-left: 30px;
+}
+
+.logo__title{
+text-align: center;
 font-weight: bold;
-color: var(--second-text);
+color: #000;
 }
 .para{
     padding-left: 30px;
@@ -33,6 +38,15 @@ color: var(--second-text);
     align-items: center;
     margin-right: 0px;
     position: relative;
+    column-gap: 50px;
+}
+.navlink{
+    text-decoration: none;
+    color: #000;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: normal;
 }
 .icon {
     font-size: 20px;
@@ -65,6 +79,8 @@ color: var(--second-text);
     background-color: transparent !important;
     border: none !important;
     color: var(--text-color) !important;
+    margin-left: 20px;
+    margin-right: 30px;
  }
  .dropmenu{
     background-color: var(--secondary-background-color);
@@ -73,53 +89,34 @@ color: var(--second-text);
     text-decoration: none !important;
     color: #FF8201;
  }
- .search{
-    display: flex;
-    align-items: center;
-    column-gap: 25px;
- }
- .input {
-     width: 250px;
-     background-color: var(--background-content);
-     color: #242424;
-     padding: .15rem .5rem;
-     min-height: 40px;
-     border-radius: 4px;
-     outline: none;
-     border: none;
-     line-height: 1.15;
-     box-shadow: 0px 10px 20px -18px;
- }
-
- input:focus {
-     border-bottom: 2px solid #5b5fc7;
-     border-radius: 4px 4px 2px 2px;
- }
-
- input:hover {
-     outline: 1px solid lightgrey;
- }
+.logo{
+    width: 70px;
+}
  .none{
     display: none;
  }
- @media (min-width:0px) and (max-width:600px) {
-   .para,
-   .title{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-right: 0 !important;
-   } 
-   .title{
-    font-size: 20px !important;
-   }
-   .select{
-    width: 80px;
-    margin-left: 0 !important;
-   }
-.input{
-    width: 110px;
+@media (min-width:0) and (max-width:600px) {
+    .side{
+                        position: fixed;
+                            left: 0;
+                            bottom: 0;
+                            background-color: #e7e5e5;
+                            width: 100%;
+                            padding-left: 0px;
+                            z-index: 1000;
+                            font-family: 'JosefinSans-Regular' !important;
+                            height: 60px;
+                            display: flex;
+                            column-gap: 20px !important;
+                            padding-left: 10px;
+                            text-align: center;
+    }
+
 }
-.none{
-    display: block;
+
+@media (min-width:600px) {
+    .icon {
+            display: none !important;
+        }
+    
 }
- }

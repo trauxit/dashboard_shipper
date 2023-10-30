@@ -1,98 +1,213 @@
 import React from 'react'
 import styles from '../../Styles/allLoads.module.css'
-import StarIcon from '@mui/icons-material/Star';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Col, Row } from 'react-bootstrap';
-import load from '../../assets/images/image 19.png'
-import ellipse from '../../assets/images/Ellipse 39.png'
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+/* function createData(
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+) {
+    return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+]; */
+
 const ColLoad = () => {
     return (
         <>
-            <Col className={`${styles.load}`} lg='6'>
-                {/* Route */}
-                <div className={`${styles.route__para}`}>
-                    <p className={`${styles.route}`}></p>
-                    <p> On route </p>
-                </div>
-                {/* Load Body */}
-                <div className={`${styles.load__body}`}>
-                    {/* Load Description */}
-                    <div className={`${styles.load__desc}`}>
-                        <h4 className={`${styles.load__title}`}>barcelona-seville1</h4>
-                        <p className={`${styles.load__para} mt-2`}> 5Sep,8:00 PM</p>
+
+            <TableContainer component={Paper} className={`${styles.tab}`}>
+                <div className={`${styles.tabline}`}>
+                    <div className={`${styles.tabline__load}`}>
+                        <h2>Loads</h2>
+                        <p> 108</p>
                     </div>
-                    {/* Time Left */}
-                    <p className={`${styles.load__para}`}>1h 36min left</p>
-                </div>
-                {/* Shipment Number */}
-                <Row className={`${styles.shipment__number}`}>
-                    <Col>
-                        <p className={`${styles.ship__para}`}>Shipment number</p>
-                        <p className={`${styles.ship__code}`}>#224512</p>
-                    </Col>
-                    <Col className={`${styles.load__img}`}>
-                        {/* Load Image */}
-                        <img alt='' src={load} />
-                        {/* Ellipse Image */}
-                        <img alt='' src={ellipse} />
-                        {/* Load Progress Bar */}
-                        <ProgressBar now={50} className={`${styles.load__progress} arriver__progress waiting__progress`} label={`${50}%`} />;
-                        {/* Load Type */}
-                        <div className={`${styles.type}`}>
-                            <div>
-                                <p className={`${styles.type__para}`}>Load Type</p>
-                                <h5 className={`${styles.type__title}`}>Lveco 80E18</h5>
-                            </div>
-                            {/* Load Weight */}
-                            <div>
-                                <p className={`${styles.type__para}`}>Weight</p>
-                                <h5 className={`${styles.type__title}`}>2.81 Kg</h5>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-                {/* Truck Body */}
-                <div className={`${styles.truck__body}`}>
-                    <p className={`${styles.truck__para}`}>Truck</p>
-                    <h4 className={`${styles.truck__title}`}>Lveco 80E18</h4>
-                    {/* Star Rating */}
-                    <div className={`${styles.stars}`}>
-                        <StarIcon className={`${styles.star}`} />
-                        <StarIcon className={`${styles.star}`} />
-                        <StarIcon className={`${styles.star}`} />
-                        <StarIcon className={`${styles.star}`} />
-                        <StarIcon className={`${styles.star}`} />
+                    <div className={`${styles.tabline__lanes}`}>
+                        <h2>Dedicated Lanes </h2>
+                        <p> 108</p>
                     </div>
                 </div>
-                {/* Distance */}
-                <p className={`${styles.truck__distance}`}>Distance</p>
-                <h4 className={`${styles.truck__title}`}>600 Km</h4>
-                {/* Load Location */}
-                <div className={`${styles.load__location}`}>
-                    {/* Location Icon */}
-                    <div className={`${styles.loc}`}>
-                        <div>
-                            <p className={`${styles.outer}`}>
-                            </p>
-                        </div>
-                        <div>
-                            <LocationOnIcon className={`${styles.location__icon}`} />
-                        </div>
-                    </div>
-                    {/* Location Details */}
-                    <div className={`${styles.location__body}`}>
-                        <div>
-                            <h4 className={`${styles.location__title}`}>2972 Westheimer</h4>
-                            <p className={`${styles.location__para}`}>Rd.Santa Ana, Illinois 85486</p>
-                        </div>
-                        <div>
-                            <h4 className={`${styles.location__title}`}>8502 Preston</h4>
-                            <p className={`${styles.location__para}`}>Rd.Santa Ana, Illinois 85486</p>
-                        </div>
-                    </div>
-                </div>
-            </Col>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Rate</TableCell>
+                            <TableCell>Pickup</TableCell>
+                            <TableCell>Full Route</TableCell>
+                            <TableCell>Delivery</TableCell>
+                            <TableCell>Distance and RPM</TableCell>
+                            <TableCell>Deadhead</TableCell>
+                            <TableCell>Weight</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                <h5>$500</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>Dalas, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+
+                            </TableCell>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <h5>Huston, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>230mi</h5>
+                                <p>$3.23/mile</p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>14 mi</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>41.280 Ibs</h5>
+                                <p>Van</p>
+                            </TableCell>
+                            <TableCell>
+                                <KeyboardArrowRightIcon />
+                            </TableCell>
+                        </TableRow>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                <h5>$500</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>Dalas, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <h5>Huston, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>230mi</h5>
+                                <p>$3.23/mile</p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>14 mi</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>41.280 Ibs</h5>
+                                <p>Van</p>
+                            </TableCell>
+                            <TableCell>
+                                <KeyboardArrowRightIcon />
+                            </TableCell>
+                        </TableRow>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                <h5>$500</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>Dalas, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <h5>Huston, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>230mi</h5>
+                                <p>$3.23/mile</p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>14 mi</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>41.280 Ibs</h5>
+                                <p>Van</p>
+                            </TableCell>
+                            <TableCell>
+                                <KeyboardArrowRightIcon />
+                            </TableCell>
+                        </TableRow>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                <h5>$500</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>Dalas, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <h5>Huston, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>230mi</h5>
+                                <p>$3.23/mile</p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>14 mi</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>41.280 Ibs</h5>
+                                <p>Van</p>
+                            </TableCell>
+                            <TableCell>
+                                <KeyboardArrowRightIcon />
+                            </TableCell>
+                        </TableRow>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">
+                                <h5>$500</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>Dalas, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <h5>Huston, TX</h5>
+                                <p>Sep 28+14:30 CST </p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>230mi</h5>
+                                <p>$3.23/mile</p>
+                            </TableCell>
+                            <TableCell>
+                                <h5>14 mi</h5>
+                            </TableCell>
+                            <TableCell>
+                                <h5>41.280 Ibs</h5>
+                                <p>Van</p>
+                            </TableCell>
+                            <TableCell>
+                                <KeyboardArrowRightIcon />
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </>
     )
 }

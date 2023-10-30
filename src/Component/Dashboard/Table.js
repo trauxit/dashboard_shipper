@@ -4,6 +4,7 @@ import styles from '../../Styles/dashboard.module.css'
 import { userColumns, rows } from '../../TableSource';
 import { Link } from "react-router-dom";
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import Box from '@mui/material/Box';
 const TableOfDash = () => {
     const [seed, setSeed] = useState(1);
     const reset = () => {
@@ -33,16 +34,24 @@ const TableOfDash = () => {
     return (
         <>
             <section  >
-
-                <DataGrid
-                    key={rows.map(id => id.id)}
-                    className={`${styles.table}`}
-                    rows={rows}
-                    columns={userColumns.concat(actionColumn)}
-                    pageSize={8}
-                    rowsPerPageOptions={[8]}
-                    checkboxSelection
-                />
+                <Box>
+                    <DataGrid
+                        key={rows.map(id => id.id)}
+                        className={`${styles.table}`}
+                        rows={rows}
+                        columns={userColumns.concat(actionColumn)}
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 7,
+                                },
+                            },
+                        }}
+                        pageSizeOptions={[7]}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                    />
+                </Box>
             </section>
         </>
     )

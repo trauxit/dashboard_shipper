@@ -4,10 +4,15 @@ import NavBar from '../Layout/NavBar'
 import styles from '../Styles/setting.module.css'
 import StarIcon from '@mui/icons-material/Star';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import imgNull from '../assets/images/eae946efbbf74117a65d488206a09b63.png'
+import imgNull from '../assets/images/FB_IMG_1528049839195.jpg'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import ProgressBar from "react-bootstrap/ProgressBar";
+import mail from '../assets/images/Mail.svg'
+import location from '../assets/images/Glyph_ undefined.svg'
+import bag from '../assets/images/undefined.svg'
+import pass from '../assets/images/pass.svg'
+import { Link } from 'react-router-dom';
 const Setting = () => {
     const MAX_CORRECT = 11;
     const [maxScore, setMaxScore] = useState(MAX_CORRECT);
@@ -82,132 +87,117 @@ const Setting = () => {
     return (
         <>
             <div className={`${styles.home}`}>
-                <Sidebar />
                 <div className={`${styles.homeContainer}`}>
                     <NavBar title='Setting' />
                     <form onSubmit={(e) => handleSubmit(e)}>
-                        {/* Profile Row */}
-                        <Row className={`${styles.profile}`}>
-                            {/* Profile Edit Column */}
-                            <Col lg='4' className={`${styles.col__img}`}>
-                                {/* Edit Profile */}
-                                <p className={`${styles.edit}`}>Edit Profile</p>
-                                {/* Image Upload */}
-                                <div className={`${styles.im}`} onClick={() => fetchData()}>
-                                    {/* Image Input */}
-                                    <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
-                                        addFileInput.current = e
-                                    }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
-                                    {/* Display Image */}
-                                    {imageUrl == null ?
-                                        <>
-                                            <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                <img className={`${styles.img}`} ref={imageFirmRef} src={imgNull} alt="" />
-                                            </div>
-                                        </>
-                                        :
+
+                        <p className={`${styles.edit}`}>Edit profile</p>
+                        <div className={`${styles.user__info}`}>
+                            <div className={`${styles.im}`} onClick={() => fetchData()}>
+                                {/* Image Input */}
+                                <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
+                                    addFileInput.current = e
+                                }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                                {/* Display Image */}
+                                {imageUrl == null ?
+                                    <>
                                         <div ref={addFile} onClick={() => { handleLogo() }}>
-                                            <img className={`${styles.img}`} ref={imageContentRef} src={imageUrl} alt="" />
+                                            <img className={`${styles.img}`} ref={imageFirmRef} src={imgNull} alt="" />
                                         </div>
-                                    }
-                                </div>
-                                {/* User Info */}
-                                <div className={`${styles.user}`} >
-                                    <h4 className={`${styles.user__name}`}>basmala ayman</h4>
-                                    {/* Star Rating */}
-                                    <div className={`${styles.stars}`}>
-                                        <StarIcon className={`${styles.star}`} />
-                                        <StarIcon className={`${styles.star}`} />
-                                        <StarIcon className={`${styles.star}`} />
-                                        <StarIcon className={`${styles.star}`} />
-                                        <StarIcon className={`${styles.star}`} />
+                                    </>
+                                    :
+                                    <div ref={addFile} onClick={() => { handleLogo() }}>
+                                        <img className={`${styles.img}`} ref={imageContentRef} src={imageUrl} alt="" />
                                     </div>
-                                </div>
-                                {/* Profile Completion */}
-                                <div className={`${styles.precent}`}>
-                                    <p className={`${styles.edit}`}>Complete your profile</p>
-                                    <p className={`${styles.edit}`}>{percentCorrectLabel}</p>
-                                </div>
-                                {/* Progress Bar */}
-                                <ProgressBar
-                                    className={`${styles.prog}`}
-                                    min={0}
-                                    max={100}
-                                    now={percentCorrect}
-                                />
-                            </Col>
+                                }
+                            </div>
+                            <div>
+                                <h2 className={`${styles.user__title}`} >Ahmed Mohamed</h2>
+                                <p className={`${styles.user__para}`} >Eastern European Time (EET), Cairo UTC +3</p>
+                            </div>
 
-                            {/* User Info Column */}
-                            <Col lg='8'>
-                                {/* Personal Info */}
-                                <p className={`${styles.edit} mt-5`}>personal</p>
-                                <div className={`${styles.name} formgroup`}>
-                                    {/* First Name */}
-                                    <Form.Group className="mb-3 " controlId="fname">
-                                        <Form.Control name="fname" type='text' autoComplete="off" placeholder="First Name " className={`${styles.fullname}`} ref={fname} onClick={() => fetchData()} />
-                                    </Form.Group>
-                                    {/* Last Name */}
-                                    <Form.Group className="mb-3" controlId="lname">
-                                        <Form.Control name="lname" type='text' autoComplete="off" placeholder="Last Name " className={`${styles.fullname}`} ref={lname} onClick={() => fetchData()} />
-                                    </Form.Group>
-                                </div>
-                                {/* National ID */}
-                                <Form.Group className="mb-3 formgroup" controlId="nid">
-                                    <Form.Control name="nid" type='text' autoComplete="off" placeholder="National Id " className={`${styles.input}`} ref={nid} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* Date of Birth */}
-                                <Form.Group className="mb-3 formgroup" controlId="date">
-                                    <Form.Control name="date" type='date' autoComplete="off" placeholder="Date of Birth " className={`${styles.input}`} ref={date} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* Education Level */}
-                                <Form.Group className="mb-3 formgroup" controlId="edu">
-                                    <select
-                                        className={`${styles.input} ${styles.select}`}
-                                        name="edu"
-                                        ref={edu}
+                        </div>
+                        <div className={`${styles.name} formgroup`}>
+                            {/* First Name */}
+                            <Form.Group className="mb-3 " controlId="fname">
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control name="fname" type='text' autoComplete="off" placeholder="Ahmed " className={`${styles.full}`} ref={fname} onClick={() => fetchData()} />
+                            </Form.Group>
+                            {/* Last Name */}
+                            <Form.Group className="mb-3" controlId="lname">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control name="lname" type='text' autoComplete="off" placeholder="eg. Mohamed" className={`${styles.full}`} ref={lname} onClick={() => fetchData()} />
+                            </Form.Group>
+                        </div>
+                        {/* National ID */}
+                        <Form.Group className="mb-3 formgroup us" controlId="nid">
+                            <Form.Label>User Name</Form.Label>
+                            <Form.Control name="nid" type='text' autoComplete="off" placeholder="Ahmed.mo2020" className={`${styles.input}`} ref={nid} onClick={() => fetchData()} />
+                        </Form.Group>
+                        <div className={`${styles.emphone}`}>
+                            <Form.Group className="mb-3  emaili" controlId="email">
+                                <Form.Label>Email Address</Form.Label>
+                                <img alt='' src={mail} />
+                                <Form.Control name="email" type='email' autoComplete="off" placeholder='' className={`${styles.full}`} ref={email} onClick={() => fetchData()} />
+                            </Form.Group>
+                            {/* Phone */}
+                            <Form.Group className="mb-3 formgroup " controlId="phone">
+                                <Form.Label>Phone Number</Form.Label>
+                                <div className=''>
+                                    <PhoneInput
+                                        country={'eg'}
+                                        value={formData.phone}
+                                        onChange={onChangeHandlerPhone}
                                         onClick={() => fetchData()}
-                                    >
-                                        <option value=''>Eduction Level</option>
-                                        <option value='pending'>pending</option>
-                                        <option value='accepted'>accepted</option>
-                                        <option value='published'>published</option>
-                                        <option value='rejected'>rejected</option>
-                                    </select>
-                                </Form.Group>
+                                    />
+                                </div>
+                            </Form.Group>
+                        </div>
+                        {/* Country */}
+                        <Form.Group className="mb-3  loci" controlId="country">
+                            <Form.Label className='mt-5'>Location</Form.Label>
+                            <img alt='' src={location} />
+                            <Form.Control name="country" type='text' autoComplete="off" placeholder="" className={`${styles.input}`} ref={country} onClick={() => fetchData()} />
+                        </Form.Group>
 
-                                {/* Contact Info */}
-                                <p className={`${styles.edit} `}>Contact</p>
-                                {/* Email */}
-                                <Form.Group className="mb-3 formgroup" controlId="email">
-                                    <Form.Control name="email" type='email' autoComplete="off" placeholder="Email" className={`${styles.input}`} ref={email} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* Phone */}
-                                <Form.Group className="mb-3 " controlId="phone">
-                                    <div className='formgroup'>
-                                        <PhoneInput
-                                            country={'eg'}
-                                            value={formData.phone}
-                                            onChange={onChangeHandlerPhone}
-                                            onClick={() => fetchData()}
-                                        />
-                                    </div>
-                                </Form.Group>
-                                {/* Country */}
-                                <Form.Group className="mb-3 formgroup" controlId="country">
-                                    <Form.Control name="country" type='text' autoComplete="off" placeholder="Country " className={`${styles.input}`} ref={country} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* City */}
-                                <Form.Group className="mb-3 formgroup" controlId="city">
-                                    <Form.Control name="city" type='text' autoComplete="off" placeholder="City " className={`${styles.input}`} ref={city} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* Company Name */}
-                                <Form.Group className="mb-3 formgroup" controlId="companyname">
-                                    <Form.Control name="companyname" type='text' autoComplete="off" placeholder="Company Name " className={`${styles.input}`} ref={companyname} onClick={() => fetchData()} />
-                                </Form.Group>
-                                {/* Save Button */}
-                                <button type='submit' className={`${styles.submit__btn}`}>Save</button>
-                            </Col>
-                        </Row>
+                        <div className={`${styles.company}`}>
+                            <h3>Companies</h3>
+                            <div >
+                                <div className={`${styles.company__body}`}>
+                                    <img alt='' src={bag} />
+                                    <p>Trauxit</p>
+                                </div>
+                                <div className={`${styles.company__body}`}>
+                                    <img alt='' src={bag} />
+                                    <p>Noon</p>
+                                </div>
+                                <div className={`${styles.company__body}`}>
+                                    <img alt='' src={bag} />
+                                    <p>LamasaTech</p>
+                                </div>
+                            </div>
+                        </div>
+                        <Form.Group className="mb-3 pass emaili" controlId="password">
+                            <Form.Label>Current Password</Form.Label>
+                            <img alt='' src={pass} />
+                            <Form.Control name="password" type='password' autoComplete="off" placeholder='' className={`${styles.full}`} ref={email} onClick={() => fetchData()} />
+                        </Form.Group>
+                        <div className={`${styles.name} passwordd `}>
+                            <Form.Group className="mb-3 pass emaili" controlId="password">
+                                <Form.Label>New Password</Form.Label>
+                                <img alt='' src={pass} />
+                                <Form.Control name="password" type='password' autoComplete="off" placeholder='' className={`${styles.full}`} ref={email} onClick={() => fetchData()} />
+                            </Form.Group>
+                            <Form.Group className="mb-3 p emaili" controlId="password">
+                                <Form.Label>Confirm Passowrd</Form.Label>
+                                <img alt='' src={pass} />
+                                <Form.Control name="password" type='password' autoComplete="off" placeholder='' className={`${styles.full}`} ref={email} onClick={() => fetchData()} />
+                            </Form.Group>
+                        </div>
+                        <div className={`${styles.btns}`}>
+                            <Link to='/profile' className={`${styles.cancel__btn}`}>Cancel</Link>
+                            <button type='submit' className={`${styles.save__btn}`}>Save Changes</button>
+                        </div>
                     </form>
                 </div >
             </div >

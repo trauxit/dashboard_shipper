@@ -11,8 +11,44 @@ import Stepper from 'react-stepper-horizontal';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import ThirdStep from './ThirdStep'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from '../../Redux/slices/UserSlice'
 const SignUp = () => {
+    const navigate = useNavigate()
+    const [fullName, setFullName] = useState('')
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [confirmemail, setConfirmEmail] = useState('')
+    const [companyname, setCompanyName] = useState('')
+    const [address, setAaddress] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordConfirm, setConfirmPassword] = useState('')
+    const { loading, error } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    function signup(e) {
+        e.preventDefault();
+        let userCredentials = {
+            fullName,
+            userName,
+            email,
+            confirmemail,
+            companyname,
+            address,
+            password,
+            passwordConfirm,
+            birthDate: "02/22/1997",
+            role: "shipper",
+            phoneNumber: "010223242578"
+        }
+        console.log(userCredentials, 'userrr')
+        dispatch(signupUser(userCredentials)).then((result) => {
+            if (result.payload) {
+                setEmail('');
+                setPassword('');
+                navigate('/')
+            }
+        })
+    }
     const steps = [
         { title: '' },
         { title: '' },
@@ -22,10 +58,10 @@ const SignUp = () => {
     const [activeStep, setActiveStep] = useState(0);
     function getSectionComponent() {
         switch (activeStep) {
-            case 0: return <FirstStep />;
-            case 1: return <SecondStep />;
-            case 2: return <ThirdStep />;
-            case 3: return <FirstStep />;
+            case 0: return <FirstStep fullname={fullName} setFullName={setFullName} username={userName} setUserName={setUserName} />;
+            case 1: return <SecondStep email={email} setEmail={setEmail} confirmemail={confirmemail} setConfirmEmail={setConfirmEmail} />;
+            case 2: return <ThirdStep companyname={companyname} setCompanyName={setCompanyName} address={address} setAaddress={setAaddress} />;
+            case 3: return <FourthStep password={password} setPassword={setPassword} confirmpassword={passwordConfirm} setConfirmPassword={setConfirmPassword} />;
             default: return null;
         }
     }
@@ -51,9 +87,11 @@ const SignUp = () => {
                                         && <Link className={style.log__btn} onClick={() => setActiveStep(activeStep + 1)}>Next</Link>
                                     }
                                     {activeStep == steps.length - 1
-                                        && <Link className={style.log__btn} onClick={() => setActiveStep(activeStep + 1)}>Submit</Link>
+                                        && <Link className={style.log__btn} onClick={signup}>Submit</Link>
                                     }
-
+                                    {error && (
+                                        <div className='alert alert-danger' role='alert'>{error}</div>
+                                    )}
                                     <p className={`${style.account}`}> have an account ? <Link to='/' className={`${style.signup}`}>Sign In</Link></p>
                                 </div>
                             </div>

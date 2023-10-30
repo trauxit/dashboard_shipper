@@ -1,30 +1,29 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import control from './assets/images/control 1.png'
+import styles from './Styles/dashboard.module.css'
 export const userColumns = [
-    { field: "id", headerName: "ID", width: 80 },
+    { field: "client", headerName: "client", width: 200 },
     {
-        field: "firstName",
-        headerName: "Weight",
-        width: 120,
+        field: "Typeofgoods",
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Type of goods</div>,
+        width: 190,
     },
     {
-        field: "age",
-        headerName: "Date",
-        width: 140,
+        field: "route",
+        headerName: "Route",
+        width: 190,
     },
 
     {
         field: "status",
-        headerName: "Status",
-        width: 200,
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Status</div>,
+        width: 190,
         renderCell: (params) => {
 
             return (
 
                 <div className={`cellWithStatus ${params.row.status}`}>
                     {params.row.status}
-                    <ProgressBar className={`prog ${params.row.status}  `}
-                        min={0}
-                        max={100} now={params.row.prog} />
                 </div>
             );
         },
@@ -33,12 +32,20 @@ export const userColumns = [
 ];
 
 export const rows = [
-    { id: 1, lastName: 'Snow', firstName: '210 kg', age: '26 Sep 2023', status: 'proccesing', prog: 30 },
-    { id: 2, lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'on the way', prog: 60 },
-    { id: 3, lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'completed', prog: 100 },
-    { id: 4, lastName: 'Stark', firstName: '210 kg', age: '26 Sep 2023', status: 'proccesing', prog: 30 },
-    { id: 5, lastName: 'Targaryen', firstName: '210 kg', age: '26 Sep 2023', status: 'proccesing', prog: 30 },
-    { id: 6, lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'completed', prog: 100 },
-    { id: 7, lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'on the way', prog: 60 },
-
+    { id: 1, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Snow', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 2, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 60 },
+    { id: 3, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 100 },
+    { id: 4, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Stark', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 5, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Targaryen', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 6, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 100 },
+    { id: 7, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 60 },
+    { id: 8, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Stark', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 9, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Targaryen', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 10, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 100 },
+    { id: 11, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 60 },
+    { id: 12, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 60 },
+    { id: 13, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Stark', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 14, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Targaryen', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 30 },
+    { id: 15, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 100 },
+    { id: 16, client: 'Basmala ayman', Typeofgoods: '20 palletes', route: '12-453', lastName: 'Lannister', firstName: '210 kg', age: '26 Sep 2023', status: 'Paied', prog: 60 },
 ];

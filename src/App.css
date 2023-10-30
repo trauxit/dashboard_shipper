@@ -1,10 +1,10 @@
 
 .react-tel-input{
-width: 600px !important;
+width: 400px !important;
 }
 
 .react-tel-input .form-control{
-        width: 600px !important;
+        width: 400px !important;
         display: block !important;
         font-size: 1rem !important;
         font-weight: 400 !important;
@@ -26,46 +26,56 @@ width: 600px !important;
         -ms-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
         -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
 }
+.cont{
+  background-color: #F8F8F8 !important;
+  padding: 10px !important;
+  border: 1px solid #F8F8F8 !important;
+  border-radius: 12px !important;
+  -webkit-border-radius: 12px !important;
+  -moz-border-radius: 12px !important;
+  -ms-border-radius: 12px !important;
+  -o-border-radius: 12px !important;
+  width:475px !important;
+}
+.shipt{
+  width: 100% !important;
+}
+.input-group{
+  width: 475px !important;
+padding-top: 5px;
+}
+.weight{
+  background-color: #F8F8F8 !important;
+}
+.tex{
+  width: 50px !important;
+}
+.in{
+  height: 50px !important;
+}
 .form-control:focus{
-        background-color: #f5f0f0cb !important;
-        border: 0px solid #EF8451 !important;
+        background-color: #F8F8F8 !important;
+        border: 1px solid #F8F8F8 !important;
         transform: scale(1.00) !important;
-        box-shadow: 0 0 0 0.25rem rgba(235, 137, 91, 0.61) !important;
+        box-shadow: none !important;
         -webkit-transform: scale(1.00) !important;
         -moz-transform: scale(1.00) !important;
         -ms-transform: scale(1.00) !important;
         -o-transform: scale(1.00) !important;
 }
 .progress-bar{
-background-color: #FF8201 !important;
-  height: 5px !important;
+background: linear-gradient(90deg, #FFF 0%, #FF8201 111.16%) !important;
+  height: 10px !important;
 }
-.prog {
+.progress {
   margin-top: 0px !important;
-  height: 5px !important;
+  height: 10px !important;
 }
 .cellWithStatus{
   width: 80% !important;
 }
-.proccesing .progress-bar{
-  background-color: red !important;
-}
-.on .progress-bar{
-  background-color: #FF8201 !important;
-}
-.completed .progress-bar{
-  background-color: green !important;
-}
-.allLoads_load__progress__dcsAr .progress-bar{
-  height: 100% !important;
-  background-color: #FF8201 !important;
-}
-.arriver__progress .progress-bar{
-  background-color: green !important;
-}
-.waiting__progress .progress-bar{
-  background-color: #84b1ce;
-}
+
+
 /* The switch - the box around the slider */
 .switch {
   --width-of-switch: 5em;
@@ -162,4 +172,161 @@ color: var(--text-color) !important;
 }
 ::placeholder{
   color: var(--text-color) !important;
+}
+
+
+
+
+.active{
+  font-weight: 800 !important;
+}
+.Paied{
+  border-radius: 8px;
+  background: rgba(47, 211, 93, 0.10);
+text-align: center !important;
+  padding: 5px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  color: #2FD35D;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+}
+.css-levciy-MuiTablePagination-displayedRows{
+  display: none !important;
+}
+.MuiTablePagination-root{
+  position: absolute !important;
+  top: 0 !important;
+  left: 80%;
+}
+.MuiIconButton-root{
+  background-color: #FF8201 !important;
+  color: #fff !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  padding: 5px !important;
+}
+.Mui-disabled{
+background-color: rgba(134, 134, 134, 0.18)!important;
+color: #fff !important;
+padding: 5px !important;
+}
+@media (min-width:0) and (max-width:600px) {
+  .MuiTablePagination-root {
+      position: relative !important;
+      top: 0 !important;
+      left: 0%;
+    }
+}
+.form-select{
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e") !important;
+}
+.css-1q1u3t4-MuiTableRow-root{
+  border-bottom: none !important;
+}
+.css-1ex1afd-MuiTableCell-root,
+.css-1ygcj2i-MuiTableCell-root{
+  border-bottom: none !important;
+}
+.overview_tab__cell__MsCZB{
+  width: 500px !important;
+}
+.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root{
+  background-color: #fff !important;
+  color:  #000 !important;
+}
+
+.css-1ex1afd-MuiTableCell-root{
+      font-family: 'JosefinSans-Regular' !important;
+      color: #000 !important;
+        font-size: 14px !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        line-height: normal !important;
+        letter-spacing: 0.277px !important;
+}
+.overview_recent__zgNTt div svg{
+  color: #FF8201 !important;
+}
+.overview_recent__zgNTt div .ico{
+  color: #ddd !important;
+}
+
+.css-1ygcj2i-MuiTableCell-root{
+color: #000 !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 800 !important ;
+  line-height: normal !important;
+  letter-spacing: 0.277px !important;
+}
+.css-1ex1afd-MuiTableCell-root{
+  color: #898989 !important;
+    font-size: 17px !important;
+    font-style: normal !important;
+    line-height: normal !important;
+    letter-spacing: 0.277px !important;
+    font-family: 'JosefinSans-Light' !important;
+}
+.css-1ex1afd-MuiTableCell-root h5{
+    font-weight: 800 !important;
+    color:  #000 !important;
+}
+.shipmentprog .progress-bar{
+  height: 4px !important;
+  background: #FF8201 !important;
+}
+.formgroup{
+  padding-left: 30px;
+}
+.us{
+padding-left: 0 !important;
+margin-left: 30px;
+padding-bottom: 25px !important;
+  border-bottom: 1px solid #D0D0D0;
+  width: 840px !important;
+}
+.emaili,
+.loci{
+  position: relative;
+}
+.emaili img,
+.loci img{
+  position: absolute;
+  top:35px;
+  z-index: 100;
+left: 10px;
+}
+.emaili .form-control{
+  padding-left: 40px;
+}
+
+.loci img{
+  position: absolute;
+    top: 87px;
+    z-index: 100;
+    left: 10px;
+}
+.loci .form-control{
+  padding-left: 40px;
+}
+.loci{
+  padding-left: 0 !important;
+    margin-left: 30px;
+    padding-bottom: 25px !important;
+    border-bottom: 1px solid #D0D0D0;
+    width: 840px !important;
+}
+.pass{
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.p{
+  margin-top: 30px;
+}
+.passwordd{
+  margin-top: 0 !important;
 }

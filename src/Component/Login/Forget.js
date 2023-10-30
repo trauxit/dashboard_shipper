@@ -10,9 +10,26 @@ import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { Col, Row, Container } from 'react-bootstrap';
 import logo from '../../assets/images/TRAUXIT-2.png'
-import OtpInput from 'react-otp-input';
+import axios from 'axios';
 const Forget = () => {
-    const email = useRef(null);
+    const [email, setEmail] = useState('')
+    const navigate = useNavigate();
+    const reqData = {
+        email
+    }
+    function forget(e) {
+        e.preventDefault()
+        axios.post(`http://13.48.43.204:3000/api/v1/user/forgetpassword`, reqData)
+            .then((response) => {
+                toast.success("sent OTP to email")
+                navigate('/otp')
+                console.log(response)
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message)
+                console.log(err)
+            })
+    }
     return (
         <>
             <section className={style['login-container']}>
@@ -25,14 +42,14 @@ const Forget = () => {
                                     <h4 className='mt-3'>Forget Password ?</h4>
                                     <Form.Group className="mb-3" controlId="email">
                                         <div className={style['login-icon__container']}>
-                                            <Form.Control name="email" type='email' autoComplete="off" className={`${style.inputLogin} `} placeholder="Email Address " ref={email}
+                                            <Form.Control name="email" type='email' autoComplete="off" className={`${style.inputLogin} `} placeholder="Email Address " value={email} onChange={(e) => setEmail(e.target.value)}
                                             />
                                             <div className={style['login-icon__content']}>
                                                 <BiUser />
                                             </div>
                                         </div>
                                     </Form.Group>
-                                    <Link className={style.log__btn} to='/otp' >Continue</Link>
+                                    <Link className={style.log__btn} to='' onClick={forget} >Continue</Link>
                                 </div>
                             </div>
 

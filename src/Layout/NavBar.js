@@ -1,11 +1,16 @@
 import React, { useContext, useState } from 'react'
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import styles from '../Styles/navbar.module.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { AuthContext } from '../Component/AuthContext'
 import Modes from '../Component/Modes';
 import Form from 'react-bootstrap/Form';
+import logo from './../assets/images/Logo. 1.png'
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
+import GridViewIcon from '@mui/icons-material/GridView';
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import StoreIcon from "@mui/icons-material/Store";
 const NavBar = (props) => {
     const [active, setactive] = useState(true)
     const navigate = useNavigate('/all-loads')
@@ -19,46 +24,35 @@ const NavBar = (props) => {
         <>
             <div className={`${styles.navbar}`}>
                 <div className={`${styles.wrapper}`}>
-                    <div className={`${styles.search}`}>
+                    <div className={`${styles.logo__body}`}>
                         <div>
-                            {window.location.pathname === '/all-loads' || window.location.pathname === '/expenses' || window.location.pathname === '/dashboard' || window.location.pathname === '/overview' ?
-                                <p className={styles.para}>Hi,Basmala</p> : ""
-                            }
-
-                            <h4 className={styles.title}>{props.title}</h4>
-                        </div>
-                        <div>
-                            {window.location.pathname === '/all-loads' || window.location.pathname === '/expenses' ?
-                                <input className={`${styles.input}`} name="text" placeholder="Search..." type="search" />
-                                :
-                                ""
-                            }
-                            {window.location.pathname === '/dashboard' || window.location.pathname === '/overview' ?
-                                <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                    <option>Sep 2023</option>
-                                    <option value="22">Sep 2022</option>
-                                    <option value="21">Sep 2021</option>
-                                    <option value="20">Sep 2020</option>
-                                </Form.Select>
-                                : ''}
+                            <img alt='' src={logo} className={`${styles.logo}`} />
+                            <h4 className={`${styles.logo__title}`}>Trauxit</h4>
                         </div>
                     </div>
                     <div className={`${styles.items}`}>
-                        <div className={`${styles.none}`}>
-                            <Modes />
-                        </div>
-                        <div className={`${styles.item}`}>
-                            <NotificationsNoneOutlinedIcon className={`${styles.icon}`} />
-                            <div className={`${styles.counter}`}>1</div>
+                        <div className={`${styles.item} ${styles.side}`}>
+                            <NavLink to="/dashboard" className={`${styles.navlink}`}>
+                                <DashboardIcon className={`${styles.icon}`} />
+                                Dashboard
+                            </NavLink>
+                            <NavLink to="/overview" className={`${styles.navlink}`}>
+                                <GridViewIcon className={`${styles.icon}`} />
+                                Insights
+                            </NavLink>
+                            <NavLink to="/loads" className={`${styles.navlink}`}>
+                                <StoreIcon className={`${styles.icon}`} />
+                                Loads
+                            </NavLink>
+                            <NavLink to="/shipment" className={`${styles.navlink}`}>
+                                <PriceChangeIcon className={`${styles.icon}`} />
+                                Shipment
+                            </NavLink>
                         </div>
                         <div className={`${styles.item}`}>
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic" className={`${styles.dropdown__img}`}>
-                                    <img
-                                        src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                                        alt=""
-                                        className={`${styles.avatar}`}
-                                    />
+                                    <NavLink to='/profile' className={`${styles.navlink}`}>Ahmed</NavLink>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className={`${styles.dropmenu}`}>
