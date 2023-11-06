@@ -36,7 +36,7 @@ function App() {
       try {
         const parsedToken = JSON.parse(usertoken);
         dispatch(login(parsedToken, userName));
-        // Perform actions to restore the login state
+
       } catch (error) {
         console.error('Error parsing token:', error);
       }
