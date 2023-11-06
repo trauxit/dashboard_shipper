@@ -21,7 +21,7 @@ const Expenses = () => {
     const { token } = useSelector((state) => state.user);
     const [errship, setErrship] = useState('')
     useEffect(() => {
-        if (category === '') {
+        if (category === '' || category === 'all') {
             axios
                 .get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
                     headers: {
@@ -29,10 +29,15 @@ const Expenses = () => {
                     }
                 })
                 .then((response) => {
+                    console.log(response.data);
                     setShip(response.data.data.loads);
+                    setErrship('')
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log(err.response.data.message)
+                    if (err.response.status === 404) {
+                        setErrship(err.response.data.message);
+                    }
                 });
         } else {
             axios
@@ -42,8 +47,8 @@ const Expenses = () => {
                     }
                 })
                 .then((response) => {
-                    console.log(response.data);
                     if (response.status === 200) {
+                        console.log(response.data)
                         setShip(response.data.data.loads);
                         setErrship('')
                     }
@@ -81,11 +86,13 @@ const Expenses = () => {
                                 </div>
                                 <p className={`${styles.filter__para}`}>Filter shipments</p>
                                 <div>
-
-                                    <div className={`${styles.filter__body}`} onClick={() => { setActive("All shipments") }}>
-                                        <p>All shipments</p>
-                                        <p>290</p>
+                                    <div onClick={() => { setCategory("all") }}>
+                                        <div className={`${styles.filter__body}`} onClick={() => { setActive("All shipments") }}>
+                                            <p>All shipments</p>
+                                            <p>290</p>
+                                        </div>
                                     </div>
+
                                     <div onClick={() => { setCategory("inprogress") }}>
                                         <div className={`${active === "In-Progress" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("In-Progress") }}>
                                             <p>In-Progress</p>
