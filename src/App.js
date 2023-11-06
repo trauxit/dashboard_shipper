@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import { login } from './Redux/slices/UserSlice';
 import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
+
 function App() {
   const dispatch = useDispatch();
   /*  useEffect(() => {
@@ -30,10 +31,11 @@ function App() {
    }, [dispatch]); */
   useEffect(() => {
     const usertoken = Cookies.get('token');
+    const userName = Cookies.get('userName')
     if (usertoken) {
       try {
         const parsedToken = JSON.parse(usertoken);
-        dispatch(login(parsedToken));
+        dispatch(login(parsedToken, userName));
         // Perform actions to restore the login state
       } catch (error) {
         console.error('Error parsing token:', error);

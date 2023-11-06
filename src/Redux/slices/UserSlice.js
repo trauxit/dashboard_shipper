@@ -28,14 +28,16 @@ const userSlice = createSlice({
         usr: null,
         error: null,
         /* token: localStorage.getItem('token') || '', */
-        userName: '',
+        userName: Cookies.get('userName'),
         token: Cookies.get('token') || '',
     },
     reducers: {
         login(state, action) {
             state.usr = action.payload.data
             state.token = action.payload.token
+            state.userName = action.payload.data.userData.userName;
             Cookies.set('token', action.payload.token, { expires: 7 });
+            Cookies.set('userName', action.payload.data.userData.userName);
             /*  localStorage.setItem('token', action.payload.token); */
         },
         logout(state) {
@@ -59,6 +61,7 @@ const userSlice = createSlice({
                 state.userName = action.payload.data.userData.userName;
                 localStorage.setItem('user', JSON.stringify(action.payload));
                 Cookies.set('token', action.payload.token, { expires: 7 });
+                Cookies.set('userName', action.payload.data.userData.userName);
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.loading = false;

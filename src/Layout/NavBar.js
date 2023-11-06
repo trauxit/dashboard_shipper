@@ -32,7 +32,6 @@ const NavBar = (props) => {
             authContext.setAuth({});
         } */
     const { userName } = useSelector((state) => state.user);
-    console.log(userName, "hh")
     return (
         <>
             <div className={`${styles.navbar}`}>
