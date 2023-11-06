@@ -11,12 +11,14 @@ import { ToastContainer } from "react-toastify";
 import { Col, Row, Container } from 'react-bootstrap';
 import logo from '../../assets/images/TRAUXIT-2.png'
 import axios from 'axios';
+import Cookies from 'js-cookie';
 const Forget = () => {
     const [email, setEmail] = useState('')
     const navigate = useNavigate();
     const reqData = {
         email
     }
+    Cookies.set('email', email);
     function forget(e) {
         e.preventDefault()
         axios.post(`http://52.87.197.234:3000/api/v1/user/forgetpassword`, reqData)

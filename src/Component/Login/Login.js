@@ -51,7 +51,7 @@ const Login = () => {
                             <div className={`${style.logo__body}`}>
                                 <div className={`${style.b}`}>
                                     <img alt="" src={logo} className={`${style.logo}`} />
-                                    <p className={`${style.logo__para}`}>Trauxit</p>
+
                                 </div>
                                 <h1 className={`${style.login__title}`}>WE’RE CHANGING</h1>
                                 <p className={`${style.login__para}`}>THE WAY THE WORLD THINKS ABOUT FREIGHT </p>

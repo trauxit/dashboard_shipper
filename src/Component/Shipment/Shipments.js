@@ -4,18 +4,50 @@ import NavBar from '../../Layout/NavBar'
 import styles from '../../Styles/expenses.module.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TableShipment from './TableExpenses'
 import east from '../../assets/images/east.svg'
 import head from '../../assets/images/headset_mic.svg'
+import axios from 'axios'
+import { useSelector } from 'react-redux';
 const Expenses = () => {
-    const [active, setActive] = useState('In-Progress')
+    const [active, setActive] = useState('All shipments')
+    let [category, setCategory] = useState('')
+    const [ship, setShip] = useState([])
+    const { token } = useSelector((state) => state.user);
+    useEffect(() => {
+        if (category === '') {
+            axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+
+                }
+            })
+                .then((response) => {
+                    setShip(response.data.data.loads)
+                }).catch((err) => { console.log(err) })
+        }
+
+
+
+        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=${category}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            }
+        })
+            .then((response) => {
+                setShip(response.data.data.loads)
+                console.log(response.data)
+            }).catch((err) => { console.log(err.response.data.message) })
+
+
+    }, [category])
+
     return (
         <>
             <div className={`${styles.home}`}>
                 <div className={`${styles.homeContainer}`}>
                     <NavBar title='Expenses' />
-
                     <div className={`${styles.welcome}`}>
                         <div className={`${styles.welcome__body}`}>
                             <p>Good Morning,</p>
@@ -35,29 +67,34 @@ const Expenses = () => {
                                 </div>
                                 <p className={`${styles.filter__para}`}>Filter shipments</p>
                                 <div>
-                                    <Link to='/all' className={`${styles.alllink}`}>
-                                        <div className={`${styles.filter__body} ${styles.all}`}>
-                                            <p>All shipments</p>
-                                            <p>290</p>
+
+                                    <div className={`${styles.filter__body}`} onClick={() => { setActive("All shipments") }}>
+                                        <p>All shipments</p>
+                                        <p>290</p>
+                                    </div>
+                                    <div onClick={() => { setCategory("inprogress") }}>
+                                        <div className={`${active === "In-Progress" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("In-Progress") }}>
+                                            <p>In-Progress</p>
+                                            <p>17</p>
                                         </div>
-                                    </Link>
-                                    <div className={`${active === "In-Progress" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("In-Progress") }}>
-                                        <p >In-Progress</p>
-                                        <p>17</p>
                                     </div>
-                                    <div className={`${active === "Up coming" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Up coming") }}>
-                                        <p>Up coming</p>
-                                        <p>6</p>
+                                    <div onClick={() => { setCategory("booked") }}>
+                                        <div className={`${active === "Up coming" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Up coming") }}>
+                                            <p>Up coming</p>
+                                            <p>6</p>
+                                        </div>
                                     </div>
-                                    <div className={`${active === "Pasr" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Pasr") }}>
-                                        <p>Pasr</p>
-                                        <p>275</p>
+                                    <div onClick={() => { setCategory("completed") }}>
+                                        <div className={`${active === "Pasr" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Pasr") }}>
+                                            <p>Pasr</p>
+                                            <p>275</p>
+                                        </div>
                                     </div>
                                 </div>
                             </Col>
                             <Col xxl='9'>
                                 <p className={`${styles.ship__para}`}>{active}</p>
-                                <TableShipment />
+                                <TableShipment ship={ship} />
                                 <Link className={`${styles.view__btn}`}>View All <img alt='' src={east} /></Link>
                             </Col>
                         </Row>

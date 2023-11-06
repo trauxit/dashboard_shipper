@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../../Styles/allLoads.module.css'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,25 +12,24 @@ import { Col, Row } from 'react-bootstrap';
 import map from '../../assets/images/Maps.png'
 import path from '../../assets/images/Path.svg'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-/* function createData(
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-]; */
+import axios from 'axios'
+import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const Booking = () => {
+    const [ship, setShip] = useState([])
+    const { token } = useSelector((state) => state.user);
+    const [err, setErr] = useState('')
+    useEffect(() => {
+        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=booked`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                setShip(response.data.data.loads)
+            }).catch((err) => { setErr(err.response.data.message) })
+    }, [])
     return (
         <>
             <Row className={`${styles.bookrow}`}>
@@ -48,249 +47,48 @@ const Booking = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
+                                {ship.length !== 0 ?
+                                    <>
+                                        {ship && ship.map(shipCard =>
+                                            <TableRow
+                                                key={shipCard?._id}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                className={`${styles.book}`}
+                                            >
+                                                <TableCell component="th" scope="row">
+                                                    <h5>UF-S82854232</h5>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>{shipCard?.PickupLocation?.address}</h5>
+                                                    <p>{moment(shipCard?.summary?.departureTime).format('MMM Do YY')} </p>
 
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>{shipCard?.DropoutLocation?.address}</h5>
+                                                    <p>{moment(shipCard?.summary?.arrivalTime).format('MMM Do YY')} </p>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>{shipCard.idCarrier.userName}</h5>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>{shipCard.status}</h5>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <MoreHorizIcon />
+                                                </TableCell>
+                                            </TableRow>
 
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
+                                        )}
+                                    </>
+                                    :
+                                    <div className='mt-5'>
+                                        <div className='d-flex'>
+                                            <h5 className='m-auto'> {err}</h5>
+                                        </div>
+                                    </div>
+                                }
 
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
 
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    className={`${styles.book}`}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        <h5>UF-S82854232</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Dalas, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Huston, TX</h5>
-                                        <p>Sep 28+14:30 CST </p>
-
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>Kevin</h5>
-                                    </TableCell>
-                                    <TableCell>
-                                        <h5>230mi</h5>
-                                        <p>$3.23/mile</p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <MoreHorizIcon />
-                                    </TableCell>
-                                </TableRow>
                             </TableBody>
                         </Table>
                     </TableContainer>

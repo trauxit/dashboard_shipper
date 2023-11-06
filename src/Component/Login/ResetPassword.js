@@ -9,11 +9,12 @@ import { Col, Row, Container } from 'react-bootstrap';
 import logo from '../../assets/images/TRAUXIT-2.png'
 import axios from 'axios';
 import { toast } from 'react-toastify'
+import Cookies from 'js-cookie';
 const ResetPassword = () => {
-    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const navigate = useNavigate();
+    const email = Cookies.get('email')
     const reqData = {
         email,
         password,
@@ -58,10 +59,6 @@ const ResetPassword = () => {
                             <p className={`${style.signup}`}>Don’t have an account? <Link className={`${style.signup__link}`}>Sign Up</Link> </p>
                             <h3 className={`${style.signin}`}>Reset Password</h3>
                             <div className={`${style.signin__form}`}>
-                                <Form.Group className="mb-3 " controlId="email">
-                                    <Form.Label className={`${style.label}`}>Email address</Form.Label>
-                                    <Form.Control name="email" type='email' autoComplete="off" placeholder='' className={`${style.full}`} value={email} onChange={(e) => setEmail(e.target.value)} />
-                                </Form.Group>
                                 <Form.Group className="mb-3 " controlId="password">
                                     <Form.Label className={`${style.label}`}>Password</Form.Label>
                                     <Form.Control name="password" type='password' autoComplete="off" placeholder='' className={`${style.full}`} value={password} onChange={(e) => setPassword(e.target.value)} />

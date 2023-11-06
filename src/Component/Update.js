@@ -114,6 +114,7 @@ const Setting = () => {
                 console.log(response.data)
             }
             ).catch((err) => { toast.error(err.response.data.message) })
+
         if (formData.password) {
             axios.patch(`http://52.87.197.234:3000/api/v1/user/updatemypassword`, storePass, {
                 headers: {
