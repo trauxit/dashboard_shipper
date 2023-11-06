@@ -33,6 +33,11 @@ const Login = () => {
                 setEmail('');
                 setPassword('');
                 navigate('/dashboard')
+                toast.success('success')
+                localStorage.setItem('email', email)
+            }
+            else {
+                toast.error(error)
             }
         })
     }
@@ -63,22 +68,25 @@ const Login = () => {
                             <div className={`${style.signin__form}`}>
                                 <Form.Group className="mb-3 " controlId="email">
                                     <Form.Label className={`${style.label}`}>Email address</Form.Label>
-                                    <Form.Control name="email" type='email' autoComplete="off" placeholder='' className={`${style.full}`} />
+                                    <Form.Control name="email" type='email' autoComplete="off" placeholder='' className={`${style.full}`} value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3 mt-4 " controlId="email">
+                                <Form.Group className="mb-3 mt-4 " controlId="password">
                                     <Form.Label className={`${style.label}`}>Password</Form.Label>
-                                    <Form.Control name="email" type='email' autoComplete="off" placeholder='' className={`${style.full}`} />
+                                    <Form.Control name="password" type='password' autoComplete="off" placeholder='' className={`${style.full}`} value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </Form.Group>
 
                                 <button className={style.log__btn} type='button' onClick={login}>Sign In</button>
-                                {error && (
+                                {/* {error && (
                                     <div className='alert alert-danger' role='alert'>{error}</div>
-                                )}
+                                )} */}
+                                <div className={`${style.forget__body}`}>
+                                    <Link className={`${style.forget}`} to="/forget">forget password ?</Link>
+                                </div>
                             </div>
                         </Col>
                     </Row>
-
+                    <ToastContainer />
                 </section>
             </Container>
             {/* <Row className={`${style.rev}`}>
@@ -129,7 +137,7 @@ const Login = () => {
                             </div>
                         </Col>
                     </Row> */}
-            <ToastContainer />
+
 
         </>
     )

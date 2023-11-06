@@ -36,17 +36,17 @@ const ColLoad = () => {
                         <h2>Loads</h2>
                         <p> 108</p>
                     </div>
-                    <div className={`${styles.tabline__lanes}`}>
+                    {/*  <div className={`${styles.tabline__lanes}`}>
                         <h2>Dedicated Lanes </h2>
                         <p> 108</p>
-                    </div>
+                    </div> */}
                 </div>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Rate</TableCell>
                             <TableCell>Pickup</TableCell>
-                            <TableCell>Full Route</TableCell>
+                            {/* <TableCell>Full Route</TableCell> */}
                             <TableCell>Delivery</TableCell>
                             <TableCell>Distance and RPM</TableCell>
                             <TableCell>Deadhead</TableCell>
@@ -65,7 +65,7 @@ const ColLoad = () => {
                                 <p>Sep 28+14:30 CST </p>
 
                             </TableCell>
-                            <TableCell></TableCell>
+                            {/*  <TableCell></TableCell> */}
                             <TableCell>
                                 <h5>Huston, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
@@ -95,7 +95,7 @@ const ColLoad = () => {
                                 <h5>Dalas, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
                             </TableCell>
-                            <TableCell></TableCell>
+                            {/*  <TableCell></TableCell> */}
                             <TableCell>
                                 <h5>Huston, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
@@ -125,7 +125,7 @@ const ColLoad = () => {
                                 <h5>Dalas, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
                             </TableCell>
-                            <TableCell></TableCell>
+                            {/*  <TableCell></TableCell> */}
                             <TableCell>
                                 <h5>Huston, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
@@ -155,7 +155,7 @@ const ColLoad = () => {
                                 <h5>Dalas, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
                             </TableCell>
-                            <TableCell></TableCell>
+                            {/*  <TableCell></TableCell> */}
                             <TableCell>
                                 <h5>Huston, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
@@ -185,7 +185,7 @@ const ColLoad = () => {
                                 <h5>Dalas, TX</h5>
                                 <p>Sep 28+14:30 CST </p>
                             </TableCell>
-                            <TableCell></TableCell>
+                            {/*  <TableCell></TableCell> */}
                             <TableCell>
                                 <h5>Huston, TX</h5>
                                 <p>Sep 28+14:30 CST </p>

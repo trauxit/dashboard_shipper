@@ -11,15 +11,28 @@ import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import GridViewIcon from '@mui/icons-material/GridView';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import StoreIcon from "@mui/icons-material/Store";
+import { useSelector } from 'react-redux';
+import { selectUserName } from '../Redux/slices/UserSlice';
+import { useDispatch } from 'react-redux';
+import { logout } from '../Redux/slices/UserSlice';
+import Cookies from 'js-cookie';
 const NavBar = (props) => {
-    const [active, setactive] = useState(true)
-    const navigate = useNavigate('/all-loads')
-    const authContext = useContext(AuthContext);
-    function logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
-        authContext.setAuth({});
-    }
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        localStorage.clear();
+        Cookies.remove();
+        dispatch(logout());
+    };
+    /*     const [active, setactive] = useState(true)
+        const navigate = useNavigate('/all-loads')
+        const authContext = useContext(AuthContext);
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('email');
+            authContext.setAuth({});
+        } */
+    const { userName } = useSelector((state) => state.user);
+    console.log(userName, "hh")
     return (
         <>
             <div className={`${styles.navbar}`}>
@@ -52,13 +65,13 @@ const NavBar = (props) => {
                         <div className={`${styles.item}`}>
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic" className={`${styles.dropdown__img}`}>
-                                    <NavLink to='/profile' className={`${styles.navlink}`}>Ahmed</NavLink>
+                                    <NavLink to='/profile' className={`${styles.navlink}`}>{userName}</NavLink>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className={`${styles.dropmenu}`}>
-                                    <Dropdown.Item ><Link to='/setting' className={`${styles.menu__link}`}>Setting</Link></Dropdown.Item>
+                                    <Dropdown.Item ><Link to='/Update' className={`${styles.menu__link}`}>Update</Link></Dropdown.Item>
                                     <Dropdown.Item ><Link to='/profile' className={`${styles.menu__link}`}>Profile</Link></Dropdown.Item>
-                                    <Dropdown.Item ><Link to='' className={`${styles.menu__link}`} onClick={logout}>Logout</Link></Dropdown.Item>
+                                    <Dropdown.Item ><Link to='' className={`${styles.menu__link}`} onClick={handleLogout}>Logout</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
 

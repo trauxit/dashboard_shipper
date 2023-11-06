@@ -263,26 +263,7 @@ margin-top: 200px;
 .forgetpass__body{
 padding-top: 120px !important;
 }
-.otp input {
-    
-outline: none;
-    border-radius: 12px !important;
-    width: 50px !important;
-    background-color: #ffffff !important;
-    transition: 300ms ease-in-out;
-    font-size: 17px;
-    color: #202020 !important;
-    margin-top: 30px;
-    height: 50px;
-    margin: auto;
-    direction: ltr !important;
-    border-color: transparent !important;
-    box-shadow: 0 .5rem 1rem rgba(124, 124, 124, 0.11) !important;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    border: 1px solid #eee !important;
-    margin-left: 5px;
-}
+
 @media (min-width:0px) and (max-width:600px) {
     .login-container {
         background-image: none !important;
@@ -540,91 +521,159 @@ color: #BDBDBD;
 .log__btn:active {
     filter: brightness(.8);
 }
-@media (min-width:0px) and (max-width:600px) {
-    .logo__body,
-    .signup{
-        display: none;
-    }
 
-    .mob {
-        text-align: center;
-        display: block;
-    }
-.signin__form{
+.forget {
+    color: #FF8201;
+    text-decoration: none;
+    text-transform: capitalize;
+
+}
+.forget__body{
+margin-left: 150px !important;
+
+ margin-top: 15px !important;
+}
+.otp input {
+
+    outline: none;
+    border-radius: 12px !important;
+    width: 50px !important;
+    transition: 300ms ease-in-out;
+    font-size: 17px;
+    color: #202020 !important;
     margin-top: 30px;
+    height: 50px;
+    margin: auto;
+    direction: ltr !important;
+    border-color: transparent !important;
+    margin-top: 50px;
+    border: 1px solid #eee !important;
+    margin-left: 5px;
 }
- .full,
- .log__btn{
-    width: 100% !important;
- }
- .log__btn{
-    margin-top: 30px !important;
- }
- .loginpage{
-    margin-bottom: 20px;
-    margin-top: 70px;
- }
+.forgetpass {
+    width: 500px;
 }
-.mob{
+
+.forgetpass__body {
+    padding-top: 70px !important;
+}
+.mob {
     display: none;
 }
+@media (min-width:0px) and (max-width:600px) {
+
+    .logo__body,
+    .signup {
+        display: none;
+    }
+.forget__body {
+margin-left: 80px !important;
+}
+    .mob {
+        text-align: center !important;
+        display: block !important;
+    }
+
+    .signin__form {
+        margin-top: 30px;
+    }
+
+    .full,
+    .log__btn,
+    .forgetpass {
+        width: 100% !important;
+    }
+
+    .log__btn {
+        margin-top: 30px !important;
+    }
+
+    .loginpage {
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    .otp input {
+        width: 40px !important;
+        margin-left: 5px !important;
+    }
+}
+
+
 @media (min-width:600px) and (max-width:900px) {
 
-    .mob{
+    .mob {
         display: none;
         text-align: center;
     }
-.logo__body {
-    height: 500px;
-    width: 250px;
-    padding: 0px 50px;
 
+    .logo__body {
+        height: 500px;
+        width: 250px;
+        padding: 0px 50px;
+
+    }
+.forget__body {
+    margin-left: 120px !important;
 }
-.full,
-.log__btn {
-    width: 100% !important;
+    .full,
+    .log__btn,
+    .forgetpass {
+        width: 100% !important;
+    }
+
+    .log__btn {
+        margin-top: 30px;
+    }
+
+    .b {
+        padding-left: 130px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .logo__para {
+        font-size: 17px;
+        text-align: center !important;
+        padding-left: 20px;
+    }
+
+    .login__title {
+        font-size: 20px;
+    }
+
+    .login__para {
+        font-size: 17px;
+    }
+
+    .logo__body {
+        padding: 0 20px;
+    }
+
+    .signin__form {
+        margin-top: 30px;
+    }
 }
-.log__btn{
-    margin-top: 30px;
-}
-  .b {
-      padding-left:130px;
-      text-align: center;
-  }
-  .logo{
-    width: 100px;
-  }
-  .logo__para{
-    font-size: 17px;
-    text-align: center !important;
-    padding-left: 20px;
-  }
-  .login__title{
-    font-size: 20px;
-  }
-  .login__para{
-    font-size: 17px;
-  }
-  .logo__body{
-    padding: 0 20px;
-  }
-  .signin__form{
-    margin-top: 30px;
-  }
-}
+
 @media (min-width:900px) and (max-width:1200px) {
-    .loginpage{
+    .loginpage {
         margin-top: 20px !important;
         margin-bottom: 20px !important;
     }
+
     .signin,
-    .signin__form{
+    .signin__form,
+    .otp {
         padding-left: 50px;
     }
 }
+
 @media (min-width:1200px) and (max-width:1400px) {
     .loginpage {
-            margin-top: 20px !important;
-            margin-bottom: 20px !important;
-        }
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
 }

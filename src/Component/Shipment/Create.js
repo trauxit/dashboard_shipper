@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useReducer } from 'react'
 import styles from '../../Styles/create.module.css'
 import NavBar from '../../Layout/NavBar'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -10,7 +10,82 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import top from '../../assets/images/Exclude.svg'
 import bottom from '../../assets/images/Exclude (1).svg'
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify'
+import { useSelector } from 'react-redux';
 const Create = () => {
+    const initialState = {
+        typeLoads: '',
+        Weight: '',
+        nameLoads: '',
+        packagingType: '',
+        departureTime: '',
+        Pickupaddress: '',
+        Pickupdescription: '',
+        Pickuptype: '',
+        dropoffaddress: '',
+        dropoffdescription: '',
+        dropofftype: ''
+    };
+    function formReducer(state, action) {
+        switch (action.type) {
+            case 'UPDATE_FIELD':
+                return {
+                    ...state,
+                    [action.field]: action.value
+                };
+            case 'RESET_FORM':
+                return initialState;
+            default:
+                return state;
+        }
+    }
+    const [formData, dispatch] = useReducer(formReducer, initialState);
+    const { token } = useSelector((state) => state.user);
+    function handleChange(e) {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'UPDATE_FIELD',
+            field: name,
+            value: value
+        });
+    }
+    function finalize(e) {
+        e.preventDefault();
+        const reqData = {
+            typeLoads: formData.typeLoads,
+            nameLoads: formData.nameLoads,
+            Weight: formData.Weight,
+            PickupLocation: {
+                description: formData.Pickupdescription,
+                type: 'Point',
+                coordinates: [-90.990165, 38.427011],
+                address: formData.Pickupaddress
+            },
+            DropoutLocation: {
+                description: formData.dropoffdescription,
+                type: 'Point',
+                coordinates: [-90.185406, 38.620605],
+                address: formData.dropoffaddress
+            },
+            departureTime: formData.departureTime,
+            packagingType: formData.packagingType
+        };
+
+        axios
+            .post('http://52.87.197.234:3000/api/v1/loads/shipper/', reqData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {
+                toast.success(response.data.status);
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message);
+            });
+    }
     return (
         <>
             <div className={`${styles.home}`}>
@@ -73,7 +148,7 @@ const Create = () => {
                                     <h2>Finalize details on your shipment</h2>
                                     <p>We just need a bit more information to move your shipments!</p>
                                 </div>
-                                <Form className={``}>
+                                <Form className={``} onSubmit={(e) => finalize(e)}>
                                     <div>
                                         <div className={`${styles.shipform}`}>
                                             <img alt='' src={fast} />
@@ -82,8 +157,10 @@ const Create = () => {
                                     </div>
                                     <div className={`${styles.first}`}>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Customer Reference Number</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g water bottles" className='cont' />
+                                            <Form.Label>Type of Loads</Form.Label>
+                                            <Form.Control type="text" placeholder="e.g PATA" className='cont' name="typeLoads"
+                                                value={formData.typeLoads}
+                                                onChange={handleChange} />
                                         </Form.Group>
                                         <div>
                                             <Form.Label className={`${styles.lbs}`}>Weight</Form.Label>
@@ -93,6 +170,11 @@ const Create = () => {
                                                     aria-label="Recipient's username"
                                                     aria-describedby="basic-addon2"
                                                     className='in weight'
+                                                    type='number'
+                                                    name="Weight"
+                                                    value={formData.Weight}
+                                                    onChange={handleChange}
+
                                                 />
                                                 <InputGroup.Text id="basic-addon2" className='in tex'>Lbs</InputGroup.Text>
                                             </InputGroup>
@@ -100,12 +182,43 @@ const Create = () => {
                                     </div>
                                     <div className={`${styles.first}`}>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Customer Reference Number</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g water bottles" className='cont' />
+                                            <Form.Label>Name of Loads</Form.Label>
+                                            <Form.Control type="text" placeholder="e.g T-shirt" className='cont' name="nameLoads"
+                                                value={formData.nameLoads}
+                                                onChange={handleChange} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Customer Reference Number</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g water bottles" className='cont' />
+                                            <Form.Label>Packaging Type</Form.Label>
+                                            <select
+                                                placeholder="State"
+                                                className={` cont`}
+                                                name="packagingType"
+                                                value={formData.packagingType}
+                                                onChange={handleChange}
+                                            >
+                                                <option value=''>select Packaging Type</option>
+                                                <option value='Cardboard Boxes'>Cardboard Boxes</option>
+                                                <option value='Corrugated Boxes'>Corrugated Boxes</option>
+                                                <option value='Pallets'>Pallets</option>
+                                                <option value='Wooden Crates'>Wooden Crates</option>
+                                                <option value='Polyethylene Bags'>Polyethylene Bags</option>
+                                                <option value='Bubble Wrap'>Bubble Wrap</option>
+                                                <option value='Air Cushions'>Air Cushions</option>
+                                                <option value='Shipping Envelopes'>Shipping Envelopes</option>
+                                                <option value='Shipping Tubes'>Shipping Tubes</option>
+                                                <option value='Foam-in-Place Packaging'>Foam-in-Place Packaging</option>
+                                                <option value='Insulated'>Insulated</option>
+                                                <option value='Reusables and Returnable'>Reusables and Returnable</option>
+                                                <option value='Custom Packaging'>Custom Packaging </option>
+                                            </select>
+                                        </Form.Group>
+                                    </div>
+                                    <div className={`${styles.first}`}>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Label>Departure Time</Form.Label>
+                                            <Form.Control type="date" className='cont' name="departureTime"
+                                                value={formData.departureTime}
+                                                onChange={handleChange} />
                                         </Form.Group>
                                     </div>
                                     <div className={`${styles.pickup}`}>
@@ -114,24 +227,23 @@ const Create = () => {
                                     </div>
                                     <div className={`${styles.first}`}>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Dropoff Number</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g water bottles" className='cont' />
+                                            <Form.Label>Address</Form.Label>
+                                            <Form.Control type="text" placeholder="e.g union,USA" className='cont' name="Pickupaddress"
+                                                value={formData.Pickupaddress}
+                                                onChange={handleChange} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Dropoff Type</Form.Label>
-                                            <select
-                                                placeholder="State"
-                                                className={` cont`}
-                                            >
-                                                <option value=''>select dropoff type</option>
-                                                <option value='m'>blabla</option>
-                                                <option value='f'>blablabla</option>
-                                            </select>
+                                            <Form.Label>Pickup Type</Form.Label>
+                                            <Form.Control type="text" placeholder="e.g union,USA" className='cont' name="Pickuptype"
+                                                value='Point'
+                                                readOnly />
                                         </Form.Group>
                                     </div>
                                     <Form.Group controlId="exampleForm.ControlTextarea1" className={`${styles.textareaship} mb-3 mt-3`}>
                                         <Form.Label>Additonal Notes</Form.Label>
-                                        <Form.Control as="textarea" className='cont shipt' rows={4} placeholder='Let’s know if there any specifics we need to know about this facility' />
+                                        <Form.Control as="textarea" className='cont shipt' rows={4} placeholder='Let’s know if there any specifics we need to know about this facility' name="Pickupdescription"
+                                            value={formData.Pickupdescription}
+                                            onChange={handleChange} />
                                     </Form.Group>
 
                                     <div className={`${styles.pickup}`}>
@@ -140,24 +252,23 @@ const Create = () => {
                                     </div>
                                     <div className={`${styles.first}`}>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Dropoff Number</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g water bottles" className='cont' />
+                                            <Form.Label>Address</Form.Label>
+                                            <Form.Control type="text" placeholder="e.g sant luis,USA" className='cont' name="dropoffaddress"
+                                                value={formData.dropoffaddress}
+                                                onChange={handleChange} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label>Dropoff Type</Form.Label>
-                                            <select
-                                                placeholder="State"
-                                                className={` cont`}
-                                            >
-                                                <option value=''>select dropoff type</option>
-                                                <option value='m'>blabla</option>
-                                                <option value='f'>blablabla</option>
-                                            </select>
+                                            <Form.Control type="text" placeholder="e.g union,USA" className='cont' name="dropofftype"
+                                                value='Point'
+                                                readOnly />
                                         </Form.Group>
                                     </div>
                                     <Form.Group controlId="exampleForm.ControlTextarea1" className={`${styles.textareaship} ${styles.hr} mb-3 mt-3`}>
                                         <Form.Label>Additonal Notes</Form.Label>
-                                        <Form.Control as="textarea" className='cont shipt' rows={4} placeholder='Let’s know if there any specifics we need to know about this facility' />
+                                        <Form.Control as="textarea" className='cont shipt' rows={4} placeholder='Let’s know if there any specifics we need to know about this facility' name="dropoffdescription"
+                                            value={formData.dropoffdescription}
+                                            onChange={handleChange} />
                                     </Form.Group>
                                     <div className={`${styles.submit__btns}`}>
                                         <p className={`${styles.save}`}>Save & Finish Later</p>
@@ -167,7 +278,7 @@ const Create = () => {
                             </Container>
                         </Col>
                     </Row>
-
+                    <ToastContainer />
                 </div>
             </div>
         </>

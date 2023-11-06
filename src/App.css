@@ -335,3 +335,6 @@ left: 10px;
     width: 100% !important;
   }
 }
+.alert{
+  width: 400px;
+}

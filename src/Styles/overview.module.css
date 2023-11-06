@@ -235,6 +235,7 @@ font-family: 'JosefinSans-Regular' !important;
         .home {
                 display: flex;
                 flex-direction: column-reverse;
+                margin: 0 20px;
             }
     .overviewOrFacilities,
     .overview__charts,
@@ -252,5 +253,13 @@ font-family: 'JosefinSans-Regular' !important;
     .tab{
         margin-left: 6px !important;
     }
-
+    .linear__body{
+        margin: 10px !important;
+    }
+.overview__bar{
+padding: 0 !important;
+}
+.tab__cell{
+padding-right: 50px !important;
+}
 }

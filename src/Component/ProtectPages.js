@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from './AuthContext';
-
+import { useSelector } from 'react-redux';
 const Protect = () => {
-    const authContext = useContext(AuthContext);
+    const { token } = useSelector((state) => state.user);
     return (
         <>
-            {authContext.auth.token ? <Outlet /> : <Navigate to="/" />}
+            {token ? <Outlet /> : <Navigate to="/" />}
 
         </>
     )

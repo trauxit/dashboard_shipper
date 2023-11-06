@@ -241,7 +241,7 @@ width: 100%;
 
 }
 .activities__body{
-    background-color: #000;
+    background-color: #FF8201;
     color: #fff;
     text-align: center;
     border-radius:24px ;
@@ -267,7 +267,7 @@ width: 100%;
             font-weight: 800;
             line-height: normal;
 }
-.transit p{
+/* .transit p{
     color: #26E2B3;
         text-shadow: 0px -1px 33px rgba(26, 190, 255, 0.50);
         font-size: 14px;
@@ -282,7 +282,7 @@ width: 100%;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
-}
+} */
 .type{
     display: flex;
     text-align: center;
@@ -676,5 +676,8 @@ margin-bottom: 15px;
 .r2 {
     margin-left: 10px !important;
     margin-bottom: 15px;
+}
+.tabcontrol__title{
+    font-size: 14px !important;
 }
 }

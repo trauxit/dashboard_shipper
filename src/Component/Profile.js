@@ -8,7 +8,29 @@ import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
 import photo from '../assets/images/FB_IMG_1528049839195.jpg'
 import bag from '../assets/images/undefined.svg'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 const Profile = () => {
+    const { token } = useSelector((state) => state.user);
+    const [data, setData] = useState({})
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        axios.get(`http://52.87.197.234:3000/api/v1/user/getmydata`, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        })
+            .then((response) => {
+                setData(response.data.data.userData)
+                setUser(response.data.data.user_info)
+            }).catch((err) => { console.log(err) })
+
+    }, [])
+    console.log(data, "kkkk")
+    /* const fullName = data?.fullName*/
+    /*console.log(data.fullName.split(' ').slice(-1).join(' '))*/
     return (
         <>
             <div className={`${styles.home}`}>
@@ -18,44 +40,44 @@ const Profile = () => {
                     <div className={`${styles.user__body}`}>
                         <div className={`${styles.profile}`}>
                             <div>
-                                <img alt='' src={photo} className={`${styles.user__img}`} />
+                                <img alt='' src={data.image} className={`${styles.user__img}`} />
                             </div>
                             <div>
-                                <h2 className={`${styles.user__title}`} >Ahmed Mohamed</h2>
-                                <p className={`${styles.user__para}`} >Eastern European Time (EET), Cairo UTC +3</p>
+                                <h2 className={`${styles.user__title}`} >{data.fullName}</h2>
+                                <p className={`${styles.user__para}`} >{data.address}</p>
                             </div>
                         </div>
                         <div>
-                            <Link to='/setting' className={`${styles.edit__btn}`}>Edit</Link>
+                            <Link to='/Update' className={`${styles.edit__btn}`}>Edit</Link>
                         </div>
                     </div>
                     <div className={`${styles.user__details}`}>
                         <div >
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>First Name</h3>
-                                <p className={`${styles.para}`}>Ahmed</p>
+                                <p className={`${styles.para}`}>{ }</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>User Name</h3>
-                                <p className={`${styles.para}`}>Ahmedmo2020</p>
+                                <p className={`${styles.para}`}>{user.userName}</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Address</h3>
-                                <p className={`${styles.para}`}>Eastern European Time (EET), Cairo UTC +3</p>
+                                <p className={`${styles.para}`}>{data.address}</p>
                             </div>
                         </div>
                         <div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Last Name</h3>
-                                <p className={`${styles.para}`}>Mohamed</p>
+                                <p className={`${styles.para}`}>{ }</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Email Address</h3>
-                                <p className={`${styles.para}`}>Ahmedmo2020@gmail.com</p>
+                                <p className={`${styles.para}`}>{user.email}</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Phone Number</h3>
-                                <p className={`${styles.para}`}>0102131232322</p>
+                                <p className={`${styles.para}`}>{data.phoneNumber}</p>
                             </div>
                         </div>
                     </div>
@@ -64,15 +86,7 @@ const Profile = () => {
                         <div >
                             <div className={`${styles.company__body}`}>
                                 <img alt='' src={bag} />
-                                <p>Trauxit</p>
-                            </div>
-                            <div className={`${styles.company__body}`}>
-                                <img alt='' src={bag} />
-                                <p>Noon</p>
-                            </div>
-                            <div className={`${styles.company__body}`}>
-                                <img alt='' src={bag} />
-                                <p>LamasaTech</p>
+                                <p>{data.companyName}</p>
                             </div>
                         </div>
                     </div>
