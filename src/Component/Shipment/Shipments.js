@@ -10,38 +10,52 @@ import east from '../../assets/images/east.svg'
 import head from '../../assets/images/headset_mic.svg'
 import axios from 'axios'
 import { useSelector } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import out from '../../assets/images/Exclude.svg';
+import inimg from '../../assets/images/Exclude (1).svg'
+import moment from 'moment';
 const Expenses = () => {
     const [active, setActive] = useState('All shipments')
     let [category, setCategory] = useState('')
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
+    const [errship, setErrship] = useState('')
     useEffect(() => {
         if (category === '') {
-            axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-
-                }
-            })
+            axios
+                .get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
                 .then((response) => {
-                    setShip(response.data.data.loads)
-                }).catch((err) => { console.log(err) })
+                    setShip(response.data.data.loads);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } else {
+            axios
+                .get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=${category}`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    if (response.status === 200) {
+                        setShip(response.data.data.loads);
+                        setErrship('')
+                    }
+                })
+                .catch((err) => {
+                    console.log(err.response.data.message)
+                    if (err.response.status === 404) {
+                        setErrship(err.response.data.message);
+                    }
+                });
         }
-
-
-
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=${category}`, {
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            }
-        })
-            .then((response) => {
-                setShip(response.data.data.loads)
-                console.log(response.data)
-            }).catch((err) => { console.log(err.response.data.message) })
-
-
-    }, [category])
+    }, [category]);
 
     return (
         <>
@@ -94,8 +108,58 @@ const Expenses = () => {
                             </Col>
                             <Col xxl='9'>
                                 <p className={`${styles.ship__para}`}>{active}</p>
-                                <TableShipment ship={ship} />
-                                <Link className={`${styles.view__btn}`}>View All <img alt='' src={east} /></Link>
+                                <div>
+                                    {errship == '' ?
+                                        <>
+                                            {ship && ship.map(shipCard =>
+                                                <>
+                                                    <div className={`${styles.destination__body}`} key={shipCard?._id}>
+                                                        <p className={`${styles.destination__para}`}>{shipCard?.Weight}</p>
+                                                        <div className={`${styles.divide}`}>
+                                                            <div className='shipmentprog'>
+                                                                <h2 className={`${styles.destination__title}`}>At Destination</h2>
+                                                                <p className={`${styles.destination__time}`}>{moment(shipCard?.summary?.arrivalTime).format('LLL')}</p>
+                                                                <div className={`${styles.arrive}`}>
+                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                    <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div className={`${styles.out__body}`}>
+                                                                    <img alt='' src={out} />
+                                                                    <p>{shipCard?.PickupLocation?.address}</p>
+                                                                </div>
+                                                                <p className={`${styles.date__para}`}>{moment(shipCard?.summary?.departureTime).format('MMM Do YY')}</p>
+                                                                <p className={`${styles.date__time}`}>{moment(shipCard?.summary?.departureTime).format('LT')}</p>
+                                                            </div>
+                                                            <div>
+                                                                <div className={`${styles.in__body}`}>
+                                                                    <img alt='' src={inimg} />
+                                                                    <p>{shipCard?.DropoutLocation?.address}</p>
+                                                                </div>
+                                                                <p className={`${styles.date__para}`}>{moment(shipCard?.summary?.arrivalTime).format('MMM Do YY')}</p>
+                                                                <p className={`${styles.date__time}`}>{moment(ship?.summary?.arrivalTime).format('LT')}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </>
+                                            )}
+                                            <Link className={`${styles.view__btn}`}>View All <img alt='' src={east} /></Link>
+                                        </>
+                                        :
+                                        <div className='mt-5'>
+                                            <div className='d-flex'>
+                                                <h5 className='m-auto'> {errship}</h5>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+
+
                             </Col>
                         </Row>
                         <div className={`${styles.support}`}>
