@@ -182,11 +182,20 @@ column-gap: 50px;
     background-color: rgba(217, 217, 217, 0.40) !important;
     cursor: pointer;
 }
+.errbook{
+    text-align: center !important;
+    margin-left:500px;
+}
 @media (min-width:0) and (max-width:600px) {
         .home {
                 display: flex;
                 flex-direction: column-reverse;
             }
+                        .errbook {
+                            text-align: center !important;
+                            margin-left: 50px;
+                            font-size: 17px;
+                        }
     .find__search,
     .search,
     .find__filter{
@@ -211,7 +220,10 @@ column-gap: 50px;
     }
     .find__body{
         width: 100% !important;
-        margin:20px 0 !important;
+        margin:20px 0  !important;
+margin-left: 15px !important;
+width: 92% !important;
+        
     }
     .findOrBooked__body{
         text-align: center !important;
@@ -224,4 +236,20 @@ column-gap: 50px;
     .map{
         margin-left: 15px !important;
     }
+}
+.edit__body{
+    background-color: #898989;
+    border: 1px solid #eee;
+    padding: 10px 0 5px 5px;
+}
+.edit__body p{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.edit__body hr{
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+.inprogress {
+    color: #FF8201 !important;
 }

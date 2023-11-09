@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import { Col, Row } from 'react-bootstrap';
 import ColLoad from './ColLoad';
 import Booking from './Booking';
+import Pending from './Pending';
+import Canceled from './Canceled'
 const AllLoads = () => {
     const [active, setActive] = useState('find')
     return (
@@ -16,6 +18,8 @@ const AllLoads = () => {
                     <div className={`${styles.findOrBooked__body}`}>
                         <h2 className={`${active === "find" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("find") }}>Find</h2>
                         <h2 className={`${active === "booked" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("booked") }}>Booked</h2>
+                        <h2 className={`${active === "pending" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("pending") }}>Pending</h2>
+                        <h2 className={`${active === "canceled" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("canceled") }}>Canceled</h2>
                     </div>
                     <div className={`${active === "find" ? styles.block : styles.none}`}>
                         <div className={`${styles.find__body}`}>
@@ -109,6 +113,12 @@ const AllLoads = () => {
                     </div>
                     <div className={`${active === "booked" ? styles.block : styles.none}`}>
                         <Booking />
+                    </div>
+                    <div className={`${active === "pending" ? styles.block : styles.none}`}>
+                        <Pending />
+                    </div>
+                    <div className={`${active === "canceled" ? styles.block : styles.none}`}>
+                        <Canceled />
                     </div>
                 </div>
             </div>

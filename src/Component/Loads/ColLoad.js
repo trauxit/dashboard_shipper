@@ -14,6 +14,7 @@ import moment from 'moment';
 const ColLoad = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
+    const [err, setErr] = useState('')
     useEffect(() => {
         axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
             headers: {
@@ -22,7 +23,7 @@ const ColLoad = () => {
         })
             .then((response) => {
                 setShip(response.data.data.loads)
-            }).catch((err) => { console.log(err) })
+            }).catch((err) => { setErr(err.response.data.message) })
     }, [])
     return (
         <>
@@ -31,7 +32,7 @@ const ColLoad = () => {
                 <div className={`${styles.tabline}`}>
                     <div className={`${styles.tabline__load}`}>
                         <h2>Loads</h2>
-                        <p> 108</p>
+                        <p> {ship.length}</p>
                     </div>
                     {/*  <div className={`${styles.tabline__lanes}`}>
                         <h2>Dedicated Lanes </h2>
@@ -45,15 +46,17 @@ const ColLoad = () => {
                             <TableCell>Pickup</TableCell>
                             {/* <TableCell>Full Route</TableCell> */}
                             <TableCell>Delivery</TableCell>
-                            <TableCell>Distance and RPM</TableCell>
+                            <TableCell>Distance</TableCell>
                             <TableCell>Deadhead</TableCell>
                             <TableCell>Weight</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {ship.length !== 0 ?
+
                             <>
                                 {ship && ship.map(shipCard =>
+
                                     <TableRow
                                         key={shipCard?._id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -87,16 +90,17 @@ const ColLoad = () => {
 
                                 )}
                             </>
+
                             :
                             <div className='mt-5'>
                                 <div className='d-flex'>
-                                    <h5 className='m-auto'> nothing</h5>
+                                    <h5 className='m-auto'> {err}</h5>
                                 </div>
                             </div>
                         }
 
-
                     </TableBody>
+
                 </Table>
             </TableContainer >
         </>

@@ -20,6 +20,8 @@ const Expenses = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [errship, setErrship] = useState('')
+    const [length, setLength] = useState(0)
+    const [alllength, setAllLength] = useState(0)
     useEffect(() => {
         if (category === '' || category === 'all') {
             axios
@@ -31,12 +33,14 @@ const Expenses = () => {
                 .then((response) => {
                     console.log(response.data);
                     setShip(response.data.data.loads);
+                    setAllLength(response.data.length);
                     setErrship('')
                 })
                 .catch((err) => {
                     console.log(err.response.data.message)
                     if (err.response.status === 404) {
                         setErrship(err.response.data.message);
+
                     }
                 });
         } else {
@@ -50,6 +54,7 @@ const Expenses = () => {
                     if (response.status === 200) {
                         console.log(response.data)
                         setShip(response.data.data.loads);
+                        setLength(response.data.length);
                         setErrship('')
                     }
                 })
@@ -61,7 +66,7 @@ const Expenses = () => {
                 });
         }
     }, [category]);
-
+    const { userName } = useSelector((state) => state.user);
     return (
         <>
             <div className={`${styles.home}`}>
@@ -69,8 +74,8 @@ const Expenses = () => {
                     <NavBar title='Expenses' />
                     <div className={`${styles.welcome}`}>
                         <div className={`${styles.welcome__body}`}>
-                            <p>Good Morning,</p>
-                            <h3>Ahmed</h3>
+                            <p>Good Morning, </p>
+                            <h3> {userName}</h3>
                         </div>
                         <Link to='/create' className={`${styles.create__btn}`}>Create Shipment</Link>
                     </div>
@@ -87,28 +92,27 @@ const Expenses = () => {
                                 <p className={`${styles.filter__para}`}>Filter shipments</p>
                                 <div>
                                     <div onClick={() => { setCategory("all") }}>
-                                        <div className={`${styles.filter__body}`} onClick={() => { setActive("All shipments") }}>
+                                        <div className={`${active === "All shipments" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("All shipments") }}>
                                             <p>All shipments</p>
-                                            <p>290</p>
+                                            <p>{alllength}</p>
                                         </div>
                                     </div>
-
                                     <div onClick={() => { setCategory("inprogress") }}>
                                         <div className={`${active === "In-Progress" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("In-Progress") }}>
                                             <p>In-Progress</p>
-                                            <p>17</p>
+                                            {category === 'inprogress' && errship == '' ? <p>{length}</p> : <p></p>}
                                         </div>
                                     </div>
                                     <div onClick={() => { setCategory("booked") }}>
                                         <div className={`${active === "Up coming" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Up coming") }}>
                                             <p>Up coming</p>
-                                            <p>6</p>
+                                            {category === 'booked' && errship == '' ? <p>{length}</p> : <p></p>}
                                         </div>
                                     </div>
                                     <div onClick={() => { setCategory("completed") }}>
                                         <div className={`${active === "Pasr" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Pasr") }}>
                                             <p>Pasr</p>
-                                            <p>275</p>
+                                            {category === 'completed' && errship == '' ? <p>{length}</p> : <p></p>}
                                         </div>
                                     </div>
                                 </div>

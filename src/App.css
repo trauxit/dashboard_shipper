@@ -334,6 +334,10 @@ left: 10px;
   .inputBox {
     width: 100% !important;
   }
+  .cont,.input-group,
+  .shipt{
+    width: 100% !important;
+  }
 }
 .alert{
   width: 400px;

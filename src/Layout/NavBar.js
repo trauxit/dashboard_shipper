@@ -39,7 +39,7 @@ const NavBar = (props) => {
                     <div className={`${styles.logo__body}`}>
                         <div>
                             <img alt='' src={logo} className={`${styles.logo}`} />
-                            <h4 className={`${styles.logo__title}`}>Trauxit</h4>
+                            <h4 className={`${styles.logo__title}`}>TRAUXIT</h4>
                         </div>
                     </div>
                     <div className={`${styles.items}`}>

@@ -162,6 +162,7 @@ cursor: pointer;
 .filter__body p{
     padding-bottom: 0;
         margin-bottom: 0;
+
 }
 .alllink{
         text-decoration: none;
@@ -181,7 +182,7 @@ cursor: pointer;
 .style__link p{
         padding-bottom: 0;
             margin-bottom: 0;
-    color: #000;
+    color: #FF8201;
         font-size: 14px;
         font-style: normal;
         font-weight: 800;
@@ -280,4 +281,35 @@ cursor: pointer;
 .supportus{
     color: #FF8201;
     font-weight: bold;
+}
+@media (min-width:0px) and (max-width:600px) {
+   .welcome{
+    padding-left: 13px !important;
+    padding-right: 15px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    
+   } 
+   .create__btn{
+    width: 100% !important;
+    text-align: center;
+    margin-bottom: 10px;
+   }
+   .inputBox_container{
+    width: 100% !important;
+   }
+   .filter__body{
+    width: 100%  !important;
+   }
+   .divide{
+    display: flex;
+    flex-direction: column;
+   }
+   .bar{
+    width: 50% !important;
+   }
+.out__body{
+    margin-top: 15px;
+}
 }

@@ -16,12 +16,16 @@ import axios from 'axios'
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
-const Booking = () => {
+const Pending = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
+    const [toggle, setToggle] = useState(false);
+    const handleClick = () => {
+        setToggle(!toggle);
+    };
     useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=booked`, {
+        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=inprogress`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -30,10 +34,11 @@ const Booking = () => {
                 setShip(response.data.data.loads)
             }).catch((err) => { setErr(err.response.data.message) })
     }, [])
+    console.log(ship, "jj")
     return (
         <>
             <Row className={`${styles.bookrow}`}>
-                <Col xxl='9'>
+                <Col xxl='12'>
                     <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
@@ -41,7 +46,8 @@ const Booking = () => {
                                     <TableCell>Reference</TableCell>
                                     <TableCell>Pickup</TableCell>
                                     <TableCell>Delivery</TableCell>
-                                    <TableCell>Driver</TableCell>
+                                    <TableCell>Distance</TableCell>
+                                    <TableCell>Cost</TableCell>
                                     <TableCell>Status</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
@@ -68,13 +74,25 @@ const Booking = () => {
                                                     <p>{moment(shipCard?.summary?.arrivalTime).format('MMM Do YY')} </p>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <h5>{shipCard.idCarrier.userName}</h5>
+                                                    <h5>{shipCard.shipmentDistance} Km</h5>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>{shipCard.priceLoads}</h5>
                                                 </TableCell>
                                                 <TableCell>
                                                     <h5>{shipCard.status}</h5>
                                                 </TableCell>
-                                                <TableCell>
+                                                <TableCell onClick={handleClick}>
                                                     <MoreHorizIcon />
+                                                    {toggle ?
+                                                        <div className={`${styles.edit__body}`}>
+                                                            <p>Edit</p>
+                                                            <hr />
+                                                            <p>Delete</p>
+                                                        </div>
+                                                        :
+                                                        ""
+                                                    }
                                                 </TableCell>
                                             </TableRow>
 
@@ -87,22 +105,13 @@ const Booking = () => {
                                         </div>
                                     </div>
                                 }
-
-
                             </TableBody>
                         </Table>
                     </TableContainer>
                 </Col>
-                <Col xxl='3'>
-                    <div className={`${styles.map}`}>
-                        <img alt='' src={map} className={`${styles.mapimg}`} />
-                        <img alt='' src={path} className={`${styles.path}`} />
-                    </div>
-                </Col>
             </Row>
-
         </>
     )
 }
 
-export default Booking
+export default Pending

@@ -267,3 +267,35 @@ padding-right: 20px;
 .submit:active {
     filter: brightness(.8);
 }
+@media (min-width:0px) and (max-width:600px) {
+    .left{
+        text-align: left !important;
+       margin-left: 60px ;
+    }
+        .background{
+            background-color: transparent;
+        }
+        .support{
+            margin-top:20px !important ;
+        }
+    .details,
+    .shipform{
+        padding-left: 50px !important;
+    }
+    .first,
+    .textareaship{
+        display: block;
+        padding-left: 50px !important;
+    }
+    .pickup{
+        padding-left: 50px !important;
+    }
+    .home{
+        margin-bottom: 100px;
+    }
+    .submit__btns{
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+    }
+}
