@@ -20,10 +20,8 @@ const Pending = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
-    const [toggle, setToggle] = useState(false);
-    const handleClick = () => {
-        setToggle(!toggle);
-    };
+    const [toggle, setToggle] = useState(Array(ship.length).fill(false));;
+
     useEffect(() => {
         axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=inprogress`, {
             headers: {
@@ -34,7 +32,13 @@ const Pending = () => {
                 setShip(response.data.data.loads)
             }).catch((err) => { setErr(err.response.data.message) })
     }, [])
-    console.log(ship, "jj")
+    const handleClick = (index) => {
+        setToggle(prevToggle => {
+            const newToggle = [...prevToggle];
+            newToggle[index] = !newToggle[index];
+            return newToggle;
+        });
+    };
     return (
         <>
             <Row className={`${styles.bookrow}`}>
@@ -55,7 +59,7 @@ const Pending = () => {
                             <TableBody>
                                 {ship.length !== 0 ?
                                     <>
-                                        {ship && ship.map(shipCard =>
+                                        {ship && ship.map((shipCard, index) =>
                                             <TableRow
                                                 key={shipCard?._id}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -82,9 +86,9 @@ const Pending = () => {
                                                 <TableCell>
                                                     <h5>{shipCard.status}</h5>
                                                 </TableCell>
-                                                <TableCell onClick={handleClick}>
+                                                <TableCell key={index} onClick={() => handleClick(index)}>
                                                     <MoreHorizIcon />
-                                                    {toggle ?
+                                                    {toggle[index] ?
                                                         <div className={`${styles.edit__body}`}>
                                                             <p>Edit</p>
                                                             <hr />

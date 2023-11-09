@@ -238,9 +238,10 @@ width: 92% !important;
     }
 }
 .edit__body{
-    background-color: #898989;
+    background-color: #fff;
     border: 1px solid #eee;
     padding: 10px 0 5px 5px;
+    box-shadow: var(--color-shadow);
 }
 .edit__body p{
     margin-bottom: 0 !important;
