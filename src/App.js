@@ -48,15 +48,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route element={<Protectpages />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/overview" element={<Overview />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/update" element={<Update />} />
-              <Route path="/loads" element={<AllLoads />} />
-              <Route path="/shipment" element={<Shipments />} />
-              <Route path="/create" element={<Create />} />
-            </Route>
+            {/*<Route element={<Protectpages />}>*/}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/update" element={<Update />} />
+            <Route path="/loads" element={<AllLoads />} />
+            <Route path="/shipment" element={<Shipments />} />
+            <Route path="/create" element={<Create />} />
+            {/*</Routes>*/}
             <Route path="/forget" element={<ForgetPage />} />
             <Route path="/otp" element={<OtpPage />} />
             <Route path="/reset-password" element={<ResetPage />} />

@@ -13,6 +13,8 @@ import bottom from '../../assets/images/Exclude (1).svg'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import { useSelector } from 'react-redux';
+import MapCreate from './MapCreate'
+import Map from './Map'
 const Create = () => {
     const initialState = {
         typeLoads: '',
@@ -72,7 +74,7 @@ const Create = () => {
             packagingType: formData.packagingType
         };
 
-        axios
+        /* axios
             .post('http://52.87.197.234:3000/api/v1/loads/shipper/', reqData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -84,7 +86,7 @@ const Create = () => {
             })
             .catch((err) => {
                 toast.error(err.response.data.message);
-            });
+            }); */
     }
     return (
         <>
@@ -270,11 +272,14 @@ const Create = () => {
                                             value={formData.dropoffdescription}
                                             onChange={handleChange} />
                                     </Form.Group>
+                                    <MapCreate />
+                                    <Map />
                                     <div className={`${styles.submit__btns}`}>
                                         <p className={`${styles.save}`}>Save & Finish Later</p>
                                         <button className={`${styles.submit}`} type='submit'>Finalize Shipment</button>
                                     </div>
                                 </Form>
+
                             </Container>
                         </Col>
                     </Row>

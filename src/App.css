@@ -339,6 +339,12 @@ left: 10px;
     width: 100% !important;
   }
 }
-.alert{
-  width: 400px;
+.mapDiv{
+  width: 50vw !important;
+  height: 50vh !important;
+}
+.routee{
+  background-color: #ff0080;
+  position: relative;
+  z-index: 999999;
 }
