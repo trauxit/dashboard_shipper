@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from '../../Styles/allLoads.module.css'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { Col, Row } from 'react-bootstrap';
 import map from '../../assets/images/Maps.png'
 import path from '../../assets/images/Path.svg'
@@ -15,13 +14,18 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import tt from '@tomtom-international/web-sdk-maps';
+import '@tomtom-international/web-sdk-maps/dist/maps.css';
 
 const Canceled = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
-    const [toggle, setToggle] = useState(Array(ship.length).fill(false));;
-
+    const [toggle, setToggle] = useState(Array(ship.length).fill(false));
+    const mapContainer = useRef(null);
+    let mapInstance = null;
+    let startMarker = null;
+    let endMarker = null;
     useEffect(() => {
         axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=canceled`, {
             headers: {
@@ -39,10 +43,11 @@ const Canceled = () => {
             return newToggle;
         });
     };
+
     return (
         <>
             <Row className={`${styles.bookrow}`}>
-                <Col xxl='12'>
+                <Col xxl='9'>
                     <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
@@ -112,6 +117,16 @@ const Canceled = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
+                </Col>
+                <Col xxl='3'>
+                    <div ref={mapContainer} style={{ width: '100%', height: '400px', marginTop: '20px' }}>
+                        <div id="start-marker" />
+                        <div id="end-marker" />
+                    </div>
+                    <div className={`${styles.map}`}>
+                        <img alt='' src={map} className={`${styles.mapimg}`} />
+                        <img alt='' src={path} className={`${styles.path}`} />
+                    </div>
                 </Col>
             </Row>
 

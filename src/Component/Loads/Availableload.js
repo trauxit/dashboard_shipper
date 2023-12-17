@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 import tt from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
-const Pending = () => {
+const Available = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
@@ -28,8 +28,9 @@ const Pending = () => {
     let mapInstance = null;
     let startMarker = null;
     let endMarker = null;
+
     useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=inprogress`, {
+        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=available`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -112,6 +113,7 @@ const Pending = () => {
                                                 <TableCell>
                                                     <h5>{shipCard?.PickupLocation?.address}</h5>
                                                     <p>{moment(shipCard?.summary?.departureTime).format('MMM Do YY')} </p>
+
                                                 </TableCell>
                                                 <TableCell>
                                                     <h5>{shipCard?.DropoutLocation?.address}</h5>
@@ -153,8 +155,9 @@ const Pending = () => {
                     </Col>
                 )}
             </Row>
+
         </>
     )
 }
 
-export default Pending
+export default Available

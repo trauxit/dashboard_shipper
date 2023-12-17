@@ -339,12 +339,22 @@ left: 10px;
     width: 100% !important;
   }
 }
-.mapDiv{
-  width: 50vw !important;
-  height: 50vh !important;
-}
+ #mapDiv{
+  width: '100%' !important;
+  height: '400px' !important;
+  margin-top: 20px !important;
+} 
 .routee{
   background-color: #ff0080;
   position: relative;
   z-index: 999999;
+}
+
+/* .mapboxgl-marker:nth-child(2) svg {
+  fill: rgb(16, 16, 88) !important;
+
+} */
+.mapboxgl-marker:nth-child(3) svg{
+  fill: rgb(40, 95, 40) !important;
+  
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../../Styles/allLoads.module.css'
 import Sidebar from '../../Layout/Sidebar'
 import NavBar from '../../Layout/NavBar'
@@ -8,8 +8,52 @@ import ColLoad from './ColLoad';
 import Booking from './Booking';
 import Pending from './Pending';
 import Canceled from './Canceled'
+import Available from './Availableload';
+import axios from 'axios'
+import { useSelector } from 'react-redux';
 const AllLoads = () => {
     const [active, setActive] = useState('find')
+    const [searchQuery, setSearchQuery] = useState('');
+    const [deliverySearchQuery, setDeliverySearchQuery] = useState('');
+    const [ship, setShip] = useState([])
+    const [filteredData, setFilteredData] = useState(ship);
+    const { token } = useSelector((state) => state.user);
+    const [err, setErr] = useState('')
+    useEffect(() => {
+        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                setShip(response.data.data.loads)
+                setFilteredData(response.data.data.loads);
+            }).catch((err) => { setErr(err.response.data.message) })
+    }, [])
+    useEffect(() => {
+        const filtered = ship.filter((item) =>
+            item?.PickupLocation?.address.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredData(filtered);
+    }, [searchQuery]);
+    useEffect(() => {
+        const filtered = ship.filter((item) =>
+            item?.DropoutLocation?.address.toLowerCase().includes(deliverySearchQuery.toLowerCase())
+        );
+        setFilteredData(filtered);
+        console.log(filtered, 'deli')
+    }, [deliverySearchQuery]);
+
+    const sortByWeight = () => {
+        const sortedLoads = [...filteredData].sort((a, b) => a.Weight - b.Weight);
+        setFilteredData(sortedLoads);
+    };
+    const sortByDistance = () => {
+        const sortedLoads = [...filteredData].sort(
+            (a, b) => a.shipmentDistance - b.shipmentDistance
+        );
+        setFilteredData(sortedLoads);
+    };
     return (
         <>
             <div className={`${styles.home}`}>
@@ -20,6 +64,7 @@ const AllLoads = () => {
                         <h2 className={`${active === "booked" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("booked") }}>Booked</h2>
                         <h2 className={`${active === "pending" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("pending") }}>Pending</h2>
                         <h2 className={`${active === "canceled" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("canceled") }}>Canceled</h2>
+                        <h2 className={`${active === "available" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("available") }}>Available</h2>
                     </div>
                     <div className={`${active === "find" ? styles.block : styles.none}`}>
                         <div className={`${styles.find__body}`}>
@@ -31,7 +76,12 @@ const AllLoads = () => {
                                             <path d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z">
                                             </path>
                                         </svg>
-                                        <input className="inputBox" id="inputBox" type="text" placeholder="Huston, TX Within 100mi" />
+                                        <input className="inputBox"
+                                            id="inputBox"
+                                            type="text"
+                                            placeholder="Huston, TX Within 100mi"
+                                            value={searchQuery}
+                                            onChange={e => setSearchQuery(e.target.value)} />
                                     </div>
                                 </div>
                                 <div>
@@ -42,74 +92,29 @@ const AllLoads = () => {
                                                 <path d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z">
                                                 </path>
                                             </svg>
-                                            <input className="inputBox" id="inputBox" type="text" placeholder="Anywhere" />
-
+                                            <input className="inputBox"
+                                                id="inputBox"
+                                                type="text"
+                                                placeholder="Anywhere"
+                                                value={deliverySearchQuery}
+                                                onChange={(e) => setDeliverySearchQuery(e.target.value)} />
                                         </div>
-                                        <button className="button"> Search</button>
+
                                     </div>
                                 </div>
+                                {/*<button className="button" > Search</button>*/}
                             </div>
                             <div className={`${styles.find__filter}`}>
                                 <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Date</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
+                                    <button onClick={sortByWeight} className={`${styles.select}`}>Sort by Weight</button>
                                 </div>
                                 <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Start</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
-                                </div>
-                                <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Tailer Type</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
-                                </div>
-                                <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Max weight</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
-                                </div>
-                                <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Commodity</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
-                                </div>
-                                <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Load Type</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
-                                </div>
-                                <div className={`${styles.today}`}>
-                                    <Form.Select aria-label="Default select example" className={`${styles.select}`}>
-                                        <option>Appointments</option>
-                                        <option value="22">Sep 2022</option>
-                                        <option value="21">Sep 2021</option>
-                                        <option value="20">Sep 2020</option>
-                                    </Form.Select>
+                                    <button onClick={sortByDistance} className={`${styles.select}`}>Sort by Distance</button>
                                 </div>
                             </div>
                         </div>
 
-                        <ColLoad />
+                        <ColLoad ship={filteredData} err={err} />
                     </div>
                     <div className={`${active === "booked" ? styles.block : styles.none}`}>
                         <Booking />
@@ -119,6 +124,9 @@ const AllLoads = () => {
                     </div>
                     <div className={`${active === "canceled" ? styles.block : styles.none}`}>
                         <Canceled />
+                    </div>
+                    <div className={`${active === "available" ? styles.block : styles.none}`}>
+                        <Available />
                     </div>
                 </div>
             </div>

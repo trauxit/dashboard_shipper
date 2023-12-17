@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from 'react'
+import React, { useRef, useReducer, useEffect, useState } from 'react'
 import styles from '../../Styles/create.module.css'
 import NavBar from '../../Layout/NavBar'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -15,7 +15,18 @@ import { ToastContainer, toast } from 'react-toastify'
 import { useSelector } from 'react-redux';
 import MapCreate from './MapCreate'
 import Map from './Map'
+import RoadTripMenuPlanner from './MapPhoto'
 const Create = () => {
+    const [startLat, setStartLat] = useState(null);
+    const [startLon, setStartLon] = useState(null);
+    const [endLat, setEndLat] = useState(null);
+    const [endLon, setEndLon] = useState(null);
+    const handleDataFromChild = (startLat, startLon, endLat, endLon) => {
+        setStartLat(startLat);
+        setStartLon(startLon);
+        setEndLat(endLat);
+        setEndLon(endLon);
+    };
     const initialState = {
         typeLoads: '',
         Weight: '',
@@ -29,6 +40,7 @@ const Create = () => {
         dropoffdescription: '',
         dropofftype: ''
     };
+
     function formReducer(state, action) {
         switch (action.type) {
             case 'UPDATE_FIELD':
@@ -61,20 +73,20 @@ const Create = () => {
             PickupLocation: {
                 description: formData.Pickupdescription,
                 type: 'Point',
-                coordinates: [-90.990165, 38.427011],
+                coordinates: [startLon, startLat],
                 address: formData.Pickupaddress
             },
             DropoutLocation: {
                 description: formData.dropoffdescription,
                 type: 'Point',
-                coordinates: [-90.185406, 38.620605],
+                coordinates: [endLon, endLat],
                 address: formData.dropoffaddress
             },
             departureTime: formData.departureTime,
             packagingType: formData.packagingType
         };
 
-        /* axios
+        axios
             .post('http://52.87.197.234:3000/api/v1/loads/shipper/', reqData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -86,8 +98,16 @@ const Create = () => {
             })
             .catch((err) => {
                 toast.error(err.response.data.message);
-            }); */
+            });
     }
+
+    useEffect(() => {
+
+        if (!formData.Pickupaddress || !formData.dropoffaddress) {
+            dispatch(formData.dropoffaddress, formData.Pickupaddress)
+        }
+
+    }, [formData.Pickupaddress, formData.dropoffaddress, dispatch])
     return (
         <>
             <div className={`${styles.home}`}>
@@ -272,8 +292,8 @@ const Create = () => {
                                             value={formData.dropoffdescription}
                                             onChange={handleChange} />
                                     </Form.Group>
-                                    <MapCreate />
-                                    <Map />
+                                    <RoadTripMenuPlanner onDataReceived={handleDataFromChild} />
+                                    {/*<Map start={formData.Pickupaddress} end={formData.dropoffaddress} />*/}
                                     <div className={`${styles.submit__btns}`}>
                                         <p className={`${styles.save}`}>Save & Finish Later</p>
                                         <button className={`${styles.submit}`} type='submit'>Finalize Shipment</button>

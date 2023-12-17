@@ -8,23 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import axios from 'axios'
-import { useSelector } from 'react-redux';
 import moment from 'moment';
-const ColLoad = () => {
-    const [ship, setShip] = useState([])
-    const { token } = useSelector((state) => state.user);
-    const [err, setErr] = useState('')
-    useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((response) => {
-                setShip(response.data.data.loads)
-            }).catch((err) => { setErr(err.response.data.message) })
-    }, [])
+const ColLoad = ({ ship, err }) => {
     return (
         <>
 
@@ -53,10 +38,8 @@ const ColLoad = () => {
                     </TableHead>
                     <TableBody>
                         {ship.length !== 0 ?
-
                             <>
                                 {ship && ship.map(shipCard =>
-
                                     <TableRow
                                         key={shipCard?._id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -87,10 +70,8 @@ const ColLoad = () => {
                                             <KeyboardArrowRightIcon />
                                         </TableCell>
                                     </TableRow>
-
                                 )}
                             </>
-
                             :
                             <div className='mt-5'>
                                 <div className='d-flex'>

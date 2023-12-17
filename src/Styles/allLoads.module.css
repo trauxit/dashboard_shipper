@@ -178,13 +178,16 @@ column-gap: 50px;
     width: 10px !important;
     
 }
-.book:hover{
-    background-color: rgba(217, 217, 217, 0.40) !important;
+.book{
     cursor: pointer;
+}
+.cell{
+    background-color: rgba(217, 217, 217, 0.40) !important;
+        cursor: pointer;
 }
 .errbook{
     text-align: center !important;
-    margin-left:500px;
+    margin-left:150px;
 }
 @media (min-width:0) and (max-width:600px) {
         .home {

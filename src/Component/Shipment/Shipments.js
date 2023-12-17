@@ -67,6 +67,7 @@ const Expenses = () => {
         }
     }, [category]);
     const { userName } = useSelector((state) => state.user);
+    console.log(ship, 'f')
     return (
         <>
             <div className={`${styles.home}`}>
@@ -115,6 +116,12 @@ const Expenses = () => {
                                             {category === 'completed' && errship == '' ? <p>{length}</p> : <p></p>}
                                         </div>
                                     </div>
+                                    <div onClick={() => { setCategory("available") }}>
+                                        <div className={`${active === "Available" ? styles.style__link : styles.view__link} ${styles.filter__body}`} onClick={() => { setActive("Available") }}>
+                                            <p>Available</p>
+                                            {category === 'available' && errship == '' ? <p>{length}</p> : <p></p>}
+                                        </div>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xxl='9'>
@@ -130,12 +137,39 @@ const Expenses = () => {
                                                             <div className='shipmentprog'>
                                                                 <h2 className={`${styles.destination__title}`}>At Destination</h2>
                                                                 <p className={`${styles.destination__time}`}>{moment(shipCard?.summary?.arrivalTime).format('LLL')}</p>
-                                                                <div className={`${styles.arrive}`}>
-                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
-                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
-                                                                    <ProgressBar now={100} className={`${styles.bar}`} />
-                                                                    <ProgressBar now={0} className={`${styles.bar}`} />
-                                                                </div>
+                                                                {shipCard?.status === 'available' ?
+                                                                    <div className={`${styles.arrive}`}>
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                    </div>
+                                                                    : ''}
+                                                                {shipCard?.status === 'completed' ?
+                                                                    <div className={`${styles.arrive}`}>
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                    </div>
+                                                                    : ''}
+                                                                {shipCard?.status === 'inprogress' ?
+                                                                    <div className={`${styles.arrive}`}>
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={10} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                    </div>
+                                                                    : ''}
+                                                                {shipCard?.status === 'booked' ?
+                                                                    <div className={`${styles.arrive}`}>
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={100} className={`${styles.bar}`} />
+                                                                        <ProgressBar now={0} className={`${styles.bar}`} />
+                                                                    </div>
+                                                                    : ''}
+
                                                             </div>
                                                             <div>
                                                                 <div className={`${styles.out__body}`}>
