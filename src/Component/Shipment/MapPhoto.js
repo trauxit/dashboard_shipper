@@ -124,7 +124,11 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
     const handleStartInputChange = (event) => {
         setStart(event.target.value);
     };
-
+    const handleKeyDown = (event) => {
+        if (event.key === "space") {
+            setStart(event.target.value);
+        }
+    }
     const handleEndInputChange = (event) => {
         setEnd(event.target.value);
     };
@@ -140,7 +144,8 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                             placeholder="Query e.g. Washington"
                             type="text"
                             className="inputmap"
-                            onChange={handleStartInputChange}
+                            onBlur={handleStartInputChange}
+                            onKeyDown={handleKeyDown}
                         />
                     </div>
                     <div className='endmap'>
@@ -149,7 +154,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                             placeholder="Query e.g. Washington"
                             type="text"
                             className="inputmap"
-                            onChange={handleEndInputChange}
+                            onBlur={handleEndInputChange}
                         />
                     </div>
                 </div>
