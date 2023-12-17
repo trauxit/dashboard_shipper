@@ -358,3 +358,14 @@ left: 10px;
   fill: rgb(40, 95, 40) !important;
   
 }
+.inputmap{
+  width: 100% !important;
+}
+
+.startmap,
+.endmap{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-bottom: 15px;
+}

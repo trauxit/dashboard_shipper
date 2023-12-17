@@ -137,7 +137,7 @@ const Expenses = () => {
                                                             <div className='shipmentprog'>
                                                                 <h2 className={`${styles.destination__title}`}>At Destination</h2>
                                                                 <p className={`${styles.destination__time}`}>{moment(shipCard?.summary?.arrivalTime).format('LLL')}</p>
-                                                                {shipCard?.status === 'available' ?
+                                                                {shipCard?.status === 'inprogress' ?
                                                                     <div className={`${styles.arrive}`}>
                                                                         <ProgressBar now={0} className={`${styles.bar}`} />
                                                                         <ProgressBar now={0} className={`${styles.bar}`} />
@@ -153,7 +153,7 @@ const Expenses = () => {
                                                                         <ProgressBar now={100} className={`${styles.bar}`} />
                                                                     </div>
                                                                     : ''}
-                                                                {shipCard?.status === 'inprogress' ?
+                                                                {shipCard?.status === 'available' ?
                                                                     <div className={`${styles.arrive}`}>
                                                                         <ProgressBar now={100} className={`${styles.bar}`} />
                                                                         <ProgressBar now={10} className={`${styles.bar}`} />

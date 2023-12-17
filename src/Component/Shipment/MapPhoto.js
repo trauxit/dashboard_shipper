@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import tt from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
 import { services } from '@tomtom-international/web-sdk-services';
+import img1 from '../../assets/images/download (1).svg'
+import img2 from '../../assets/images/download.svg'
 import axios from 'axios';
+import { Col, Row } from 'react-bootstrap';
 const RoadTripMenuPlanner = ({ onDataReceived }) => {
     const [distance, setDistance] = useState(null);
     const [startLocation, setStartLocation] = useState(null);
@@ -124,35 +127,45 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
     };
 
     return (
-        <div>
-            <input
-                placeholder="start location
-                "
-                type="text"
-                className="inputmap"
-                onChange={handleStartInputChange}
-                value={start}
-            />
-            <input
-                placeholder="end"
-                type="text"
-                className="inputmap"
-                onChange={handleEndInputChange}
-                value={end}
-            />
-            <div ref={mapContainer} style={{ width: '100%', height: '400px', marginTop: '20px' }}>
-                <div id="start-marker" />
-                <div id="end-marker" />
-            </div>
-            {distance && (
-                <div>
-                    <h3>Distance:</h3>
-                    <p>{distance} km</p>
-                    <p>{distance}</p>
+        <Row>
+            <Col xxl='3'>
+                <div className='startmap'>
+                    <img alt='' src={img1} />
+                    <input
+                        placeholder="start"
+                        type="text"
+                        className="inputmap"
+                        onChange={handleStartInputChange}
+                        value={start}
+                    />
                 </div>
-            )}
+                <div className='endmap'>
+                    <img alt='' src={img2} />
+                    <input
+                        placeholder="end"
+                        type="text"
+                        className="inputmap"
+                        onChange={handleEndInputChange}
+                        value={end}
+                    />
+                </div>
 
-        </div>
+
+                {distance && (
+                    <div>
+                        <h3>Distance:</h3>
+                        <p>{distance} km</p>
+                    </div>
+                )}
+            </Col>
+            <Col xxl='9'>
+                <div ref={mapContainer} style={{ width: '100%', height: '400px', marginTop: '20px' }}>
+                    <div id="start-marker" />
+                    <div id="end-marker" />
+                </div>
+            </Col>
+
+        </Row>
     );
 };
 
