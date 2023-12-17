@@ -22,13 +22,6 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  /*  useEffect(() => {
-     const usertoken = JSON.parse(Cookies.get('token'));
-     if (usertoken) {
-       dispatch(login(usertoken))
-       // Perform actions to restore the login state
-     }
-   }, [dispatch]); */
   useEffect(() => {
     const usertoken = Cookies.get('token');
     const userName = Cookies.get('userName')
@@ -47,7 +40,7 @@ function App() {
       <div className="App ">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+
             <Route element={<Protectpages />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/overview" element={<Overview />} />
@@ -57,6 +50,7 @@ function App() {
               <Route path="/shipment" element={<Shipments />} />
               <Route path="/create" element={<Create />} />
             </Route>
+            <Route path="/" element={<LoginPage />} />
             <Route path="/forget" element={<ForgetPage />} />
             <Route path="/otp" element={<OtpPage />} />
             <Route path="/reset-password" element={<ResetPage />} />

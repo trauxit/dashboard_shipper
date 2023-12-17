@@ -63,8 +63,8 @@ const Login = () => {
                                 <img alt="" src={logo} className={`${style.logo}`} />
                                 <p className={`${style.logo__para}`}>Trauxit</p>
                             </div>
-                            <p className={`${style.signup}`}>Don’t have an account? <Link className={`${style.signup__link}`}>Sign Up</Link> </p>
-                            <h3 className={`${style.signin}`}>Sign in</h3>
+                            {/*                             <p className={`${style.signup}`}>Don’t have an account? <Link className={`${style.signup__link}`}>Sign Up</Link> </p>
+ */}                            <h3 className={`${style.signin}`}>Sign in</h3>
                             <div className={`${style.signin__form}`}>
                                 <Form.Group className="mb-3 " controlId="email">
                                     <Form.Label className={`${style.label}`}>Email address</Form.Label>
