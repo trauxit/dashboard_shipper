@@ -155,13 +155,13 @@ const Create = () => {
 
                                 </div>
                             </div>
-                            <div className={`${styles.support}`}>
+                            {/* <div className={`${styles.support}`}>
                                 <img alt='' src={head} />
                                 <div>
                                     <p className={`${styles.support__para}`}>Have Questions?</p>
                                     <p className={`${styles.supportus}`}>Contact Us</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </Col>
                         <Col>
                             <Container >

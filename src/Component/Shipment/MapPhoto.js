@@ -6,8 +6,11 @@ import img1 from '../../assets/images/download (1).svg'
 import img2 from '../../assets/images/download.svg'
 import axios from 'axios';
 import { Col, Row } from 'react-bootstrap';
+import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
+import moment from 'moment';
+
 const RoadTripMenuPlanner = ({ onDataReceived }) => {
-    const [distance, setDistance] = useState(null);
+    const [distance, setDistance] = useState('');
     const [startLocation, setStartLocation] = useState(null);
     const [endLocation, setEndLocation] = useState(null);
     const startlat = startLocation?.lat
@@ -21,8 +24,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
     const [zoom, setZoom] = useState(10);
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
-
-
+    const [arraive, setArraive] = useState('')
     const calculateDistance = async () => {
         try {
             if (startLocation && endLocation) {
@@ -33,6 +35,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                     const { lengthInMeters } = routeResponse.data.routes[0].summary;
                     const distanceInKilometers = lengthInMeters / 1000;
                     setDistance(distanceInKilometers.toFixed(2));
+                    setArraive(routeResponse.data.routes[0].summary.arrivalTime)
                 } else {
                     throw new Error('No route found');
                 }
@@ -127,39 +130,52 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
     };
 
     return (
-        <Row>
+        <Row className='map'>
             <Col xxl='3'>
-                <div className='startmap'>
-                    <img alt='' src={img1} />
-                    <input
-                        placeholder="start"
-                        type="text"
-                        className="inputmap"
-                        onChange={handleStartInputChange}
-                        value={start}
-                    />
-                </div>
-                <div className='endmap'>
-                    <img alt='' src={img2} />
-                    <input
-                        placeholder="end"
-                        type="text"
-                        className="inputmap"
-                        onChange={handleEndInputChange}
-                        value={end}
-                    />
-                </div>
-
-
-                {distance && (
-                    <div>
-                        <h3>Distance:</h3>
-                        <p>{distance} km</p>
+                <div className='allinputsmap'>
+                    <div className='startmap'>
+                        <img alt='' src={img1} />
+                        <input
+                            placeholder="Query e.g. Washington"
+                            type="text"
+                            className="inputmap"
+                            onChange={handleStartInputChange}
+                            value={start}
+                        />
                     </div>
-                )}
+                    <div className='endmap'>
+                        <img alt='' src={img2} />
+                        <input
+                            placeholder="Query e.g. Washington"
+                            type="text"
+                            className="inputmap"
+                            onChange={handleEndInputChange}
+                            value={end}
+                        />
+                    </div>
+                </div>
+
+
+                {distance !== '' ?
+
+                    <div className='routemap'>
+                        <h5>Route summary</h5>
+                        <hr />
+                        <p className='leavemap'>Leave now</p>
+                        <div className='map__car'>
+                            <DirectionsCarFilledIcon className='carico' />
+                            <div>
+                                <p className='dis_para'>Distance : <span className='dis__span'>{distance} Km</span></p>
+                                <p className='arr__para'>Arraive: <span className='arr__span'>{moment(arraive).format('llll')}</span> </p>
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    <p className='map__para'>For results choose starting and destination points.</p>
+                }
             </Col>
             <Col xxl='9'>
-                <div ref={mapContainer} style={{ width: '100%', height: '400px', marginTop: '20px' }}>
+                <div ref={mapContainer} style={{ width: '989px', height: '400px' }}>
                     <div id="start-marker" />
                     <div id="end-marker" />
                 </div>
