@@ -126,7 +126,8 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
     return (
         <div>
             <input
-                placeholder="start"
+                placeholder="start location
+                "
                 type="text"
                 className="inputmap"
                 onChange={handleStartInputChange}
@@ -147,6 +148,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                 <div>
                     <h3>Distance:</h3>
                     <p>{distance} km</p>
+                    <p>{distance}</p>
                 </div>
             )}
 
