@@ -13,8 +13,7 @@ import bottom from '../../assets/images/Exclude (1).svg'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import { useSelector } from 'react-redux';
-import MapCreate from './MapCreate'
-import Map from './Map'
+
 import RoadTripMenuPlanner from './MapPhoto'
 const Create = () => {
     const [startLat, setStartLat] = useState(null);
