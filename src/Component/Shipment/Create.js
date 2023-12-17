@@ -292,7 +292,6 @@ const Create = () => {
                                             onChange={handleChange} />
                                     </Form.Group>
                                     <RoadTripMenuPlanner onDataReceived={handleDataFromChild} />
-                                    {/*<Map start={formData.Pickupaddress} end={formData.dropoffaddress} />*/}
                                     <div className={`${styles.submit__btns}`}>
                                         <p className={`${styles.save}`}>Save & Finish Later</p>
                                         <button className={`${styles.submit}`} type='submit'>Finalize Shipment</button>

@@ -118,9 +118,9 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
             }
         });
         calculateDistance();
+        onDataReceived(startlat, startlon, endlat, endlon);
         // eslint-disable-next-line no-use-before-define
     }, [startLocation, endLocation, calculateDistance]);
-    onDataReceived(startlat, startlon, endlat, endlon);
     const handleStartInputChange = (event) => {
         setStart(event.target.value);
     };
@@ -136,11 +136,11 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                     <div className='startmap'>
                         <img alt='' src={img1} />
                         <input
+
                             placeholder="Query e.g. Washington"
                             type="text"
                             className="inputmap"
                             onChange={handleStartInputChange}
-                            value={start}
                         />
                     </div>
                     <div className='endmap'>
@@ -150,7 +150,6 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                             type="text"
                             className="inputmap"
                             onChange={handleEndInputChange}
-                            value={end}
                         />
                     </div>
                 </div>
