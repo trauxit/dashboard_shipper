@@ -44,7 +44,7 @@ const NavBar = (props) => {
                     </div>
                     <div className={`${styles.items}`}>
                         <div className={`${styles.item} ${styles.side}`}>
-                            <NavLink to="/dashboard" className={`${styles.navlink}`}>
+                            <NavLink to="/" className={`${styles.navlink}`}>
                                 <DashboardIcon className={`${styles.icon}`} />
                                 Dashboard
                             </NavLink>
