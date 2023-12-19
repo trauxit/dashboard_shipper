@@ -17,7 +17,7 @@ const Otp = () => {
     }
     function forget(e) {
         e.preventDefault()
-        axios.post(`https://52.87.197.234/api/v1/user/verifyresetcode`, reqData)
+        axios.post(`http://52.87.197.234/api/v1/user/verifyresetcode`, reqData)
             .then((response) => {
                 toast.success("sucess")
                 navigate('/reset-password')

@@ -86,7 +86,7 @@ const Create = () => {
         };
 
         axios
-            .post('https://52.87.197.234/api/v1/loads/shipper/', reqData, {
+            .post('http://52.87.197.234/api/v1/loads/shipper/', reqData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'

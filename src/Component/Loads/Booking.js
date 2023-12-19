@@ -21,7 +21,7 @@ const Booking = () => {
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
     useEffect(() => {
-        axios.get(`https://52.87.197.234/api/v1/loads/shipper/?status=booked`, {
+        axios.get(`http://52.87.197.234/api/v1/loads/shipper/?status=booked`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

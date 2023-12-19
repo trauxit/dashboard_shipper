@@ -29,7 +29,7 @@ const Pending = () => {
     let startMarker = null;
     let endMarker = null;
     useEffect(() => {
-        axios.get(`https://52.87.197.234/api/v1/loads/shipper/?status=inprogress`, {
+        axios.get(`http://52.87.197.234/api/v1/loads/shipper/?status=inprogress`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

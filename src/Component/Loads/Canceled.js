@@ -27,7 +27,7 @@ const Canceled = () => {
     let startMarker = null;
     let endMarker = null;
     useEffect(() => {
-        axios.get(`https://52.87.197.234/api/v1/loads/shipper/?status=canceled`, {
+        axios.get(`http://52.87.197.234/api/v1/loads/shipper/?status=canceled`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

@@ -21,7 +21,7 @@ const Forget = () => {
     Cookies.set('email', email);
     function forget(e) {
         e.preventDefault()
-        axios.post(`https://52.87.197.234/api/v1/user/forgetpassword`, reqData)
+        axios.post(`http://52.87.197.234/api/v1/user/forgetpassword`, reqData)
             .then((response) => {
                 toast.success("sent OTP to email")
                 navigate('/otp')
