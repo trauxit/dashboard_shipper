@@ -30,7 +30,7 @@ const Available = () => {
     let endMarker = null;
 
     useEffect(() => {
-        axios.get(`http://52.87.197.234/api/v1/loads/shipper/?status=available`, {
+        axios.get(`https://server.trauxit.app/api/v1/loads/shipper/?status=available`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

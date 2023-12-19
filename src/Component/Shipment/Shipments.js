@@ -25,7 +25,7 @@ const Expenses = () => {
     useEffect(() => {
         if (category === '' || category === 'all') {
             axios
-                .get(`http://52.87.197.234/api/v1/loads/shipper/`, {
+                .get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }

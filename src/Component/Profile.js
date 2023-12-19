@@ -16,7 +16,7 @@ const Profile = () => {
     const [data, setData] = useState({})
     const [user, setUser] = useState({})
     useEffect(() => {
-        axios.get(`http://52.87.197.234/api/v1/user/getmydata`, {
+        axios.get(`https://server.trauxit.app/api/v1/user/getmydata`, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
