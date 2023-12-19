@@ -23,7 +23,7 @@ const ResetPassword = () => {
     }
     function reset(e) {
         e.preventDefault()
-        axios.post(`http://52.87.197.234:3000/api/v1/user/resetpassword`, reqData)
+        axios.post(`https://52.87.197.234/api/v1/user/resetpassword`, reqData)
             .then((response) => {
                 toast.success("sent OTP to email")
                 navigate('/')

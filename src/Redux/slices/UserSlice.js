@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 export const loginUser = createAsyncThunk(
     'user/loginUser',
     async (userCredentials) => {
-        const request = await axios.post(`http://52.87.197.234:3000/api/v1/user/login`, userCredentials);
+        const request = await axios.post(`https://52.87.197.234/api/v1/user/login`, userCredentials);
         const response = await request.data;
         const userName = response.data.userData.userName
         return response;

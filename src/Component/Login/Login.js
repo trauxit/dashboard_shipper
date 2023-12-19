@@ -27,7 +27,6 @@ const Login = () => {
         let userCredentials = {
             email, password
         }
-        console.log(userCredentials, 'userrr')
         dispatch(loginUser(userCredentials)).then((result) => {
             if (result.payload) {
                 setEmail('');

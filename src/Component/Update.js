@@ -34,7 +34,7 @@ const Setting = () => {
         passwordConfirm: ''
     })
     useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/user/getmydata`, {
+        axios.get(`https://52.87.197.234/api/v1/user/getmydata`, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"

@@ -21,10 +21,11 @@ import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
 
 function App() {
+  const { userName } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     const usertoken = Cookies.get('token');
-    const userName = Cookies.get('userName')
     if (usertoken) {
       try {
         const parsedToken = JSON.parse(usertoken);

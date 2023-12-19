@@ -20,7 +20,7 @@ const AllLoads = () => {
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
     useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
+        axios.get(`https://52.87.197.234/api/v1/loads/shipper/`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

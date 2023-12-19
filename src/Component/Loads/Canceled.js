@@ -27,7 +27,7 @@ const Canceled = () => {
     let startMarker = null;
     let endMarker = null;
     useEffect(() => {
-        axios.get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=canceled`, {
+        axios.get(`https://52.87.197.234/api/v1/loads/shipper/?status=canceled`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -47,7 +47,7 @@ const Canceled = () => {
     return (
         <>
             <Row className={`${styles.bookrow}`}>
-                <Col xxl='9'>
+                <Col xxl='12'>
                     <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
@@ -118,16 +118,7 @@ const Canceled = () => {
                         </Table>
                     </TableContainer>
                 </Col>
-                <Col xxl='3'>
-                    <div ref={mapContainer} style={{ width: '100%', height: '400px', marginTop: '20px' }}>
-                        <div id="start-marker" />
-                        <div id="end-marker" />
-                    </div>
-                    <div className={`${styles.map}`}>
-                        <img alt='' src={map} className={`${styles.mapimg}`} />
-                        <img alt='' src={path} className={`${styles.path}`} />
-                    </div>
-                </Col>
+
             </Row>
 
         </>

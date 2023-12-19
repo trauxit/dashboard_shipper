@@ -25,7 +25,7 @@ const Expenses = () => {
     useEffect(() => {
         if (category === '' || category === 'all') {
             axios
-                .get(`http://52.87.197.234:3000/api/v1/loads/shipper/`, {
+                .get(`https://52.87.197.234/api/v1/loads/shipper/`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -45,7 +45,7 @@ const Expenses = () => {
                 });
         } else {
             axios
-                .get(`http://52.87.197.234:3000/api/v1/loads/shipper/?status=${category}`, {
+                .get(`https://52.87.197.234/api/v1/loads/shipper/?status=${category}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
