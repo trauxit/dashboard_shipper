@@ -29,6 +29,8 @@ function App() {
     if (usertoken) {
       try {
         const parsedToken = JSON.parse(usertoken);
+        const userName = Cookies.get('userName');
+        console.log(userName, 'kkk')
         dispatch(login(parsedToken, userName));
 
       } catch (error) {
@@ -43,7 +45,7 @@ function App() {
           <Routes>
 
             <Route element={<Protectpages />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/update" element={<Update />} />
@@ -51,7 +53,7 @@ function App() {
               <Route path="/shipment" element={<Shipments />} />
               <Route path="/create" element={<Create />} />
             </Route>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/forget" element={<ForgetPage />} />
             <Route path="/otp" element={<OtpPage />} />
             <Route path="/reset-password" element={<ResetPage />} />

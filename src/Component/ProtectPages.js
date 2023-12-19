@@ -6,7 +6,7 @@ const Protect = () => {
     const { token } = useSelector((state) => state.user);
     return (
         <>
-            {token ? <Outlet /> : <Navigate to="/" />}
+            {token ? <Outlet /> : <Navigate to="/login" />}
 
         </>
     )

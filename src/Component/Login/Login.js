@@ -31,7 +31,7 @@ const Login = () => {
             if (result.payload) {
                 setEmail('');
                 setPassword('');
-                navigate('/dashboard')
+                navigate('/')
                 toast.success('success')
                 localStorage.setItem('email', email)
             }
