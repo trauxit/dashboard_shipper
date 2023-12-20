@@ -39,7 +39,7 @@ const TableOfDash = () => {
                         key={rows.map(id => id.id)}
                         className={`${styles.table}`}
                         rows={rows}
-                        columns={userColumns.concat(actionColumn)}
+                        columns={userColumns}
                         initialState={{
                             pagination: {
                                 paginationModel: {

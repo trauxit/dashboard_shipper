@@ -360,6 +360,8 @@ left: 10px;
 }
 .map{
   background-color: #f2f2f2;
+  width: 92% !important;
+      margin-left: 100px !important;
 }
 .map>*{
   padding-left: 0 !important;

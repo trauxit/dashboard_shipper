@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Sidebar from '../../Layout/Sidebar'
 import NavBar from '../../Layout/NavBar'
 import styles from '../../Styles/dashboard.module.css'
@@ -16,6 +16,10 @@ import dots from '../../assets/images/more_horiz.svg'
 import local from '../../assets/images/local_shipping.svg'
 import ellipsis from '../../assets/images/Ellipse 1091.svg'
 import ControTower from './ControTower';
+import { useSelector } from 'react-redux';
+import axios from 'axios'
+import moment from 'moment';
+
 const Dashboard = () => {
     const [state, setState] = useState({
         series6: [{
@@ -109,6 +113,30 @@ const Dashboard = () => {
         }
     })
     const [active, setActive] = useState('dashboard')
+    const [ship, setShip] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const { token } = useSelector((state) => state.user);
+    const [err, setErr] = useState('');
+    const [searchQuery, setSearchQuery] = useState('inroads');
+
+    useEffect(() => {
+        axios
+            .get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                setShip(response.data.data.loads);
+            })
+            .catch((err) => {
+                setErr(err.response.data.message);
+            });
+    }, []);
+    useEffect(() => {
+        const filtered = ship.filter((item) => item?.status === searchQuery);
+        setFilteredData(filtered);
+    }, [ship, searchQuery]);
     return (
         <>
             <div className={`${styles.home}`}>
@@ -116,10 +144,10 @@ const Dashboard = () => {
                     <NavBar />
                     <div className={`${styles.overviewOrFacilities}`}>
                         <div className={`${styles.overviewOrFacilities__body}`}>
-                            <h2 className={`${active === "dashboard" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("dashboard") }}>dashboard</h2>
+                            <h2 className={`${active === "dashboard" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("dashboard") }}>Dashboard</h2>
                             <h2 className={`${active === "Control Tower" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("Control Tower") }}>Control Tower</h2>
                         </div>
-                        <div className={`${styles.overviewOrFacilities__date}`}>
+                        {/*  <div className={`${styles.overviewOrFacilities__date}`}>
                             <div className={`${styles.location}`}>
                                 <img alt='' src={filter} />
                                 <p>Filter</p>
@@ -128,7 +156,7 @@ const Dashboard = () => {
                                 <img alt='' src={setting} />
                                 <p>Configure</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={`${active === "dashboard" ? styles.block : styles.none}`}>
                         <Row className={`${styles.dash}`}>
@@ -136,19 +164,19 @@ const Dashboard = () => {
                                 <h4>Recent Activities</h4>
                                 <div className={`${styles.activities}`}>
                                     <div className={`${styles.activities__body} ${styles.transit}`}>
-                                        <p>Routes in transit</p>
-                                        <h2>58</h2>
+                                        <p>Shipments in Route</p>
+                                        <h2>{filteredData.length}</h2>
                                     </div>
-                                    <div className={`${styles.activities__body}`}>
+                                    {/*  <div className={`${styles.activities__body}`}>
                                         <p>Routes delayed</p>
                                         <h2>3</h2>
-                                    </div>
+                                    </div> */}
                                     <div className={`${styles.activities__body}`}>
                                         <p>Invoices paid</p>
                                         <h2>104</h2>
                                     </div>
                                     <div className={`${styles.activities__body}`}>
-                                        <p>New booking</p>
+                                        <p>New shipments</p>
                                         <h2>142</h2>
                                     </div>
                                 </div>
@@ -162,88 +190,40 @@ const Dashboard = () => {
                                 </div>
                             </Col>
                             <Col xxl='4' className={`${styles.routes}`}>
-                                <h2>Routes in transit</h2>
+                                <h2>Shipments in Route</h2>
                                 <input className={`${styles.input}`} name="text" placeholder="Search..." type="search" />
-                                <div className={`${styles.routes__body}`}>
-                                    <div className={`${styles.routes__name}`}>
-                                        <h3>CU 7381</h3>
-                                        <img alt='' src={dots} />
-                                    </div>
-                                    <div className={`${styles.bar}`}><ProgressBar now={70} className={`${styles.prog}`} />
-                                        <span style={{ left: `calc(${70}% - 20px)` }} className={`${styles.b}`}> <img alt=' ' src={local} className={`${styles.local}`} /></span>
-                                        <img alt='' src={ellipsis} className={`${styles.ell}`} />
-                                    </div>
-                                    <div className={`${styles.arrive}`}>
-                                        <div className={`${styles.from}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                        <div className={`${styles.to}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={`${styles.routes__body}`}>
-                                    <div className={`${styles.routes__name}`}>
-                                        <h3>CU 7381</h3>
-                                        <img alt='' src={dots} />
-                                    </div>
-                                    <div className={`${styles.bar}`}><ProgressBar now={50} className={`${styles.prog}`} />
-                                        <span style={{ left: `calc(${50}% - 20px)` }} className={`${styles.b}`}> <img alt=' ' src={local} className={`${styles.local}`} /></span>
-                                        <img alt='' src={ellipsis} className={`${styles.ell}`} />
-                                    </div>
-                                    <div className={`${styles.arrive}`}>
-                                        <div className={`${styles.from}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                        <div className={`${styles.to}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
+                                {filteredData.length !== 0 ?
+                                    <>
+                                        {filteredData && filteredData.map(shipCard =>
+                                            <div className={`${styles.routes__body}`} key={shipCard?._id}>
+                                                <div className={`${styles.routes__name}`}>
+                                                    <h3>{shipCard.idShipper}</h3>
+                                                    <img alt='' src={dots} />
+                                                </div>
+                                                <div className={`${styles.bar}`}><ProgressBar now={(shipCard.shipmentDistance) / 100} className={`${styles.prog}`} />
+                                                    <span style={{ left: `calc(${(shipCard.shipmentDistance) / 100}% - 20px)` }} className={`${styles.b}`}> <img alt=' ' src={local} className={`${styles.local}`} /></span>
+                                                    <img alt='' src={ellipsis} className={`${styles.ell}`} />
+                                                </div>
+                                                <div className={`${styles.arrive}`}>
+                                                    <div className={`${styles.from}`}>
+                                                        <p>{moment(shipCard?.createdAt).format('MMM Do YY')}</p>
+                                                        <h3>{shipCard?.PickupLocation?.address}</h3>
+                                                    </div>
+                                                    <div className={`${styles.to}`}>
+                                                        <p>{moment(shipCard?.summary?.arrivalTime).format('MMM Do YY')}</p>
+                                                        <h3>{shipCard?.DropoutLocation?.address}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </>
+                                    :
+                                    <div className='mt-5'>
+                                        <div className='d-flex'>
+                                            <h5 className={`${styles.errbook}`}> {err}</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div className={`${styles.routes__body}`}>
-                                    <div className={`${styles.routes__name}`}>
-                                        <h3>CU 7381</h3>
-                                        <img alt='' src={dots} />
-                                    </div>
-                                    <div className={`${styles.bar}`}><ProgressBar now={30} className={`${styles.prog}`} />
-                                        <span style={{ left: `calc(${30}% - 20px)` }} className={`${styles.b}`}> <img alt=' ' src={local} className={`${styles.local}`} /></span>
-                                        <img alt='' src={ellipsis} className={`${styles.ell}`} />
-                                    </div>
-                                    <div className={`${styles.arrive}`}>
-                                        <div className={`${styles.from}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                        <div className={`${styles.to}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={`${styles.routes__body}`}>
-                                    <div className={`${styles.routes__name}`}>
-                                        <h3>CU 7381</h3>
-                                        <img alt='' src={dots} />
-                                    </div>
-                                    <div className={`${styles.bar}`}><ProgressBar now={70} className={`${styles.prog}`} />
-                                        <span style={{ left: `calc(${70}% - 20px)` }} className={`${styles.b}`}> <img alt=' ' src={local} className={`${styles.local}`} /></span>
-                                        <img alt='' src={ellipsis} className={`${styles.ell}`} />
-                                    </div>
-                                    <div className={`${styles.arrive}`}>
-                                        <div className={`${styles.from}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                        <div className={`${styles.to}`}>
-                                            <p>02:05pm, Sept02</p>
-                                            <h3>Miami, USA</h3>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
                             </Col>
                         </Row>
                     </div>

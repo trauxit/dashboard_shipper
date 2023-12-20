@@ -9,7 +9,7 @@ import { Col, Row } from 'react-bootstrap';
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
 import moment from 'moment';
 
-const RoadTripMenuPlanner = ({ onDataReceived }) => {
+const RoadTripMenuPlanner = React.memo(({ onDataReceived }) => {
     const [distance, setDistance] = useState('');
     const [startLocation, setStartLocation] = useState(null);
     const [endLocation, setEndLocation] = useState(null);
@@ -121,6 +121,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
         onDataReceived(startlat, startlon, endlat, endlon);
         // eslint-disable-next-line no-use-before-define
     }, [startLocation, endLocation, calculateDistance]);
+
     const handleStartInputChange = (event) => {
         setStart(event.target.value);
     };
@@ -158,10 +159,7 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                         />
                     </div>
                 </div>
-
-
                 {distance !== '' ?
-
                     <div className='routemap'>
                         <h5>Route summary</h5>
                         <hr />
@@ -179,14 +177,13 @@ const RoadTripMenuPlanner = ({ onDataReceived }) => {
                 }
             </Col>
             <Col xxl='9'>
-                <div ref={mapContainer} style={{ width: '989px', height: '400px' }}>
+                <div ref={mapContainer} style={{ width: '100%', height: '400px' }}>
                     <div id="start-marker" />
                     <div id="end-marker" />
                 </div>
             </Col>
-
         </Row>
     );
-};
+});
 
 export default RoadTripMenuPlanner;

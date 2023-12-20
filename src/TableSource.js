@@ -2,7 +2,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import control from './assets/images/control 1.png'
 import styles from './Styles/dashboard.module.css'
 export const userColumns = [
-    { field: "client", headerName: "client", width: 200 },
+    { field: "client", headerName: "Driver", width: 200 },
     {
         field: "Typeofgoods",
         headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Type of goods</div>,
@@ -10,14 +10,14 @@ export const userColumns = [
     },
     {
         field: "route",
-        headerName: "Route",
+        headerName: "Distance",
         width: 190,
     },
 
     {
         field: "status",
         headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Status</div>,
-        width: 190,
+        width: 100,
         renderCell: (params) => {
 
             return (

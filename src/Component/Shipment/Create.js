@@ -1,4 +1,4 @@
-import React, { useRef, useReducer, useEffect, useState } from 'react'
+import React, { useRef, useReducer, useEffect, useState, useCallback } from 'react'
 import styles from '../../Styles/create.module.css'
 import NavBar from '../../Layout/NavBar'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -13,19 +13,19 @@ import bottom from '../../assets/images/Exclude (1).svg'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import { useSelector } from 'react-redux';
-
 import RoadTripMenuPlanner from './MapPhoto'
+
 const Create = () => {
     const [startLat, setStartLat] = useState(null);
     const [startLon, setStartLon] = useState(null);
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
-    const handleDataFromChild = (startLat, startLon, endLat, endLon) => {
+    const handleDataFromChild = useCallback((startLat, startLon, endLat, endLon) => {
         setStartLat(startLat);
         setStartLon(startLon);
         setEndLat(endLat);
         setEndLon(endLon);
-    };
+    });
     const initialState = {
         typeLoads: '',
         Weight: '',
@@ -100,13 +100,13 @@ const Create = () => {
             });
     }
 
-    useEffect(() => {
-
-        if (!formData.Pickupaddress || !formData.dropoffaddress) {
-            dispatch(formData.dropoffaddress, formData.Pickupaddress)
-        }
-
-    }, [formData.Pickupaddress, formData.dropoffaddress, dispatch])
+    /*   useEffect(() => {
+  
+          if (!formData.Pickupaddress || !formData.dropoffaddress) {
+              dispatch(formData.dropoffaddress, formData.Pickupaddress)
+          }
+  
+      }, [formData.Pickupaddress, formData.dropoffaddress, dispatch]) */
     return (
         <>
             <div className={`${styles.home}`}>
@@ -197,7 +197,7 @@ const Create = () => {
                                                     onChange={handleChange}
 
                                                 />
-                                                <InputGroup.Text id="basic-addon2" className='in tex'>Lbs</InputGroup.Text>
+                                                <InputGroup.Text id="basic-addon2" className='in tex'>Kilo</InputGroup.Text>
                                             </InputGroup>
                                         </div>
                                     </div>

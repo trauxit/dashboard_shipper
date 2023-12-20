@@ -24,7 +24,26 @@ const TableControl = () => {
                     </TableHead>
                     <TableBody>
                         <TableRow
-                            key=''
+                            key='1'
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row" className={`${styles.name}`} >
+                                San Francisco CA <ArrowForwardIcon /> Riverside, CA
+                            </TableCell>
+                            <TableCell >
+                                <div className={`${styles.high}`} >high</div>
+                            </TableCell>
+                            <TableCell className={`${styles.tab__para}`} >
+                                <p className={`${styles.tab__para1}`}>17-9-2023</p>
+                                <p className={`${styles.tab__para2}`}>10:00 AM</p>
+                            </TableCell>
+                            <TableCell className={`${styles.tab__para}`}  >
+                                <p className={`${styles.tab__para1}`}>17-9-2023</p>
+                                <p className={`${styles.tab__para2}`}>10:00 AM</p>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow
+                            key='2'
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row" className={`${styles.name}`} >
@@ -44,27 +63,7 @@ const TableControl = () => {
 
                         </TableRow>
                         <TableRow
-                            key=''
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row" className={`${styles.name}`} >
-                                San Francisco CA <ArrowForwardIcon /> Riverside, CA
-                            </TableCell>
-                            <TableCell >
-                                <div className={`${styles.high}`} >high</div>
-                            </TableCell>
-                            <TableCell className={`${styles.tab__para}`} >
-                                <p className={`${styles.tab__para1}`}>17-9-2023</p>
-                                <p className={`${styles.tab__para2}`}>10:00 AM</p>
-                            </TableCell>
-                            <TableCell className={`${styles.tab__para}`}  >
-                                <p className={`${styles.tab__para1}`}>17-9-2023</p>
-                                <p className={`${styles.tab__para2}`}>10:00 AM</p>
-                            </TableCell>
-
-                        </TableRow>
-                        <TableRow
-                            key=''
+                            key='3'
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row" className={`${styles.name}`} >
@@ -84,7 +83,7 @@ const TableControl = () => {
 
                         </TableRow>
                         <TableRow
-                            key=''
+                            key='4'
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row" className={`${styles.name}`} >

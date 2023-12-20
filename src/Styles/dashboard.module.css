@@ -53,6 +53,8 @@
 }
 .tabs{
     margin-top: 30px;
+    filter: blur(8px) !important;
+        -webkit-filter: blur(8px) !important;
 }
 .tabcontrol__title{
     color: #000 !important;
@@ -126,8 +128,24 @@ padding: 10px 0 !important;
         line-height: normal !important;
         letter-spacing: 0.277px !important;
 }
-.r{
+.r,
+.r2{
     width: 100%;
+}
+.r2{
+        filter: blur(8px) !important;
+        -webkit-filter: blur(8px) !important;
+}
+.r3{
+    position: relative;
+}
+.comingsoon{
+    position: absolute;
+    content: 'coming soon';
+    top: 50%;
+    left: 40%;
+    z-index: 9999;
+    font-size: 50px;
 }
 .response{
     display: flex;
@@ -237,7 +255,7 @@ width: 100%;
 }
 .activities{
     display: flex;
-    column-gap: 30px;
+    column-gap: 175px;
 
 }
 .activities__body{

@@ -16,10 +16,10 @@ const ControTower = () => {
 
                         <div className={`${styles.controlchart}`}>
                             <BarControl />
-                            <div className={`${styles.response}`}>
+                            {/* <div className={`${styles.response}`}>
                                 <p>Responses Needed : 0</p>
                                 <p>Responses Provided : 0</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className={`${styles.updown}`}>
                             <div className={`${styles.up}`}>
@@ -40,21 +40,27 @@ const ControTower = () => {
                     </div>
                 </Col>
                 <Col>
-                    <TableControl />
-                </Col>
-            </Row>
-            <Row className={`${styles.r} mt-5 mb-4`}>
-                <Col>
-                    <div className={`${styles.status} ${styles.rstatus}`}>
-                        <StatusControl />
-                    </div>
-                </Col>
-                <Col>
-                    <div className={`${styles.status} ${styles.r2}`}>
-                        <StatusControl />
+                    <div className={`${styles.r3}`}>
+                        <h3 className={styles.comingsoon}>coming soon</h3>
+                        <TableControl />
                     </div>
                 </Col>
             </Row>
+            <div className={`${styles.r3}`}>
+                <h3 className={styles.comingsoon}>coming soon</h3>
+                <Row className={`${styles.r2} mt-5 mb-4`}>
+                    <Col>
+                        <div className={`${styles.status} ${styles.rstatus}`}>
+                            <StatusControl />
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className={`${styles.status} ${styles.r2}`}>
+                            <StatusControl />
+                        </div>
+                    </Col>
+                </Row>
+            </div>
 
         </>
     )
