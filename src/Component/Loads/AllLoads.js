@@ -11,6 +11,7 @@ import Canceled from './Canceled'
 import Available from './Availableload';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
+import Wait from './Wait';
 const AllLoads = () => {
     const [active, setActive] = useState('find')
     const [searchQuery, setSearchQuery] = useState('');
@@ -65,6 +66,7 @@ const AllLoads = () => {
                         <h2 className={`${active === "find" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("find") }}>Find</h2>
                         <h2 className={`${active === "booked" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("booked") }}>Booked</h2>
                         <h2 className={`${active === "pending" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("pending") }}>Pending</h2>
+                        <h2 className={`${active === "wait" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("wait") }}>Waiting Your Approve</h2>
                         <h2 className={`${active === "canceled" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("canceled") }}>Canceled</h2>
                         <h2 className={`${active === "available" ? styles.style__link : styles.view__link}`} onClick={() => { setActive("available") }}>Available</h2>
                     </div>
@@ -123,6 +125,9 @@ const AllLoads = () => {
                     </div>
                     <div className={`${active === "pending" ? styles.block : styles.none}`}>
                         <Pending />
+                    </div>
+                    <div className={`${active === "wait" ? styles.block : styles.none}`}>
+                        <Wait />
                     </div>
                     <div className={`${active === "canceled" ? styles.block : styles.none}`}>
                         <Canceled />

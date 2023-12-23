@@ -5,8 +5,36 @@ import { userColumns, rows } from '../../TableSource';
 import { Link } from "react-router-dom";
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
+import axios from 'axios'
 const TableOfDash = () => {
     const [seed, setSeed] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('booked');
+    const [filteredData, setFilteredData] = useState([]);
+    const [ship, setShip] = useState([]);
+    const [err, setErr] = useState('');
+    const { token } = useSelector((state) => state.user);
+
+
+    useEffect(() => {
+        axios
+            .get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                setShip(response.data.data.loads);
+            })
+            .catch((err) => {
+                setErr(err.response.data.message);
+            });
+    }, []);
+    useEffect(() => {
+        const filtered = ship.filter((item) => item?.status === searchQuery);
+        setFilteredData(filtered);
+    }, [ship, searchQuery]);
+
     const reset = () => {
         setSeed(Math.random());
     }
@@ -36,9 +64,9 @@ const TableOfDash = () => {
             <section  >
                 <Box>
                     <DataGrid
-                        key={rows.map(id => id.id)}
+                        getRowId={rows => rows._id}
                         className={`${styles.table}`}
-                        rows={rows}
+                        rows={filteredData}
                         columns={userColumns}
                         initialState={{
                             pagination: {

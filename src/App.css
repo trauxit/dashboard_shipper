@@ -419,3 +419,6 @@ left: 10px;
   font-size: 37px !important;
   color: #e47e18 !important;
 }
+a{
+  text-decoration: none !important;
+}

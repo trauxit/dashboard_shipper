@@ -22,6 +22,8 @@ const Canceled = () => {
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
     const [toggle, setToggle] = useState(Array(ship.length).fill(false));
+    const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+    const [selectId, setSelectId] = useState(null);
     const mapContainer = useRef(null);
     let mapInstance = null;
     let startMarker = null;
@@ -43,11 +45,43 @@ const Canceled = () => {
             return newToggle;
         });
     };
+    useEffect(() => {
+        if (selectedRowIndex !== null) {
+            const startCoordinates = [
+                ship[selectedRowIndex]?.PickupLocation?.coordinates[0],
+                ship[selectedRowIndex]?.PickupLocation?.coordinates[1],
+            ];
+            const endCoordinates = [
+                ship[selectedRowIndex]?.DropoutLocation?.coordinates[0],
+                ship[selectedRowIndex]?.DropoutLocation?.coordinates[1],
+            ];
 
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            mapInstance = tt.map({
+                key: 'L8XgEYgGaqp65Z3gyMVkArGX31jwb6Pm',
+                container: mapContainer.current,
+                center: startCoordinates,
+                zoom: 2
+            });
+            mapInstance.on('load', () => {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                startMarker = new tt.Marker({
+                    color: '#ABABAB',
+                })
+                    .setLngLat(startCoordinates)
+                    .addTo(mapInstance);
+
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                endMarker = new tt.Marker({ draggable: true })
+                    .setLngLat(endCoordinates)
+                    .addTo(mapInstance);
+            });
+        }
+    }, [selectedRowIndex]);
     return (
         <>
             <Row className={`${styles.bookrow}`}>
-                <Col xxl='12'>
+                <Col xxl='9'>
                     <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
@@ -67,6 +101,7 @@ const Canceled = () => {
                                         {ship && ship.map((shipCard, index) =>
                                             <TableRow
                                                 key={shipCard?._id}
+                                                onClick={() => { setSelectId(shipCard?._id) }}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                 className={`${styles.book}`}
                                             >
@@ -93,7 +128,7 @@ const Canceled = () => {
                                                 </TableCell>
                                                 <TableCell key={index} onClick={() => handleClick(index)}>
                                                     <MoreHorizIcon />
-                                                    {toggle[index] ?
+                                                    {/*  {toggle[index] ?
                                                         <div className={`${styles.edit__body}`}>
                                                             <p>Edit</p>
                                                             <hr />
@@ -101,7 +136,7 @@ const Canceled = () => {
                                                         </div>
                                                         :
                                                         ""
-                                                    }
+                                                    } */}
                                                 </TableCell>
                                             </TableRow>
 
@@ -118,7 +153,14 @@ const Canceled = () => {
                         </Table>
                     </TableContainer>
                 </Col>
-
+                {selectedRowIndex !== null && (
+                    <Col xxl="3">
+                        <div ref={mapContainer} style={{ width: '100%', height: '100%', marginTop: '20px' }}>
+                            <div id="start-marker" />
+                            <div id="end-marker" />
+                        </div>
+                    </Col>
+                )}
             </Row>
 
         </>

@@ -19,7 +19,6 @@ import ControTower from './ControTower';
 import { useSelector } from 'react-redux';
 import axios from 'axios'
 import moment from 'moment';
-
 const Dashboard = () => {
     const [state, setState] = useState({
         series6: [{
@@ -118,7 +117,8 @@ const Dashboard = () => {
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('');
     const [searchQuery, setSearchQuery] = useState('inroads');
-
+    const [filteredDataInprog, setFilteredDataInprog] = useState([]);
+    const [searchQueryInprog, setSearchQueryInprog] = useState('inprogress');
     useEffect(() => {
         axios
             .get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
@@ -137,6 +137,13 @@ const Dashboard = () => {
         const filtered = ship.filter((item) => item?.status === searchQuery);
         setFilteredData(filtered);
     }, [ship, searchQuery]);
+    useEffect(() => {
+        const currentTime = new Date().toISOString()
+        const filteredInprog = ship.filter((item) => item?.status === searchQueryInprog && new Date(item?.departureTime) > new Date(currentTime));
+        setFilteredDataInprog(filteredInprog);
+    }, [ship, searchQueryInprog]);
+
+
     return (
         <>
             <div className={`${styles.home}`}>
@@ -177,7 +184,7 @@ const Dashboard = () => {
                                     </div>
                                     <div className={`${styles.activities__body}`}>
                                         <p>New shipments</p>
-                                        <h2>142</h2>
+                                        <h2>{filteredDataInprog.length}</h2>
                                     </div>
                                 </div>
 

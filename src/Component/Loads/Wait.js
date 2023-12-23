@@ -17,7 +17,8 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 import tt from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
-const Booking = () => {
+
+const Wait = () => {
     const [ship, setShip] = useState([])
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
@@ -29,7 +30,7 @@ const Booking = () => {
     let startMarker = null;
     let endMarker = null;
     useEffect(() => {
-        axios.get(`https://server.trauxit.app/api/v1/loads/shipper/?status=booked`, {
+        axios.get(`https://server.trauxit.app/api/v1/loads/shipper/?status=inchecksp`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -90,7 +91,8 @@ const Booking = () => {
                                     <TableCell>Reference</TableCell>
                                     <TableCell>Pickup</TableCell>
                                     <TableCell>Delivery</TableCell>
-                                    <TableCell>Driver</TableCell>
+                                    <TableCell>Distance</TableCell>
+                                    <TableCell>Cost</TableCell>
                                     <TableCell>Status</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
@@ -101,8 +103,9 @@ const Booking = () => {
                                         {ship && ship.map((shipCard, index) =>
                                             <TableRow
                                                 key={shipCard?._id}
+                                                onClick={() => { setSelectId(shipCard?._id) }}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                className={`${styles.book}`}
+                                                className={`${selectId === shipCard?._id ? styles.cell : styles.book}`}
                                             >
                                                 <TableCell component="th" scope="row">
                                                     <h5>UF-S82854232</h5>
@@ -110,20 +113,31 @@ const Booking = () => {
                                                 <TableCell>
                                                     <h5>{shipCard?.PickupLocation?.address}</h5>
                                                     <p>{moment(shipCard?.summary?.departureTime).format('MMM Do YY')} </p>
-
                                                 </TableCell>
                                                 <TableCell>
                                                     <h5>{shipCard?.DropoutLocation?.address}</h5>
                                                     <p>{moment(shipCard?.summary?.arrivalTime).format('MMM Do YY')} </p>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <h5>{shipCard.idCarrier.userName}</h5>
+                                                    <h5>{shipCard.shipmentDistance} Km</h5>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <h5>{shipCard.status}</h5>
+                                                    <h5>{shipCard.priceLoads}</h5>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <h5>Waiting Your Approve</h5>
                                                 </TableCell>
                                                 <TableCell key={index} onClick={() => handleClick(index)}>
                                                     <MoreHorizIcon />
+                                                    {toggle[index] ?
+                                                        <div className={`${styles.edit__body}`}>
+                                                            <p>Cancel</p>
+                                                            <hr />
+                                                            <p>Delete</p>
+                                                        </div>
+                                                        :
+                                                        ""
+                                                    }
                                                 </TableCell>
                                             </TableRow>
 
@@ -136,8 +150,6 @@ const Booking = () => {
                                         </div>
                                     </div>
                                 }
-
-
                             </TableBody>
                         </Table>
                     </TableContainer>
@@ -151,9 +163,8 @@ const Booking = () => {
                     </Col>
                 )}
             </Row>
-
         </>
     )
 }
 
-export default Booking
+export default Wait
