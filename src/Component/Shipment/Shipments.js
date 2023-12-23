@@ -45,7 +45,7 @@ const Expenses = () => {
                 });
         } else {
             axios
-                .get(`http://52.87.197.234/api/v1/loads/shipper/?status=${category}`, {
+                .get(`https://server.trauxit.app/api/v1/loads/shipper/?status=${category}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
