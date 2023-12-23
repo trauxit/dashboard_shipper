@@ -32,7 +32,6 @@ const AllLoads = () => {
 
             }).catch((err) => { setErr(err.response.data.message) })
     }, [])
-    console.log(ship, 'kk')
     useEffect(() => {
         const filtered = ship.filter((item) =>
             item?.PickupLocation?.address.toLowerCase().includes(searchQuery.toLowerCase())

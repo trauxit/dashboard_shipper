@@ -6,7 +6,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import imgNull from '../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
-import photo from '../assets/images/FB_IMG_1528049839195.jpg'
+import photo from '../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import bag from '../assets/images/undefined.svg'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ const Profile = () => {
     const { token } = useSelector((state) => state.user);
     const [data, setData] = useState({})
     const [user, setUser] = useState({})
+    const [fname, lname] = data.fullName ? data.fullName.split(' ') : ['', ''];
     useEffect(() => {
         axios.get(`https://server.trauxit.app/api/v1/user/getmydata`, {
             headers: {
@@ -28,9 +29,7 @@ const Profile = () => {
             }).catch((err) => { console.log(err) })
 
     }, [])
-    console.log(data, "kkkk")
-    /* const fullName = data?.fullName*/
-    /*console.log(data.fullName.split(' ').slice(-1).join(' '))*/
+
     return (
         <>
             <div className={`${styles.home}`}>
@@ -40,7 +39,12 @@ const Profile = () => {
                     <div className={`${styles.user__body}`}>
                         <div className={`${styles.profile}`}>
                             <div>
-                                <img alt='' src={data.image} className={`${styles.user__img}`} />
+                                {data.image ?
+                                    <img alt='' src={data.image} className={`${styles.user__img}`} />
+                                    :
+                                    <img alt='' src={photo} className={`${styles.user__img}`} />
+
+                                }
                             </div>
                             <div>
                                 <h2 className={`${styles.user__title}`} >{data.fullName}</h2>
@@ -55,7 +59,7 @@ const Profile = () => {
                         <div >
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>First Name</h3>
-                                <p className={`${styles.para}`}>{ }</p>
+                                <p className={`${styles.para}`}>{fname}</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>User Name</h3>
@@ -69,7 +73,7 @@ const Profile = () => {
                         <div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Last Name</h3>
-                                <p className={`${styles.para}`}>{ }</p>
+                                <p className={`${styles.para}`}>{lname}</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Email Address</h3>

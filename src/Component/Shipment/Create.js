@@ -269,12 +269,7 @@ const Create = () => {
                                                 value={formData.Pickupaddress}
                                                 onChange={handleChange} />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Pickup Type</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g union,USA" className='cont' name="Pickuptype"
-                                                value='Point'
-                                                readOnly />
-                                        </Form.Group>
+
                                     </div>
                                     <Form.Group controlId="exampleForm.ControlTextarea1" className={`${styles.textareaship} mb-3 mt-3`}>
                                         <Form.Label>Additonal Notes</Form.Label>
@@ -294,12 +289,7 @@ const Create = () => {
                                                 value={formData.dropoffaddress}
                                                 onChange={handleChange} />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                            <Form.Label>Dropoff Type</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g union,USA" className='cont' name="dropofftype"
-                                                value='Point'
-                                                readOnly />
-                                        </Form.Group>
+
                                     </div>
                                     <Form.Group controlId="exampleForm.ControlTextarea1" className={`${styles.textareaship} ${styles.hr} mb-3 mt-3`}>
                                         <Form.Label>Additonal Notes</Form.Label>

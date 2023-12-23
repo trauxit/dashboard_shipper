@@ -105,7 +105,7 @@ const Booking = () => {
                                                 className={`${styles.book}`}
                                             >
                                                 <TableCell component="th" scope="row">
-                                                    <h5>UF-S82854232</h5>
+                                                    <h5>{shipCard.idShipper}</h5>
                                                 </TableCell>
                                                 <TableCell>
                                                     <h5>{shipCard?.PickupLocation?.address}</h5>

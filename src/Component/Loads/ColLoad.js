@@ -27,7 +27,7 @@ const ColLoad = ({ ship, err }) => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Rate</TableCell>
+                            <TableCell>Price</TableCell>
                             <TableCell>Pickup</TableCell>
                             {/* <TableCell>Full Route</TableCell> */}
                             <TableCell>Delivery</TableCell>
@@ -64,7 +64,7 @@ const ColLoad = ({ ship, err }) => {
                                             <h5>14 mi</h5>
                                         </TableCell>
                                         <TableCell>
-                                            <h5>{shipCard.Weight}</h5>
+                                            <h5>{shipCard.Weight} K</h5>
                                         </TableCell>
                                         <TableCell>
                                             <KeyboardArrowRightIcon />

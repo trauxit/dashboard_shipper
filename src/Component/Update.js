@@ -4,7 +4,7 @@ import NavBar from '../Layout/NavBar'
 import styles from '../Styles/setting.module.css'
 import StarIcon from '@mui/icons-material/Star';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import imgNull from '../assets/images/FB_IMG_1528049839195.jpg'
+import imgNull from '../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -12,19 +12,21 @@ import mail from '../assets/images/Mail.svg'
 import location from '../assets/images/Glyph_ undefined.svg'
 import bag from '../assets/images/undefined.svg'
 import pass from '../assets/images/pass.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { useSelector } from 'react-redux';
 const Setting = () => {
     const { token } = useSelector((state) => state.user);
-
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         img: '',
         phone: '',
-        fname: '',
-        lname: '',
+        fname: ``,
+        lname: ``,
         userName: '',
         address: '',
         compantName: '',
@@ -33,6 +35,7 @@ const Setting = () => {
         password: '',
         passwordConfirm: ''
     })
+
     useEffect(() => {
         axios.get(`https://server.trauxit.app/api/v1/user/getmydata`, {
             headers: {
@@ -41,13 +44,20 @@ const Setting = () => {
             }
         })
             .then((response) => {
+                const [fname, lname] = response.data.data.userData.fullName ? response.data.data.userData.fullName.split(' ') : ['', ''];
+                setFname(fname)
+                setLname(lname)
                 setFormData({
                     phone: response.data.data.userData.phoneNumber,
                     userName: response.data.data.user_info.userName,
                     address: response.data.data.userData.address,
                     compantName: response.data.data.userData.companyName,
                     fullName: response.data.data.userData.fullName,
-                    email: response.data.data.user_info.email
+                    email: response.data.data.user_info.email,
+                    fname: fname,
+                    lname: lname,
+                    img: response.data.data.userData.image
+
                 })
             }).catch((err) => { console.log(err) })
 
@@ -94,6 +104,7 @@ const Setting = () => {
     storeProfile.append("userName", formData.userName);
     storeProfile.append("image", formData.img);
     storeProfile.append("companyName", formData.companyName);
+    storeProfile.append("fullName", `${formData.fname} ${formData.lname}`);
 
     const storePass = {
         "currentPassword": formData.currentPassword,
@@ -103,20 +114,22 @@ const Setting = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.patch(`http://52.87.197.234:3000/api/v1/user/updatemydata/`, storeProfile, {
+        axios.patch(`https://server.trauxit.app/api/v1/user/updatemydata/`, storeProfile, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
         }, [])
             .then(response => {
-                toast.success(response.data.message)
+                toast.success(response.data.status)
                 console.log(response.data)
+                navigate('/profile')
+
             }
             ).catch((err) => { toast.error(err.response.data.message) })
 
         if (formData.password) {
-            axios.patch(`http://52.87.197.234:3000/api/v1/user/updatemypassword`, storePass, {
+            axios.patch(`https://server.trauxit.app/api/v1/user/updatemypassword`, storePass, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
@@ -125,6 +138,7 @@ const Setting = () => {
                 .then(response1 => {
                     toast.success(response1.data.message)
                     console.log(response1)
+                    navigate('/profile')
                 }
                 ).catch((err) => { toast.error(err.response.data.message) })
         }
@@ -214,7 +228,6 @@ const Setting = () => {
                                 <Form.Label>Phone Number</Form.Label>
                                 <div className=''>
                                     <PhoneInput
-                                        country={'eg'}
                                         value={formData.phone}
                                         onChange={onChangeHandlerPhone}
                                     />
