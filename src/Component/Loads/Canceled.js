@@ -44,6 +44,7 @@ const Canceled = () => {
             newToggle[index] = !newToggle[index];
             return newToggle;
         });
+        setSelectedRowIndex(index);
     };
     useEffect(() => {
         if (selectedRowIndex !== null) {
