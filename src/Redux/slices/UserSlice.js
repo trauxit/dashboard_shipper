@@ -11,14 +11,14 @@ export const loginUser = createAsyncThunk(
     }
 );
 
-/* export const signupUser = createAsyncThunk(
+export const signupUser = createAsyncThunk(
     'user/signupUser',
     async (userCredentials) => {
-        const request = await axios.post(`http://13.48.43.204:3000/api/v1/user/signup`, userCredentials);
+        const request = await axios.post(`https://server.trauxit.app/api/v1/user/signup`, userCredentials);
         const response = await request.data.data;
         return response;
     }
-); */
+);
 
 const userSlice = createSlice({
     name: 'user',
@@ -72,26 +72,26 @@ const userSlice = createSlice({
                     state.error = action.error.message
                 }
             })
-        /*             .addCase(signupUser.pending, (state) => {
-                        state.loading = true;
-                        state.usr = null;
-                        state.error = null;
-                    })
-                    .addCase(signupUser.fulfilled, (state, action) => {
-                        state.loading = false;
-                        state.usr = action.payload;
-                        state.error = null;
-                    })
-                    .addCase(signupUser.rejected, (state, action) => {
-                        state.loading = false;
-                        state.usr = null;
-                        console.log(action.error.message)
-                        if (action.error.message === 'Request failed with status code 401') {
-                            state.error = 'Access Denied! Invalid Credentials';
-                        } else {
-                            state.error = action.error.message
-                        }
-                    }) */
+            .addCase(signupUser.pending, (state) => {
+                state.loading = true;
+                state.usr = null;
+                state.error = null;
+            })
+            .addCase(signupUser.fulfilled, (state, action) => {
+                state.loading = false;
+                state.usr = action.payload;
+                state.error = null;
+            })
+            .addCase(signupUser.rejected, (state, action) => {
+                state.loading = false;
+                state.usr = null;
+                console.log(action.error.message)
+                if (action.error.message === 'Request failed with status code 401') {
+                    state.error = 'Access Denied! Invalid Credentials';
+                } else {
+                    state.error = action.error.message
+                }
+            })
     }
 })
 export const { login, logout } = userSlice.actions;

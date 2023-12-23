@@ -34,7 +34,6 @@ const Columnbar = () => {
                 categories: ['26/9', "", "", "", '5/10', "", "", "", '16/10', "", "", "", '22/10'],
             },
             title: {
-
                 text: '1.582',
                 align: 'center',
                 style: {

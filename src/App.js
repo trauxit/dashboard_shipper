@@ -11,8 +11,8 @@ import LoginPage from './Pages/Login'
 import ForgetPage from './Pages/ForgetPage';
 import OtpPage from './Pages/OtpPage';
 import ResetPage from './Pages/ResetPage';
-/* import SignUp from './Component/Signup/SignUp';
- */import AllLoads from './Pages/Loads';
+import SignUp from './Component/Signup/SignUp';
+import AllLoads from './Pages/Loads';
 import Protectpages from './Component/ProtectPages';
 import Create from './Component/Shipment/Create';
 import { useDispatch } from 'react-redux';
@@ -57,7 +57,7 @@ function App() {
             <Route path="/forget" element={<ForgetPage />} />
             <Route path="/otp" element={<OtpPage />} />
             <Route path="/reset-password" element={<ResetPage />} />
-            {/* <Route path="/signup" element={<SignUp />} /> */}
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       </div >
