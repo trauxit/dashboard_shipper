@@ -92,6 +92,8 @@ font-size: 20px;
  }
 .logo{
     width: 70px;
+    text-align: center;
+    margin-left: 5px !important;
 }
  .none{
     display: none;

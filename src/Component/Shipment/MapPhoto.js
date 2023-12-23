@@ -118,7 +118,7 @@ const RoadTripMenuPlanner = React.memo(({ onDataReceived }) => {
             }
         });
         calculateDistance();
-        onDataReceived(startlat, startlon, endlat, endlon);
+        onDataReceived(startlat, startlon, endlat, endlon, distance);
         // eslint-disable-next-line no-use-before-define
     }, [startLocation, endLocation, calculateDistance]);
 
@@ -158,6 +158,7 @@ const RoadTripMenuPlanner = React.memo(({ onDataReceived }) => {
                             onBlur={handleEndInputChange}
                         />
                     </div>
+                    <p className={`calcdis`}>Calc distance</p>
                 </div>
                 {distance !== '' ?
                     <div className='routemap'>

@@ -20,12 +20,15 @@ const Create = () => {
     const [startLon, setStartLon] = useState(null);
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
-    const handleDataFromChild = useCallback((startLat, startLon, endLat, endLon) => {
+    const [distance, setDistance] = useState('0');
+    const handleDataFromChild = useCallback((startLat, startLon, endLat, endLon, distance) => {
         setStartLat(startLat);
         setStartLon(startLon);
         setEndLat(endLat);
         setEndLon(endLon);
+        setDistance(distance);
     });
+
     const initialState = {
         typeLoads: '',
         Weight: '',
@@ -116,7 +119,6 @@ const Create = () => {
                         <Col xxl='2' className={`${styles.background}`}>
                             <div className={`${styles.left}`}>
                                 <h2>Create shipments</h2>
-                                <p>Trailer Type: <span>Refer</span></p>
                             </div>
                             <div className={`${styles.form}`}>
                                 <div className={`${styles.formimg}`}>
@@ -124,14 +126,26 @@ const Create = () => {
                                 </div>
                                 <div className={`${styles.form__body}`}>
                                     <h4>Pickup & Dropoff</h4>
-                                    <div>
-                                        <p>Wooster , OH</p>
-                                        <p>Sep 14th, Morning</p>
-                                    </div>
-                                    <div>
-                                        <p>Austin Tx</p>
-                                        <p>Sep 14th, Morning</p>
-                                    </div>
+                                    {formData.Pickupaddress == '' ?
+                                        <div>
+                                            <p>enter pickup address</p>
+                                        </div>
+                                        :
+                                        <div>
+                                            <p>{formData.Pickupaddress}</p>
+                                        </div>
+                                    }
+
+                                    {formData.dropoffaddress == '' ?
+                                        <div>
+                                            <p>enter deopoff address</p>
+                                        </div>
+                                        :
+                                        <div>
+                                            <p>{formData.dropoffaddress}</p>
+                                        </div>
+                                    }
+
                                 </div>
                             </div>
                             <div className={`${styles.formreview}`}>
@@ -141,7 +155,9 @@ const Create = () => {
                                 <div className={`${styles.form__body}`}>
                                     <h4>Review Quote</h4>
                                     <div>
-                                        <p>$1,376</p>
+
+                                        <p>${((distance / 1.609) * 1.5).toFixed(2)}</p>
+
                                     </div>
                                 </div>
                             </div>

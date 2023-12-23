@@ -57,7 +57,7 @@
 .form::after{
     position: absolute;
     content: '';
-    height: 160px;
+    height: 119px;
     width: 2px;
     background-color: #FF8201;
     top: 22px;
@@ -66,6 +66,7 @@
 .form__body{
 text-align: left;
 }
+
 .form__body div{
     margin-top: 25px;
 }
@@ -104,7 +105,7 @@ padding-right: 20px;
 .formreview::after {
     position: absolute;
     content: '';
-    height: 80px;
+    height: 79px;
     width: 2px;
     background-color: #FF8201;
     top: 22px;
