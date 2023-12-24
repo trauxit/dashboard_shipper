@@ -1,6 +1,7 @@
  .home {
     display: flex;
     border-radius: 20px;
+
 }
 
 .homeContainer {
@@ -262,4 +263,19 @@ padding: 0 !important;
 .tab__cell{
 padding-right: 50px !important;
 }
+}
+.r3 {
+    position: relative;
+}
+.r2{
+                filter: blur(8px) !important;
+                    -webkit-filter: blur(8px) !important;
+}
+.comingsoon {
+    position: absolute;
+    content: 'coming soon';
+    top: 50%;
+    left: 40%;
+    z-index: 9999;
+    font-size: 50px;
 }

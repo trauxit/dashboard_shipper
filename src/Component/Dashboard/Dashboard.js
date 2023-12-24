@@ -29,7 +29,7 @@ const Dashboard = () => {
             chart: {
                 type: 'bar',
                 width: 100,
-                height: 35,
+                height: 10,
                 sparkline: {
                     enabled: true
                 }
@@ -39,7 +39,7 @@ const Dashboard = () => {
                     borderRadius: 8,
                     columnWidth: '50%'
                 }
-            }, title: {
+            }/* , title: {
                 text: 'Revenue',
                 offsetX: 0,
                 style: {
@@ -55,7 +55,7 @@ const Dashboard = () => {
                     color: '#000',
                     fontWeight: 'bold',
                 }
-            },
+            } */,
             labels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
             xaxis: {
                 crosshairs: {
@@ -119,6 +119,8 @@ const Dashboard = () => {
     const [searchQuery, setSearchQuery] = useState('inroads');
     const [filteredDataInprog, setFilteredDataInprog] = useState([]);
     const [searchQueryInprog, setSearchQueryInprog] = useState('inprogress');
+    const [filteredDataPay, setFilteredDataPay] = useState([]);
+    const [searchQueryPay, setSearchQueryPay] = useState('paymented')
     useEffect(() => {
         axios
             .get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
@@ -143,6 +145,12 @@ const Dashboard = () => {
         setFilteredDataInprog(filteredInprog);
     }, [ship, searchQueryInprog]);
 
+    useEffect(() => {
+        const filteredPay = ship.filter((item) => item?.status === searchQueryPay);
+        setFilteredDataPay(filteredPay);
+    }, [ship, searchQuery]);
+    const totalSum = filteredDataPay.reduce((acc, obj) => acc + obj.priceLoads, 0);
+    console.log(totalSum, 's')
 
     return (
         <>
@@ -180,7 +188,7 @@ const Dashboard = () => {
                                     </div> */}
                                     <div className={`${styles.activities__body}`}>
                                         <p>Invoices paid</p>
-                                        <h2>104</h2>
+                                        <h2>{totalSum}</h2>
                                     </div>
                                     <div className={`${styles.activities__body}`}>
                                         <p>New shipments</p>
@@ -192,6 +200,8 @@ const Dashboard = () => {
                                 <div className={`${styles.dashchart}`}>
                                     <Chart />
                                     <div id="chart-6" className={`${styles.lastbar} `}>
+                                        <h2 className={`${styles.t}`}>Revenue</h2>
+                                        <p className={`${styles.p1}`}>{totalSum} $</p>
                                         <ReactApexChart options={state.options6} series={state.series6} type="bar" height={250} />
                                     </div>
                                 </div>

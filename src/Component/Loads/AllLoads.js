@@ -20,6 +20,7 @@ const AllLoads = () => {
     const [filteredData, setFilteredData] = useState(ship);
     const { token } = useSelector((state) => state.user);
     const [err, setErr] = useState('')
+    console.log(ship)
     useEffect(() => {
         axios.get(`https://server.trauxit.app/api/v1/loads/shipper/`, {
             headers: {
