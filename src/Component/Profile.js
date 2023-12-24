@@ -58,8 +58,8 @@ const Profile = () => {
                     <div className={`${styles.user__details}`}>
                         <div >
                             <div className={`${styles.user}`}>
-                                <h3 className={`${styles.title}`}>First Name</h3>
-                                <p className={`${styles.para}`}>{fname}</p>
+                                <h3 className={`${styles.title}`}>Full Name</h3>
+                                <p className={`${styles.para}`}>{data.fullName}</p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>User Name</h3>
@@ -72,8 +72,8 @@ const Profile = () => {
                         </div>
                         <div>
                             <div className={`${styles.user}`}>
-                                <h3 className={`${styles.title}`}>Last Name</h3>
-                                <p className={`${styles.para}`}>{lname}</p>
+                                <h3 className={`${styles.title}`}></h3>
+                                <p className={`${styles.para}`}></p>
                             </div>
                             <div className={`${styles.user}`}>
                                 <h3 className={`${styles.title}`}>Email Address</h3>

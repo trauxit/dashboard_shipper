@@ -179,38 +179,29 @@ const Setting = () => {
                         <div className={`${styles.name} formgroup`}>
                             {/* First Name */}
                             <Form.Group className="mb-3 " controlId="fname">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control name="fname"
+                                <Form.Label>Full Name</Form.Label>
+                                <Form.Control name="fullName"
                                     type='text'
                                     autoComplete="off"
                                     placeholder=""
                                     className={`${styles.full}`}
                                     onChange={onChangeHandler}
-                                    value={formData.fname} />
+                                    value={formData.fullName} />
                             </Form.Group>
                             {/* Last Name */}
-                            <Form.Group className="mb-3" controlId="lname">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control name="lname"
+                            <Form.Group className="mb-3 " controlId="userName">
+                                <Form.Label>User Name</Form.Label>
+                                <Form.Control name="userName"
                                     type='text'
                                     autoComplete="off"
                                     placeholder=""
                                     className={`${styles.full}`}
                                     onChange={onChangeHandler}
-                                    value={formData.lname} />
+                                    value={formData.userName} />
                             </Form.Group>
                         </div>
                         {/* National ID */}
-                        <Form.Group className="mb-3 formgroup us" controlId="userName">
-                            <Form.Label>User Name</Form.Label>
-                            <Form.Control name="userName"
-                                type='text'
-                                autoComplete="off"
-                                placeholder=""
-                                className={`${styles.input}`}
-                                onChange={onChangeHandler}
-                                value={formData.userName} />
-                        </Form.Group>
+
                         <div className={`${styles.emphone}`}>
                             <Form.Group className="mb-3  emaili" controlId="email">
                                 <Form.Label>Email Address</Form.Label>
