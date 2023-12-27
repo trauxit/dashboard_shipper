@@ -313,3 +313,9 @@ cursor: pointer;
     margin-top: 15px;
 }
 }
+@media (min-width:600px) and (max-width:900px) {
+.inputBox_container {
+        width: 100% !important;
+    }
+    
+}

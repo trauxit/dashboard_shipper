@@ -82,7 +82,7 @@ const Booking = () => {
     return (
         <>
             <Row className={`${styles.bookrow}`}>
-                <Col xxl='9'>
+                <Col xxl='9' className={`${styles.colload}`}>
                     <TableContainer component={Paper} className={`${styles.tab} ${styles.booktab}`}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead className={`${styles.head}`}>
@@ -143,8 +143,8 @@ const Booking = () => {
                     </TableContainer>
                 </Col>
                 {selectedRowIndex !== null && (
-                    <Col xxl="3">
-                        <div ref={mapContainer} style={{ width: '100%', height: '100%', marginTop: '20px' }}>
+                    <Col xxl="3" className={`${styles.colload}`}>
+                        <div ref={mapContainer} style={{ marginTop: '20px' }} className={`${styles.mapload}`}>
                             <div id="start-marker" />
                             <div id="end-marker" />
                         </div>

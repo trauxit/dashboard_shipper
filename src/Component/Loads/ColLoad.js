@@ -66,9 +66,7 @@ const ColLoad = ({ ship, err }) => {
                                         <TableCell>
                                             <h5>{shipCard.Weight} K</h5>
                                         </TableCell>
-                                        <TableCell>
-                                            <KeyboardArrowRightIcon />
-                                        </TableCell>
+
                                     </TableRow>
                                 )}
                             </>

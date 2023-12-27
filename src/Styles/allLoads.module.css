@@ -189,6 +189,30 @@ column-gap: 50px;
     text-align: center !important;
     margin-left:150px;
 }
+.edit__body {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 10px 0 5px 5px;
+    box-shadow: var(--color-shadow);
+}
+
+.edit__body p {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.edit__body hr {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.inprogress {
+    color: #FF8201 !important;
+}
+.mapload {
+    height: 100% !important;
+    width: 92%;
+}
 @media (min-width:0) and (max-width:600px) {
         .home {
                 display: flex;
@@ -240,20 +264,65 @@ width: 92% !important;
         margin-left: 15px !important;
     }
 }
-.edit__body{
-    background-color: #fff;
-    border: 1px solid #eee;
-    padding: 10px 0 5px 5px;
-    box-shadow: var(--color-shadow);
+@media (min-width:600px) and (max-width:900px) {
+    .findOrBooked__body{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        column-gap: 0px;
+    }
+    .style__link{
+        border-bottom: none;
+    }
+        .find__body {
+            width: 100% !important;
+            margin: 20px 0 !important;
+            margin-left: 15px !important;
+            width: 93% !important;
+        }
+            .find__search{
+                    display: flex;
+                    flex-direction: column;
+                }
+        .searchload{
+            width: 100% !important;
+        }
+        .tab{
+            width: 92% !important;
+            margin-left: 20px !important;
+        }
+        .bookrow{
+            width: 100% !important;
+
+        }
+        .pendingrow{
+            width: 92% !important;
+        }
+        .mapload{
+            height: 500px !important;
+            margin-left: 20px !important;
+        }
+        .colload{
+            padding-left: 0 !important;
+        }
 }
-.edit__body p{
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+@media (min-width:900px) and (max-width:1200px) {
+    .searchload {
+            width: 450px !important;
+        }
+        .tab{
+            width: 94% !important;
+        }
+                .mapload {
+                    height: 500px !important;
+                    margin-left: 20px !important;
+                }
 }
-.edit__body hr{
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
-}
-.inprogress {
-    color: #FF8201 !important;
+@media (min-width:1200px) and (max-width:1600px) {
+    .searchload {
+            width: 550px !important;
+        }
+                .mapload {
+                    height: 600px !important;
+                    margin-left: 20px !important;
+                }
 }
