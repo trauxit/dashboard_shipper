@@ -429,3 +429,22 @@ a{
   color: #FF8201;
   cursor: pointer;
 }
+@media (min-width:600px) and (max-width:900px) {
+  .selectcraete{
+  display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .mapcreate{
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+@media (min-width:900px) and (max-width:1400px) {
+.mapcreate {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}

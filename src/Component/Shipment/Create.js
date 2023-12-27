@@ -195,7 +195,7 @@ const Create = () => {
                                     <div className={`${styles.first}`}>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label>Type of Loads</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g PATA" className='cont' name="typeLoads"
+                                            <Form.Control type="text" placeholder="e.g PATA" className={`${styles.inputcreate} cont`} name="typeLoads"
                                                 value={formData.typeLoads}
                                                 onChange={handleChange} />
                                         </Form.Group>
@@ -206,7 +206,7 @@ const Create = () => {
                                                     placeholder="e.g 42.000"
                                                     aria-label="Recipient's username"
                                                     aria-describedby="basic-addon2"
-                                                    className='in weight'
+                                                    className={`${styles.inputcreate} in weight`}
                                                     type='number'
                                                     name="Weight"
                                                     value={formData.Weight}
@@ -224,7 +224,7 @@ const Create = () => {
                                                 value={formData.nameLoads}
                                                 onChange={handleChange} />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                        <Form.Group className="mb-3 selectcraete" controlId="exampleForm.ControlInput1">
                                             <Form.Label>Packaging Type</Form.Label>
                                             <select
                                                 placeholder="State"

@@ -135,13 +135,12 @@ const RoadTripMenuPlanner = React.memo(({ onDataReceived }) => {
     };
 
     return (
-        <Row className='map'>
-            <Col xxl='3'>
+        <Row className='map mapcreate'>
+            <Col xxl='3' md='4' lg='5'>
                 <div className='allinputsmap'>
                     <div className='startmap'>
                         <img alt='' src={img1} />
                         <input
-
                             placeholder="Query e.g. Washington"
                             type="text"
                             className="inputmap"
@@ -177,7 +176,7 @@ const RoadTripMenuPlanner = React.memo(({ onDataReceived }) => {
                     <p className='map__para'>For results choose starting and destination points.</p>
                 }
             </Col>
-            <Col xxl='9'>
+            <Col xxl='9' md='8' lg='7'>
                 <div ref={mapContainer} style={{ width: '100%', height: '400px' }}>
                     <div id="start-marker" />
                     <div id="end-marker" />

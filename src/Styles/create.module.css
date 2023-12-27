@@ -301,3 +301,63 @@ padding-right: 20px;
         justify-content: center !important;
     }
 }
+@media (min-width:600px) and (max-width:900px) {
+    .background{
+        display: none;
+    }
+ .details,
+ .shipform ,
+ .first,
+ .pickup,
+ .textareaship{
+    padding-left: 0px !important;
+ }
+ .first{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+ }
+
+}
+@media (min-width:900px) and (max-width:1200px) {
+.background {
+        display: none;
+    }
+        .details,
+        .shipform,
+        .first,
+        .pickup,
+        .textareaship {
+            padding-left: 0px !important;
+        }
+        .first{
+            column-gap: 17px;
+        }
+}
+@media (min-width:1200px) and (max-width:1400px) {
+    .background {
+        display: none;
+    }
+
+    .details,
+    .shipform,
+    .first,
+    .pickup,
+    .textareaship {
+        padding-left: 0px !important;
+    }
+
+    .first {
+        column-gap: 15%;
+    }
+}
+@media (min-width:1400px) and (max-width:1600px) {
+    .form::after {
+
+            height: 138px;
+        }
+        .first{
+            column-gap: 80px;
+        }
+                
+}
