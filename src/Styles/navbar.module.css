@@ -117,9 +117,20 @@ font-size: 20px;
 
 }
 
-@media (min-width:600px) {
+@media (min-width:600px) and (max-width:900px) {
     .icon {
             display: none !important;
         }
-    
+        
+    .wrapper{
+        justify-content: left;
+    }
+    .items{
+        padding-left: 50px;
+    }
+}
+@media (min-width:900px){
+    .icon {
+            display: none !important;
+        }
 }

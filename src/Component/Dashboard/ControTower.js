@@ -27,14 +27,14 @@ const ControTower = () => {
                                     <h3>187</h3>
                                     <img alt='' src={up} />
                                 </div>
-                                <p>Scheduled for pickup today <KeyboardArrowRightIcon /></p>
+                                <p>Scheduled for pickup today </p>
                             </div>
                             <div className={`${styles.up}`}>
                                 <div>
                                     <h3>250</h3>
                                     <img alt='' src={down} />
                                 </div>
-                                <p>Scheduled for delivery today <KeyboardArrowRightIcon /></p>
+                                <p>Scheduled for delivery today </p>
                             </div>
                         </div>
                     </div>

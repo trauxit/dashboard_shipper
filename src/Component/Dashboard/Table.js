@@ -61,7 +61,7 @@ const TableOfDash = () => {
 
     return (
         <>
-            <section  >
+            <section className={`${styles.tablebooked}`}>
                 <Box>
                     <DataGrid
                         getRowId={rows => rows._id}

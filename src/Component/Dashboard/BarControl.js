@@ -25,6 +25,7 @@ const BarControl = () => {
                         },
                     },
                 },
+
             ],
             fill: {
                 colors: ['#FF8201', '#FFA84A', '#FDD1A4', '#EFBE7B']

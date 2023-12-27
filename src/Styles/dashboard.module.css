@@ -642,6 +642,16 @@ padding-top: 5px;
     -ms-border-radius: 8px !important;
     -o-border-radius: 8px !important;
 }
+.t {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.p1 {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: 40px !important;
+}
 @media (min-width:0px) and (max-width:600px) {
     .home {
         display: flex;
@@ -699,12 +709,83 @@ margin-bottom: 15px;
     font-size: 14px !important;
 }
 }
-.t{
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+
+@media (min-width:600px) and (max-width:1200px) {
+    .activities{
+        column-gap: 0px;
+        justify-content: space-between;
+    }
+    .activities__body{
+        width: 230px;
+        margin-right: 10px;
+    }
+        .table,
+        .lastbar,
+        .linestyle,
+        .input,
+        .up,
+        .status ,
+        .routes{
+            width: 98% !important;
+        }
+    
+        .linestyle {
+            margin-bottom: 15px;
+        }
+    .dashchart{
+        display: flex;
+        flex-direction: column;
+    }
+    .routes{
+        padding: 0 15px;
+    }
+    .r{
+        display: flex;
+            flex-direction: column;
+    }
+                        .controlchart{
+                            width: 65%;
+                        }
+                        .up{
+                            width: 100% !important;
+                        }
 }
-.p1{
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    font-size: 40px !important;
+@media (min-width:1200px) and (max-width:1400px) {
+    .routes{
+        width: 94% !important;
+        margin-left: 10px;
+    }
+    
+        .r {
+            display: flex;
+            flex-direction: column;
+        }
+}
+@media (min-width:1400px) and (max-width:1600px) {
+    .activities {
+            column-gap: 0px;
+            justify-content: space-between;
+        }
+        .input{
+            width: 100%;
+        }
+        .table{
+            width: 100% !important;
+        }
+        .dashchart{
+            display: flex;
+            flex-direction: column;
+        }
+                .linestyle {
+                    margin-bottom: 15px;
+                    width: 100%;
+                }
+                .lastbar{
+                    width: 100% !important;
+                }
+                                
+                                                                .r {
+                                                                    display: flex;
+                                                                    flex-direction: column;
+                                                                }
 }
