@@ -37,13 +37,13 @@ const userSlice = createSlice({
             state.userName = action.payload.data.userData.userName;
             Cookies.set('token', action.payload.token, { expires: 7 });
             Cookies.set('userName', action.payload.data.userData.userName);
-            /*  localStorage.setItem('token', action.payload.token); */
+            localStorage.setItem('token', action.payload.token);
         },
         logout(state) {
             state.usr = null;
             state.token = null;
-            /* localStorage.clear();
-            localStorage.removeItem('token'); */
+            localStorage.clear();
+            localStorage.removeItem('token');
             Cookies.remove('token'); // Remove the token from cookies
         }
     },
@@ -60,6 +60,7 @@ const userSlice = createSlice({
                 state.userName = action.payload.data.userData.userName;
                 localStorage.setItem('user', JSON.stringify(action.payload));
                 Cookies.set('token', action.payload.token, { expires: 7 });
+                localStorage.setItem('token', action.payload.token);
                 Cookies.set('userName', action.payload.data.userData.userName);
             })
             .addCase(loginUser.rejected, (state, action) => {
