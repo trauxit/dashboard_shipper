@@ -21,8 +21,8 @@
 
 body {
   margin: 0;
-  font-family: 'Josefin Sans', sans-serif !important;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Ubuntu Arabic' !important;
+    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--main-background-color) !important;
     color: var(--text-color) !important;
@@ -39,12 +39,11 @@ select{
   color: var(--text-color) !important;
 }
 code {
-  font-family: 'Josefin Sans', sans-serif;
-}
+  font-family: 'Ubuntu Arabic';}
 
 @font-face {
-  font-family: 'JosefinSans-Regular';
-  src: url(/src/assets/font/Josefin_Sans/static/JosefinSans-Regular.ttf);
+  font-family: 'Ubuntu Arabic';
+  src: url(/src/assets/font/ArbFonts.com-\(3\)/ArbFONTS-Ubuntu-Arabic_B.ttf);
 }
 
 @font-face {

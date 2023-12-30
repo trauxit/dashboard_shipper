@@ -5,7 +5,7 @@
 
 .homeContainer {
     flex: 6;
-        font-family: 'JosefinSans-Regular';
+font-family: 'Ubuntu Arabic' !important;
 }
 .user__body{
    display: flex;

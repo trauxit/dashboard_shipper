@@ -1,7 +1,7 @@
 .home {
     display: flex;
     border-radius: 20px;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
 }
 .leftcon{
     display: flex;
@@ -177,8 +177,7 @@ margin-top: 30px;
         }
 .homeContainer {
     flex: 6;
-    font-family: 'JosefinSans-Regular' !important;
-   
+font-family: 'Ubuntu Arabic' !important;
 }
 .style__link {
     color: #000;
@@ -561,7 +560,7 @@ padding-top: 5px;
     -moz-border-radius: 12px !important ;
     -ms-border-radius: 12px !important ;
     -o-border-radius: 12px !important ;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
     background-color: var(--secondary-background-color);
 }
 
@@ -606,8 +605,7 @@ padding-top: 5px;
     display: flex;
     padding: 10px;
     justify-content: space-between;
-    font-family: 'JosefinSans-Regular' !important ;
-    
+font-family: 'Ubuntu Arabic' !important;
 }
 .chart__para{
     text-transform: capitalize;
@@ -627,7 +625,7 @@ padding-top: 5px;
     -o-border-radius: 12px !important;
     height: 500px !important;
     margin-bottom: 20px;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
     width: 95% !important;
     background-color: var(--secondary-background-color);
     color: #029F04;

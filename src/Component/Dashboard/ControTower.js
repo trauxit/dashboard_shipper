@@ -41,13 +41,13 @@ const ControTower = () => {
                 </Col>
                 <Col>
                     <div className={`${styles.r3}`}>
-                        <h3 className={styles.comingsoon}>coming soon</h3>
+                        <h3 className={styles.comingsoon}>Coming Soon</h3>
                         <TableControl />
                     </div>
                 </Col>
             </Row>
             <div className={`${styles.r3}`}>
-                <h3 className={styles.comingsoon}>coming soon</h3>
+                <h3 className={styles.comingsoon}>Coming Soon</h3>
                 <Row className={`${styles.r2} mt-5 mb-4`}>
                     <Col>
                         <div className={`${styles.status} ${styles.rstatus}`}>

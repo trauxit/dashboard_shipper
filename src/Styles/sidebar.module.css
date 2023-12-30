@@ -9,7 +9,7 @@
     border-bottom-right-radius: 20px;
     padding-top: 20px;
     width: 170px;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
     min-height: 1000px;
 }
 .sidebar:hover span {
@@ -142,7 +142,7 @@
                 width: 100%;
                 padding-left: 0px;
                 z-index: 1000;
-                font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
                 height: 60px;
                 display: flex;
                 

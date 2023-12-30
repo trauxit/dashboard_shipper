@@ -5,7 +5,7 @@
 
 .homeContainer {
     flex: 6;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
 }
 
 .findOrBooked__body {
@@ -103,7 +103,7 @@ column-gap: 50px;
     margin-left: 25px !important;
     width: 97% !important;
     margin-top: 40px !important;
-    font-family: 'JosefinSans-Regular' !important;
+font-family: 'Ubuntu Arabic' !important;
     box-shadow: var(--color-shadow);
     border-radius: 12px;
     -webkit-border-radius: 12px;
