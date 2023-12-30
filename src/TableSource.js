@@ -4,13 +4,30 @@ import styles from './Styles/dashboard.module.css'
 
 export const userColumns = [
     {
-        field: "Driver",
-        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Driver</div>,
+        field: "priceLoads",
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Price</div>,
+        width: 100,
+    },
+    {
+        field: "Pickup",
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Pickup location</div>,
         width: 190,
         renderCell: (params) => {
             return (
-                <div className={`cellWithStatus ${params.row.idCarrier.userName}`}>
-                    {params.row.idCarrier.userName}
+                <div className={`cellWithStatus ${params.row?.PickupLocation?.address}`}>
+                    {params.row?.PickupLocation?.address}
+                </div>
+            );
+        },
+    },
+    {
+        field: "Delivery",
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Dropoff location</div>,
+        width: 190,
+        renderCell: (params) => {
+            return (
+                <div className={`cellWithStatus ${params.row?.DropoutLocation?.address}`}>
+                    {params.row?.DropoutLocation?.address}
                 </div>
             );
         },
@@ -18,12 +35,12 @@ export const userColumns = [
     {
         field: "typeLoads",
         headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Type of goods</div>,
-        width: 190,
+        width: 150,
     },
     {
         field: "shipmentDistance",
         headerName: "Distance",
-        width: 190,
+        width: 100,
     },
 
     {
@@ -34,6 +51,18 @@ export const userColumns = [
             return (
                 <div className={`cellWithStatus ${params.row.status}`}>
                     {params.row.status}
+                </div>
+            );
+        },
+    },
+    {
+        field: "Driver",
+        headerName: <div className={`${styles.types__img}`}><img alt='' src={control} /> Driver</div>,
+        width: 190,
+        renderCell: (params) => {
+            return (
+                <div className={`cellWithStatus ${params.row?.idCarrier?.userName}`}>
+                    {params.row?.idCarrier?.userName}
                 </div>
             );
         },

@@ -41,7 +41,6 @@ const NavBar = (props) => {
                         <Link to='/'>
                             <div>
                                 <img alt='' src={logo} className={`${styles.logo}`} />
-                                <h4 className={`${styles.logo__title} mt-2`}>TRAUXIT</h4>
                             </div>
                         </Link>
                     </div>

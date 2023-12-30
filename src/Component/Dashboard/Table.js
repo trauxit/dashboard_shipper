@@ -41,6 +41,7 @@ const TableOfDash = () => {
     useEffect(() => {
         reset()
     }, [])
+    console.log(ship, 'llkkk')
     const actionColumn = [
         {
             field: "action",
@@ -66,7 +67,7 @@ const TableOfDash = () => {
                     <DataGrid
                         getRowId={rows => rows._id}
                         className={`${styles.table}`}
-                        rows={filteredData}
+                        rows={ship}
                         columns={userColumns}
                         initialState={{
                             pagination: {
