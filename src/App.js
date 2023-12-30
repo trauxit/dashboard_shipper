@@ -25,7 +25,7 @@ function App() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    const usertoken = localStorage.getItem('token');
+    const usertoken = Cookies.get('token');
     if (usertoken) {
       try {
         const parsedToken = JSON.parse(usertoken);

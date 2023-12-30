@@ -94,6 +94,7 @@ const Wait = () => {
             ).catch((err) => { console.log(err) })
         console.log(item, 'kk')
     };
+    console.log(token, 'k')
     const handleapprove = (item) => {
         axios.patch(`https://server.trauxit.app/api/v1/loads/booking/${item}`, {
             headers: {
