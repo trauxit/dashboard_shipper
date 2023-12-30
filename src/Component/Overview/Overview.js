@@ -24,7 +24,7 @@ const Overview = () => {
     return (
         <>
             <div className={`${styles.r3}`}>
-                <h3 className={styles.comingsoon}>coming soon</h3>
+                <h3 className={styles.comingsoon}>Coming Soon</h3>
                 <div className={`${styles.home}`}>
                     <div className={`${styles.homeContainer}`}>
                         <NavBar />
@@ -56,13 +56,14 @@ const Overview = () => {
                                         <Columnbar />
                                     </div>
                                     <Historybar />
-                                </div>
-                                <div className={`${styles.overview__charts}`}>
                                     <div className={`${styles.overviewbar}`}>
                                         <Coulmns />
                                     </div>
                                     <Stackedbar />
                                 </div>
+
+
+
                             </div>
                             <div className={`${active === "facilities" ? styles.block : styles.none}`}>
                                 <Facilities />
