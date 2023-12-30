@@ -80,6 +80,34 @@ const Wait = () => {
             });
         }
     }, [selectedRowIndex]);
+    const handledelet = (item) => {
+        axios.patch(`https://server.trauxit.app/api/v1/loads/${item}/update-status-to-canceled`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+            .then(response => {
+                console.log(response)
+                window.location.reload();
+
+            }
+            ).catch((err) => { console.log(err) })
+        console.log(item, 'kk')
+    };
+    const handleapprove = (item) => {
+        axios.patch(`https://server.trauxit.app/api/v1/loads/booking/${item}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+            .then(response => {
+                console.log(response)
+                window.location.reload();
+
+            }
+            ).catch((err) => { console.log(err) })
+        console.log(item, 'kk')
+    };
     return (
         <>
             <Row className={`${styles.bookrow}`}>
@@ -131,9 +159,9 @@ const Wait = () => {
                                                     <MoreHorizIcon />
                                                     {toggle[index] ?
                                                         <div className={`${styles.edit__body}`}>
-                                                            <p>Cancel</p>
+                                                            <p onClick={() => handleapprove(shipCard?._id)}>Approve</p>
                                                             <hr />
-                                                            <p>Delete</p>
+                                                            <p onClick={() => handledelet(shipCard?._id)}>Cancel</p>
                                                         </div>
                                                         :
                                                         ""
